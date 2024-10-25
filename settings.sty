@@ -14,27 +14,31 @@
 %%%%%%%%%%%%%%%%
 %%% Packages %%%
 %%%%%%%%%%%%%%%%
-% フォントを Times に変更
-% \usepackage{luatexja-fontspec}
-% \setmainfont[Ligatures=TeX]{Times-New-Roman}
-% \setmainjfont[BoldFont=MS Gothic]{MS Mincho}
-% 数式等
-% \usepackage{amsmath,amssymb}
-\usepackage{fontspec}
-\usepackage{physics}
-\usepackage[math-style=TeX,bold-style=TeX]{unicode-math}
+%%% 数式・フォント %%%
+% Times 系フォント + Unicode Math
+\usepackage{fontspec} % 欧文フォントの設定
+\usepackage{luatexja} % LuaLaTeX 用の日本語処理パッケージ
+\usepackage{luatexja-fontspec} % LuaLaTeX 用の日本語フォント設定
+\usepackage[math-style=TeX,bold-style=TeX]{unicode-math} % 数学フォント設定
+% 欧文フォント設定
 \setmainfont[Ligatures=TeX]{XITS}
 \setsansfont[Ligatures=TeX]{TeX Gyre Heros}
+% 数学フォント設定
 \setmathfont{XITS Math}
 \setmathfont{XITS Math}[range={cal,bfcal},StylisticSet=1]
-% \usepackage{bm}
+% 数式用パッケージ
+% \usepackage{physics}
+\usepackage{physics2}
+\usephysicsmodule{ab}
+\usepackage{fixdif}
+\usepackage{derivative}
 % 文字に色を付ける
 \usepackage{color}
 % otf
 % \usepackage[deluxe]{otf}
-% \usepackage{newtxtext,newtxmath}
-%%% hyperref
-%%% ハイパーリンクに色が付かないようにしたいときは hidelinks のコメントアウトをはずす
+
+%%% hyperref %%%
+% ハイパーリンクに色が付かないようにしたいときは hidelinks のコメントアウトをはずす
 \usepackage[%
   bookmarks=true,% pdf にしおりをつける
   bookmarksnumbered=true,% しおりに章・節番号を含める
@@ -43,7 +47,6 @@
   % hidelinks,% リンクに色をつけない
   allcolors=blue% リンクの色を全て青に統一する
   ]{hyperref}
-% \usepackage{pxjahyper}
 
 %%% 図関連 %%%
 % 図の読み込みに必要
@@ -66,13 +69,14 @@
 % tblr 環境のセルの余白を変更
 \SetTblrInner{rowsep=0pt}
 
+%%% その他のパッケージ %%%
 % 単位
 \usepackage{siunitx}
 % natbib
 \usepackage{natbib}
-%%% ロゴ関連
+% ロゴ関連
 \usepackage{bxtexlogo}
-%%% 枠
+% 枠
 \usepackage{tcolorbox}
 \tcbuselibrary{skins}
 \tcbset{
@@ -189,7 +193,8 @@
 % 柱は表示しない
 % ノンブルをページ下部中央に表示
 \NewPageStyle{chapterfirstpage}{
-  nombre_position=bottom-center     % ノンブルの位置
+  nombre_position=bottom-center,    % ノンブルの位置
+  nombre={---\thepage---}           % ノンブルの内容
 }
 
 %%% 記号表用ページスタイル %%%
