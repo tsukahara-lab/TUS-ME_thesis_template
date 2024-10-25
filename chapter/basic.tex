@@ -102,7 +102,7 @@ This is a pen.
 
 最も基本的な別行立ての数式は \verb|equation| 環境で記述します．
 \begin{equation}
-    \frac{\partial u_r}{\partial t} + (\symbfit{u}\cdot\nabla)u_r + \frac{u_\theta^2}{r} = -\frac{1}{\rho}\frac{\partial p}{\partial r} + \nu\left(\nabla^2 u_r - \frac{u_r}{r^2} - \frac{2}{r^2}\frac{\partial u_\theta}{\partial \theta}\right)
+    \frac{\partial u_r}{\partial t} + (\mathbf{u}\cdot\nabla)u_r - \frac{u_\theta^2}{r} = -\frac{1}{\rho}\frac{\partial p}{\partial r} + \nu\left(\nabla^2 u_r - \frac{u_r}{r^2} - \frac{2}{r^2}\frac{\partial u_\theta}{\partial \theta}\right)
     \label{eq:NSr}
 \end{equation}
 式~\eqref{eq:NSr} の数式は \LaTeX でサポートされている最も標準的なコマンドで記述しています．
@@ -112,12 +112,35 @@ This is a pen.
 $\rho$ や $\theta$ のようなギリシャ文字も出力できるほか，$\nabla$ や $\sin$，$\log$ のような数学で使う関数の類もコマンドが存在しています．
 $\sin$ や $\log$ は通常アップライト体（立体，Roman 体）で書きます．
 $sin x$ などと書くことのないように気をつけましょう．
-また，式~\eqref{eq:NSr} の左辺と右辺で丸括弧の大きさが異なることにも注目してください．
+また，数式中で \LaTeX コマンドを使わずに変換で出した全角のθを入れている人をときどき見かけるので気をつけましょう．
+式~\eqref{eq:NSr} の左辺と右辺で丸括弧の大きさが異なることにも注目してください．
 左辺は特に何もしていませんが，右辺は分数がある分，縦方向に括弧の長さが必要です．
 括弧の大きさを自動で調整するコマンドとして，\verb|\left(|，\verb|\right)| コマンドがあります．
+左辺第二項では速度 $\mathbf{u}$ がベクトルであるため，\textbf{Bold} 体になっています．
+これは \verb|\mathbf{u}| とすることで出力できます．
+このテンプレートでは \verb|unicode-math| を使用しているので \verb|\symbfup{u}| というコマンドもサポートされています．
 
 式~\eqref{eq:NSr} は別行立ての数式でしたが，$E = mc^2$ のように文章中に組み込む数式（インライン数式）を出力する場合は \verb|$$| で数式を囲って \verb|$E = mc^2$| と書きます．
 
+複数の数式を並べる場合は \verb|align| 環境を使いましょう．
+\begin{align}
+    a^2 &= b^2 + c^2 - 2bc\cos A \label{eq:cosA} \\
+    b^2 &= c^2 + a^2 - 2ca\cos B \label{eq:cosB} \\
+    c^2 &= a^2 + b^2 - 2ab\cos C \label{eq:cosC}
+\end{align}
+\verb|align| 環境では \verb|&| の位置で揃えるように制御しています．
+式~\eqref{eq:cosA}--\eqref{eq:cosC} は $=$ の前に \verb|&| を置いているので，3 式の位置は $=$ の直前で揃っていることになります．
+
+場合分けのある数式は \verb|cases| 環境が便利です．
+式~\eqref{eq:Kronecker} は Kronecker のデルタです．
+\begin{equation}
+    \delta_{ij} = 
+    \begin{cases}
+        1, & i = j \\
+        0, & i \neq j
+    \end{cases}
+    \label{eq:Kronecker}
+\end{equation}
 
 \subsection{\texttt{physics2} パッケージ}
 \label{ssec:physics2}
@@ -126,24 +149,19 @@ $sin x$ などと書くことのないように気をつけましょう．
 しかし，複雑な数式は書くのも大変ですしミスの元になります．
 また，数式のコードが長くなるとエラーの原因を探すのも難しくなります．
 できるだけ数式を簡単に書くためのツールとして \verb|physics| パッケージが開発され，現在まで広く使われています．
-ただ，\verb|physics| パッケージはいくつかの問題点を抱えており，最近は \verb|physics| パッケージの代替となる \verb|physics2| パッケージが開発されている．
+ただ，\verb|physics| パッケージはいくつかの問題点を抱えており，最近は \verb|physics| パッケージの代替となる \verb|physics2| パッケージが開発されています．
 \verb|physics2| パッケージは現在も開発途上のパッケージであるため，使い方は公式ドキュメントをよく読んでください．
-
+このテンプレートでは \verb|physics2| パッケージと併せて \verb|fixdif| パッケージと \verb|derivative| パッケージを使用しています．
 \begin{equation}
-    C_f = \frac{12}{\Re} + 12\int_0^1 2(1-y)(-\overline{u'v'})\d y - 12\int_0^1 (1-y)^2 \ab(I''_x+\pdv{p''}{x}+\pdv{\overline{u}}{t})\d y
-    \label{eq:FIK}
+    \pdv{u_r}{t} + (\mathbf{u}\cdot\nabla)u_r - \frac{u_\theta^2}{r} = -\frac{1}{\rho}\pdv{p}{r} + \nu\ab(\nabla^2 u_r - \frac{u_r}{r^2} - \frac{2}{r^2}\pdv{u_\theta}{\theta})
+    \label{eq:NSr2}
 \end{equation}
-
-\begin{equation}
-    \Re_\rmin = \frac{u_\rmin h}{\nu}, \quad \Re_\rmout = \frac{u_\rmout h}{\nu}, \quad \Re = \frac{u_0 h}{\nu}
-\end{equation}
-
-\begin{align}
-    \frac{\partial u_i}{\partial t} + u_j\frac{\partial u_i}{\partial x_j} &= - \frac{1}{\rho}\frac{\partial p}{\partial x_j} + \nu\frac{\partial^2 u_i}{\partial x_j \partial x_j} \\
-    \pdv{u_i}{t} + u_j\pdv{u_i}{x_j} &= - \frac{1}{\rho}\pdv{p}{x_j} + \nu\pdv{u_i}{x_j, x_j}
-\end{align}
+式~\eqref{eq:NSr2} は式~\eqref{eq:NSr} を \verb|physics2| パッケージで書き換えたものです．
+偏微分と大きさ調整が必要な括弧の記述が幾分か楽になりましたね．
 
 \subsection{\texttt{siunitx} パッケージ}
 \label{ssec:siunitx}
+
+これから書きます……
 
 
