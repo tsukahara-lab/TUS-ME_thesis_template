@@ -19,7 +19,7 @@
 % \setmainfont[Ligatures=TeX]{Times-New-Roman}
 % \setmainjfont[BoldFont=MS Gothic]{MS Mincho}
 % 数式等
-% \usepackage{amsmath,amssymb}
+% Times 系フォント + Unicode Math
 \usepackage{fontspec}
 \usepackage{physics}
 \usepackage[math-style=TeX,bold-style=TeX]{unicode-math}
@@ -189,7 +189,8 @@
 % 柱は表示しない
 % ノンブルをページ下部中央に表示
 \NewPageStyle{chapterfirstpage}{
-  nombre_position=bottom-center     % ノンブルの位置
+  nombre_position=bottom-center,    % ノンブルの位置
+  nombre={---\thepage---}           % ノンブルの内容
 }
 
 %%% 記号表用ページスタイル %%%
