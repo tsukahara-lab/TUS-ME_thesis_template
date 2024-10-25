@@ -83,7 +83,7 @@ This is a pen.
 \label{ssec:ref}
 
 \LaTeX で文書を書くメリットの一つに相互参照の機能が充実していることが挙げられます．
-相互参照は「第~\ref{ssec:ref} 節を参照されたい．」や「式~\eqref{eq:Einstein} を代入すると～」のような文脈において，対応する章・節・式・図・表などの番号を文書中から探し出す機能です．
+相互参照は「第~\ref{ssec:ref} 節を参照されたい．」や「式~\eqref{eq:NSr} を代入すると～」のような文脈において，対応する章・節・式・図・表などの番号を文書中から探し出す機能です．
 また，ハイパーリンクを有効にしておくことで，\verb|pdf| ファイルに適切なリンクが埋め込まれ，クリックで該当箇所に飛ぶことができ大変便利です．
 この学位論文テンプレートでもハイパーリンクを有効化しており，青字の文字列をクリックすると参照先に飛べます．
 図表や章題目などを \verb|\label{}| コマンドでラベリングし，参照する文章中で \verb|\ref{}| コマンドを使って呼び出すのが基本的な相互参照の形です．
@@ -97,10 +97,41 @@ This is a pen.
 \section{\LaTeX での数式の書き方}
 \label{sec:formula_in_LaTeX}
 
+\subsection{基本的な数式の記法}
+\label{ssec:basic_command}
+
+最も基本的な別行立ての数式は \verb|equation| 環境で記述します．
+\begin{equation}
+    \frac{\partial u_r}{\partial t} + (\symbfit{u}\cdot\nabla)u_r + \frac{u_\theta^2}{r} = -\frac{1}{\rho}\frac{\partial p}{\partial r} + \nu\left(\nabla^2 u_r - \frac{u_r}{r^2} - \frac{2}{r^2}\frac{\partial u_\theta}{\partial \theta}\right)
+    \label{eq:NSr}
+\end{equation}
+式~\eqref{eq:NSr} の数式は \LaTeX でサポートされている最も標準的なコマンドで記述しています．
+上付き添え字はキャレット \verb|^|，下付き添え字はアンダースコア \verb|_| で表現します．
+したがって，$u_\theta^2$ は \verb|u_\theta^2| と書きます．
+分数は \verb|\frac{分子}{分母}| で書き，常微分・偏微分の場合も同様です．
+$\rho$ や $\theta$ のようなギリシャ文字も出力できるほか，$\nabla$ や $\sin$，$\log$ のような数学で使う関数の類もコマンドが存在しています．
+$\sin$ や $\log$ は通常アップライト体（立体，Roman 体）で書きます．
+$sin x$ などと書くことのないように気をつけましょう．
+また，式~\eqref{eq:NSr} の左辺と右辺で丸括弧の大きさが異なることにも注目してください．
+左辺は特に何もしていませんが，右辺は分数がある分，縦方向に括弧の長さが必要です．
+括弧の大きさを自動で調整するコマンドとして，\verb|\left(|，\verb|\right)| コマンドがあります．
+
+式~\eqref{eq:NSr} は別行立ての数式でしたが，$E = mc^2$ のように文章中に組み込む数式（インライン数式）を出力する場合は \verb|$$| で数式を囲って \verb|$E = mc^2$| と書きます．
+
+
+\subsection{\texttt{physics2} パッケージ}
+\label{ssec:physics2}
+
+式~\eqref{eq:NSr} は基本的なコマンドを紹介するためにわざと面倒な書き方をしました．
+しかし，複雑な数式は書くのも大変ですしミスの元になります．
+また，数式のコードが長くなるとエラーの原因を探すのも難しくなります．
+できるだけ数式を簡単に書くためのツールとして \verb|physics| パッケージが開発され，現在まで広く使われています．
+ただ，\verb|physics| パッケージはいくつかの問題点を抱えており，最近は \verb|physics| パッケージの代替となる \verb|physics2| パッケージが開発されている．
+\verb|physics2| パッケージは現在も開発途上のパッケージであるため，使い方は公式ドキュメントをよく読んでください．
 
 \begin{equation}
-    E = mc^2
-    \label{eq:Einstein}
+    C_f = \frac{12}{\Re} + 12\int_0^1 2(1-y)(-\overline{u'v'})\d y - 12\int_0^1 (1-y)^2 \ab(I''_x+\pdv{p''}{x}+\pdv{\overline{u}}{t})\d y
+    \label{eq:FIK}
 \end{equation}
 
 \begin{equation}
@@ -109,7 +140,10 @@ This is a pen.
 
 \begin{align}
     \frac{\partial u_i}{\partial t} + u_j\frac{\partial u_i}{\partial x_j} &= - \frac{1}{\rho}\frac{\partial p}{\partial x_j} + \nu\frac{\partial^2 u_i}{\partial x_j \partial x_j} \\
-    \pdv{u_i}{t} + u_j\pdv{u_i}{x_j} &= - \frac{1}{\rho}\pdv{p}{x_j} + \nu\pdv{u_i}{x_j}{x_j}
+    \pdv{u_i}{t} + u_j\pdv{u_i}{x_j} &= - \frac{1}{\rho}\pdv{p}{x_j} + \nu\pdv{u_i}{x_j, x_j}
 \end{align}
+
+\subsection{\texttt{siunitx} パッケージ}
+\label{ssec:siunitx}
 
 
