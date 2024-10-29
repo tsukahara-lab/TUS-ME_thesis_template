@@ -79,7 +79,7 @@
 \tableofcontents
 
 %%% 記号表 %%%
-\input{chapter/signary}
+\input{chapter/signary.tex}
 
 %%%%%%%%%%%%%%%%
 %%%%% 本文 %%%%%
@@ -93,22 +93,30 @@
 
 % LaTeX ソースは一つの tex ファイルに書くのではなく，章ごとの tex ファイルに分割して書きましょう．
 % 分割したファイルを読み込むときは \input{xxx} または \include{xxx} を使います．
-\input{chapter/introduction}
 
-\input{chapter/howtouse}
+%%% はじめに %%%
+\input{chapter/introduction.tex}
 
-\input{chapter/basic}
+%%% 環境構築・操作方法 %%%
+\input{chapter/howtouse.tex}
 
-\input{chapter/figure_table}
+%%% LaTeX の基本 %%%
+\input{chapter/basic.tex}
 
-\input{chapter/bibtex}
+%%% 図表の配置 %%%
+\input{chapter/figure_table.tex}
 
-\input{chapter/check}
+%%% BibTeX による参考文献一覧の出力 %%%
+\input{chapter/bibtex.tex}
 
-\input{chapter/information}
+%%% 先生や先輩に添削してもらうときの注意点 %%%
+\input{chapter/check.tex}
+
+%%% さらに詳しい情報が欲しい人は %%%
+\input{chapter/information.tex}
 
 %%% 謝辞 %%%
-\input{chapter/acknowledgement}
+\input{chapter/acknowledgement.tex}
 
 %%% 文献 %%%
 \biblist
@@ -124,7 +132,7 @@
 }
 
 %%% 付録 %%%
-\input{chapter/appendix}
+\input{chapter/appendix.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% 文章を書けるのはここまで %%%
