@@ -47,7 +47,7 @@
 % 学位論文題目
 % ここには学位論文のタイトルを入れます．一文字でも間違えたら受理されません．
 % タイトルが長くて改行するときは \\ を入れる．
-\title{【非公式】機械航空宇宙工学科 学位論文テンプレート\\ ---\LaTeX で論文を書く際に必要な最低限の情報---}
+\title{ここには学位論文のタイトルを入れます \\ 一文字でも間違えたら受理されません}
 
 % 卒業・修了「年」を入力
 \date{２０＊＊年２月}
@@ -93,9 +93,22 @@
 
 % LaTeX ソースは一つの tex ファイルに書くのではなく，章ごとの tex ファイルに分割して書きましょう．
 % 分割したファイルを読み込むときは \input{xxx} または \include{xxx} を使います．
+% 以下，論文構成例を示します．自分の論文構成に合わせて書き換えてください．
 
-%%% はじめに %%%
+%%% 序論 %%%
 \input{chapter/introduction.tex}
+
+%%% 計算手法 %%%
+\input{chapter/method.tex}
+
+%%% 結果 %%%
+\input{chapter/result.tex}
+
+%%% 考察 %%%
+\input{chapter/discussion.tex}
+
+%%% 結論 %%%
+\input{chapter/conclusion.tex}
 
 %%% 謝辞 %%%
 \input{chapter/acknowledgement.tex}
