@@ -1,0 +1,265 @@
+\chapter{環境構築・操作方法}
+\label{ch:howtouse}
+
+第~\ref{ch:howtouse}~章では \TeX/\LaTeX 環境構築の方法と \verb|pdf| ファイルの生成までのプロセスを説明します．
+第~\ref{sec:environment}~節では TeX Live のインストール方法について，第~\ref{sec:editor}~節では \TeX/\LaTeX 対応のテキストエディター，特に VS Code の場合について述べ，第~\ref{sec:makepdf}~節では \verb|pdf| ファイル生成までに必要なコマンドや \verb|latexmk| の使い方，クラウド上での \LaTeX の使用について述べます．
+
+\section{環境構築}
+\label{sec:environment}
+
+\TeX/\LaTeX を使用する際は TeX Live というディストリビューションを ご自身の PC に入れましょう．
+ウイルスバスターなどのウイルス対策ソフトが TeX Live のインストールを阻害するという問題が報告されているようです．
+必ず阻害するわけではありませんが，一時的に動作を停止させておいてからインストールすることをオススメします．
+また，この章では負荷低減のためミラーサイトからのインストール方法を説明します．
+
+\subsection{Windowsの場合}
+\label{ssec:windows}
+
+ここでは ISO イメージからのインストールとネットワークインストーラーからのインストールの二種類のインストール方法を説明します．
+ISO イメージからインストールの方が問題は発生しにくいかもしれません．
+一方でやってみてダメならもう一方で試してみてください．
+また， \verb|C:\Users\姓姓　名名| のように，インストールする PC のユーザー名に全角文字や空白などが入るとトラブルの原因となります．
+ユーザー名を半角のものに変えてからインストールすることをおすすめします．
+
+\subsubsection*{ISO イメージからインストール}
+
+\begin{enumerate}
+    \item \href{http://mirror.ctan.org/systems/texlive/Images/}{ミラーサイト}から \verb|texlive.iso| をダウンロード．
+    \item ダブルクリックすると BD-ROM/DVD-ROM ドライブとしてマウントされる（「セキュリティの警告」が出た場合は「開く」を選択$\to$エクスプローラーで開く）．
+    \item 共通事項~\ref{enum:bat}へ．
+\end{enumerate}
+
+
+\subsubsection*{ネットワークインストーラーからのインストール}
+
+\begin{enumerate}
+    \item \href{http://mirror.ctan.org/systems/texlive/tlnet/}{ミラーサイト}から \verb|install-tl.zip| をダウンロード．
+    \item \verb|install-tl.zip| を展開．
+    \item 共通事項~\ref{enum:bat}へ．
+\end{enumerate}
+
+\subsubsection*{共通事項}
+
+\begin{enumerate}
+    \setcounter{enumi}{3}
+    \item \verb|install-tl-windows.bat| を実行（青い警告ウィンドウが出たら「詳細情報」$\to$「実行」）．\label{enum:bat}
+    \item TeX Liveインストーラが現れたら「TeXworksをインストール」のチェックを外してからインストール（もしTeXworksが欲しかったらインストールしてもよい）．インストールは数時間かかることがあるので注意．
+    \item インストールできたかどうかチェック．
+    \begin{enumerate}
+        \item \verb|Win|$+$\verb|R| でファイル名を \verb|cmd| と指定し \verb|cmd.exe|（コマンドプロンプトとも呼ぶ）を開く．
+        \item \verb|tex -v| と入力し \verb|Enter|．
+        \item バージョン情報が出てきたらインストール完了，出なかったら一度 Path を通してみる．
+    \end{enumerate}
+    \item 環境変数 Path の確認．
+    \begin{enumerate}
+        \item \verb|cmd.exe| を開く．\label{enum:path}
+        \begin{enumerate}
+            \item \verb|path| と入力し \verb|Enter|．
+            \item \verb|C:\texlive\****\bin|（\verb|****| には TeX Live のバージョンにあてはまる年が入る）があれば完了．無ければ\ref{enum:system}へ．
+        \end{enumerate}
+        \item Windows の「設定」パネルを開く．\label{enum:system}
+        \begin{enumerate}
+            \item 「システム」$\to$「バージョン情報」$\to$「システムの詳細設定」$\to$「環境変数」の順に開く．
+            \item 「システム環境変数」の「Path」をダブルクリック．
+            \item \verb|C:\texlive\****\bin| があれば完了．無ければ「新規」で追加し，\ref{enum:path}へ．
+        \end{enumerate}
+    \end{enumerate}
+\end{enumerate}
+
+\subsection{macOSの場合}
+\label{ssec:mac}
+
+macOS の場合は Homebrew でのインストールが簡単です．
+\begin{verbatim}
+    $ brew install --cask mactex-no-gui
+    $ sudo tlmgr update --self --all
+    $ sudo tlmgr paper a4
+\end{verbatim}
+
+\section{使用するエディター}
+\label{sec:editor}
+
+\TeX/\LaTeX に対応しているテキストエディターは数多く存在しますが，ここでは Microsoft が開発している Visual Studio Code（VS Code）を紹介します．
+開発元は Microsoft ですが，Windows だけでなく macOS や Linux でも使用可能です．
+また，VS Code には豊富な拡張機能が存在しているほか，Git との連携も非常に簡単なため近年非常に人気の高いエディターです．
+VS Code の詳細な使用方法はここでは割愛しますが，最低限の拡張機能として \href{https://marketplace.visualstudio.com/items?itemName=James-Yu.latex-workshop}{LaTeX Workshop} を入れておくとよいでしょう．
+取り扱う画像ファイルが多くなってきた場合は \href{https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview}{Image preview} があると便利です．
+また，VS Code の設定ファイル \verb|settings.json|\footnote{\texttt{settings.json} の一例 \textless\url{https://gist.github.com/Yuki-MATSUKAWA/465ecd0ebcbd157e48ac1e3619c9a08c}\textgreater を紹介しておきます．\LaTeX 以外の設定も含まれているので設定の取捨選択は読者の皆さんにお任せします．} でさまざまな設定を書き加えることができます．
+
+\section{\texttt{pdf}ファイルの生成}
+\label{sec:makepdf}
+
+ここでは実際に \verb|pdf| ファイル（このテンプレートでは \verb|main.pdf|）を生成する過程を説明します．
+これまでにある程度 \LaTeX を使った経験のある方は必要な箇所だけ読めばいい（全部わかっていれば読む必要は無い）と思います．
+と言っても，\LaTeX 初心者も全部を読む必要は無く，\textcolor{red}{「一旦このテンプレートで学位論文を書き上げたい」ということを考えている人は第~\ref{ssec:terminal}~節の「\LuaLaTeX の場合（このテンプレートはこちら）」と第~\ref{ssec:latexmk}~節を読めば大丈夫}です．
+
+\subsection{ターミナル上での操作}
+\label{ssec:terminal}
+
+第~\ref{ssec:latexmk}~節の \verb|latexmk| を使用すればターミナル上での操作は非常に簡単になりますが，何か問題が発生した際にデバッグをすることを考えるとターミナル上での操作も覚えておく必要があります．
+実際に \verb|pdf| ファイルを生成するときは \verb|latexmk| を使用すればいいのですが，まずはどのようなプロセスで実行されているのかを把握しておきましょう．
+
+\subsubsection*{\LuaLaTeX の場合（このテンプレートはこちら）}
+
+この \LaTeX テンプレートは \LuaLaTeX での執筆を前提とし，参考文献は \upBibTeX で読み込むようにしています．
+\LuaLaTeX は速度がやや遅いものの，高機能で Unicode に対応しているため近年人気が出てきているモダンな \LaTeX です．
+使い方の詳細は下記のようになります．
+
+\begin{tcolorbox}[enhanced, title=\LuaLaTeX$+$\upBibTeX, drop fuzzy shadow, colback=red!5!white, colframe=red!75!black]
+\begin{verbatim}
+$ lualatex main
+$ upbibtex main
+$ lualatex main （複数回）
+\end{verbatim}
+\end{tcolorbox}
+
+まずは主要な \LaTeX ソースコードの \verb|main.tex| を \LuaLaTeX で読み込むために \verb|lualatex main| とターミナルに入力します．
+\verb|$| は入力しないでください．
+拡張子の \verb|.tex| は省略可能です．
+次に，参考文献を読み込むために \verb|upbibtex main| とターミナルに入力します．
+\BibTeX を使わない処理をしているときはこの操作は不要です．
+これだけだとまだ \LaTeX を使う大きなメリットである相互参照の機能を使えていません．
+\LaTeX で相互参照を有効にするには複数回のコンパイルが必要です．
+相互参照に失敗した場合やコンパイル回数が足りていない場合は参照箇所が ? や ?? のように表示されるはずです．
+そのため，\upBibTeX を読み込んだ後に ? や ?? が消えるまで複数回コンパイルしましょう．
+これで \verb|main.pdf| を作成できました．
+
+\subsubsection*{レガシー \LaTeX の場合}
+
+モダン \LaTeX とレガシー \LaTeX の最大の違いは，\verb|pdf| ファイルを直接生成できるか否かです．
+\pLaTeX や \upLaTeX のようなレガシー \LaTeX は一度 \verb|dvi| ファイルという中間ファイルを生成し，その後 \verb|dvi| ファイルを \verb|pdf| 等の適切なファイル形式に変換する作業が必要です（\verb|dvipdfmx|）．
+これからの時代はどんどんモダン \LaTeX に置き換えられていくと思いますが，まだ対応していない学会・論文テンプレートも多く存在しているのでここで紹介しておきます．
+また，\pdfLaTeX は本来レガシー \LaTeX ですが，例外的に直接 \verb|pdf| ファイルを生成でき，国際雑誌論文テンプレートではよく使用されています．
+ただし，\pdfLaTeX は日本語に対応していないため，日本語を使用したい人は \LuaLaTeX を使うようにしましょう．
+どうしても \pdfLaTeX で日本語を使用したい（国際雑誌論文執筆の下書き等）場合は第~\ref{ssec:pdflatex_jp}~節を参照してください．
+
+\pLaTeX は日本語に対応した \LaTeX として長年愛用されてきましたが，今は \LuaLaTeX などに置き換えられてきています．
+皆さんは使わないようにしましょう．
+使い方は下記の通り．
+\LuaLaTeX の項目と同様，\BibTeX を使わない場合はそこのコマンドを省略してください．
+
+\begin{tcolorbox}[enhanced, title=\pLaTeX$+$\pBibTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ platex main
+$ pbibtex main
+$ platex main （複数回）
+$ dvipdfmx main
+\end{verbatim}
+または
+\begin{verbatim}
+$ ptex2pdf -l main
+$ pbibtex main
+$ ptex2pdf -l main （複数回）
+\end{verbatim}
+\end{tcolorbox}
+
+上記コマンドの \verb|ptex2pdf -l main| は \verb|platex main| と \verb|dvipdfmx main| を続けて実行するコマンドです．
+
+次に \upLaTeX について説明します．
+これは \pLaTeX を Unicode に対応させたものとなっており，現在でも広く使われています．
+そのため，このテンプレートを使用することだけを考える際は不要な情報ですが，念のため載せておきます．
+\upLaTeX では \upBibTeX が使えますが先程と同様，不要な場合は省略してください．
+
+\begin{tcolorbox}[enhanced, title=\upLaTeX$+$\upBibTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ uplatex main
+$ upbibtex main
+$ uplatex main （複数回）
+$ dvipdfmx main
+\end{verbatim}
+または
+\begin{verbatim}
+$ ptex2pdf -l -u main
+$ pbibtex main
+$ ptex2pdf -l -u main （複数回）
+\end{verbatim}
+\end{tcolorbox}
+
+\pLaTeX はレガシー \LaTeX ですが例外的に直接 \verb|pdf| を出力できます（\verb|dvipdfmx| が不要）．
+日本語には対応していませんが，国際雑誌論文では広く使用されています．
+どうしても \pdfLaTeX で日本語を使用したい場合は次の第~\ref{ssec:pdflatex_jp}~節を参照．
+使い方は下記の通り．
+
+\begin{tcolorbox}[enhanced, title=\pdfLaTeX$+$\upBibTeX, drop fuzzy shadow]
+\begin{verbatim}
+$ pdflatex main
+$ upbibtex main
+$ pdflatex main （複数回）
+\end{verbatim}
+\end{tcolorbox}
+
+
+\subsection{\pdfLaTeX で日本語を使用する場合}
+\label{ssec:pdflatex_jp}
+
+国際雑誌論文等のコンパイルは \pdfLaTeX が想定されていることがあります．
+\pdfLaTeX はレガシー \LaTeX でありながらも直接 \verb|pdf| ファイルを生成できることから海外では広く使用されていますが，残念ながら日本語に対応していません．
+しかし，英語論文の下書きとして日本語を使いたい場合があると思います．
+その際に，見た目が少し悪くなるものの \pdfLaTeX で日本語を使用する方法が一応あるのでここで紹介しておきます．
+
+\begin{tcolorbox}[enhanced, title=文書全体で日本語を使用, drop fuzzy shadow]
+\begin{verbatim}
+\usepackage[whole]{bxcjkjatype}
+\end{verbatim}
+\end{tcolorbox}
+
+まず，\LaTeX 文書全体で日本語を使用したい場合は上記のコマンドをプリアンブルに書きます．
+これで文書全体で日本語の使用が可能になります．
+ただし，前述の通り見た目が悪くなるので下書き用（後で英語に変更する用）として使用してください．
+
+\begin{tcolorbox}[enhanced, title=文書の一部分で日本語を使用, drop fuzzy shadow]
+\begin{verbatim}
+プリアンブルに記載
+\usepackage{CJKutf8}
+
+本文中に記載
+\begin{CJK}{UTF8}{ipxm}
+日本語
+\end{CJK}
+\end{verbatim}
+\end{tcolorbox}
+
+次に，文書全体ではなく一部分でのみ日本語を使用したい場合のコマンドは上記のようになっています．
+まず，\verb|\usepackage{CJKutf8}| というパッケージを読み込むことで日本語を使用できるようにします．
+厳密には日本語だけでなく，中国語（\textbf{C}hinese），日本語（\textbf{J}apanese），韓国語（\textbf{K}orean）の組版規則に対応させるためのパッケージとなります．
+次に本文中の日本語を使いたい箇所を \verb|\begin{CJK}{UTF8}{ipxm}| と \verb|\end{CJK}| で囲ってあげればそこでは日本語を使えるようになります．
+米国物理学協会（American Institute of Physics, AIP）が発行している雑誌論文（Physics of Fluids など）は著者の氏名で英語表記以外に漢字等の表記を併記することが可能になっています．
+このようなときにこのコマンドを使ってあげるとよいでしょう．
+また，日本語を使う箇所がもう少し長い場合はプリアンブルで \verb|\newcommand*{\Ja}[1]{\begin{CJK}{UTF8}{ipxm}#1\end{CJK}}| のようにコマンドを作ってあげてもいいかもしれません．
+
+\subsection{\texttt{latexmk}を使う方法}
+\label{ssec:latexmk}
+
+\LaTeX 関連のファイルが変更されるたびに第~\ref{ssec:terminal}~節で紹介した操作を毎回行うのは非常に面倒です．
+そこで \verb|latexmk| という機能を使って簡略化しましょう．
+\verb|latexmk| を使うと，このリポジトリ内に入っている \verb|latexmkrc| というファイル\footnote{拡張子はつけないでください．}を呼び出し，実行したいコマンドを一回の操作で実行してくれます．
+\verb|latexmkrc| は \verb|main.tex|（主要な \LaTeX コード）と同じ階層に用意しておいてください．
+あとはターミナル上で \verb|latexmk main| と打てばすべて実行してくれます．
+
+\begin{tcolorbox}[enhanced, title=\texttt{latexmk}を使用, drop fuzzy shadow, colback=red!5!white, colframe=red!75!black]
+\begin{verbatim}
+$ latexmk main
+\end{verbatim}
+\end{tcolorbox}
+
+これで随分楽になったと思いますが，VS Code を使っている皆さんはもっと楽にできます．
+私が使っている \verb|settings.json| の中で \LaTeX のビルド時に \verb|latexmk| で実行するように設定してあるので，Windows の場合は \verb|Ctrl|+\verb|Alt|+\verb|B| で同様の操作を行ってくれます．
+\verb|settings.json| の設定を変更して自動コンパイルにすることもできます．
+また，Windows で \verb|pdf| ファイルのプレビューを見たい場合は \verb|Ctrl|+\verb|Alt|+\verb|V| の操作で表示できます．
+\verb|Ctrl| キーを押しながらマウスでプレビューをクリックすると該当箇所のソースコードに飛べるのも便利な機能です．
+
+\subsection{クラウド上で使う方法}
+\label{ssec:cloud}
+
+第~\ref{sec:environment}~節で環境構築の方法を述べました．
+本音としては \LaTeX の全ユーザーが自身の PC にローカルの \LaTeX 環境を整えてほしいのですが，環境構築に手間がかかる不便さもあるため，ここでは TeX Live 等のインストールをせずにクラウド上での \LaTeX 環境構築方法を説明します．
+クラウド上で \LaTeX を使用できるツールとしては Cloud LaTeX や Overleaf といったものが有名で，私は Overleaf をよく使っているのでここでは Overleaf の説明をします．
+
+Overleaf は複数のユーザーによる（同時）共同執筆も可能となっており，Overleaf 自体が Git と同様の役割を担っているため大変便利です．
+もちろん Git/GitHub との連携も可能となっています．
+
+\begin{tcolorbox}[enhanced, drop fuzzy shadow]
+    後で書きます．
+\end{tcolorbox}
+
+

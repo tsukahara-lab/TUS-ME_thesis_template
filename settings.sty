@@ -1,0 +1,292 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%               settings.sty
+%%%            学位論文設定ファイル
+%%%
+%%%               v1.0.0 Yuki MATSUKAWA 27 Dec. 2023
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% これは学位論文のメインファイル（main.tex）の設定を書いたスタイルファイル（.sty）です．
+% pdf 作成時には \usepackage{settings} で必ず読み込んでください．
+% 大事な設定がたくさん書いてあるので慣れないうちはあまり触らない方がいいかもしれません．
+
+%%%%%%%%%%%%%%%%
+%%% Packages %%%
+%%%%%%%%%%%%%%%%
+%%% 数式・フォント %%%
+% Times 系フォント + Unicode Math
+\usepackage{fontspec} % 欧文フォントの設定
+\usepackage{luatexja} % LuaLaTeX 用の日本語処理パッケージ
+\usepackage{luatexja-fontspec} % LuaLaTeX 用の日本語フォント設定
+\usepackage[math-style=TeX,bold-style=TeX]{unicode-math} % 数学フォント設定
+% 欧文フォント設定
+\setmainfont[Ligatures=TeX]{XITS}
+\setsansfont[Ligatures=TeX]{TeX Gyre Heros}
+% 数学フォント設定
+\setmathfont{XITS Math}
+\setmathfont{XITS Math}[range={cal,bfcal},StylisticSet=1]
+% 数式用パッケージ
+% \usepackage{physics}
+\usepackage{physics2}
+\usephysicsmodule{ab}
+\usepackage{fixdif}
+\usepackage{derivative}
+% 文字に色を付ける
+\usepackage{color}
+% otf
+% \usepackage[deluxe]{otf}
+
+%%% hyperref %%%
+% ハイパーリンクに色が付かないようにしたいときは hidelinks のコメントアウトをはずす
+\usepackage[%
+  bookmarks=true,% pdf にしおりをつける
+  bookmarksnumbered=true,% しおりに章・節番号を含める
+  setpagesize=false,% 紙のサイズを変更しない
+  colorlinks=true,% リンクのテキストに色をつける
+  % hidelinks,% リンクに色をつけない
+  allcolors=blue% リンクの色を全て青に統一する
+  ]{hyperref}
+
+%%% 図関連 %%%
+% 図の読み込みに必要
+\usepackage{graphicx}
+% 図の配置オプション H 用
+\usepackage{float}
+%%% 関連する図を並べる際に使用
+% Fig. xxx の後ろをコロンではなくスペースに設定
+\usepackage[labelsep=quad]{caption}
+% サブ図のキャプションの出力を (a) xxx に設定
+\usepackage[labelsep=space]{subcaption}
+% サブ図参照時の出力を括弧ありをデフォルトにしたい場合は下記コマンドを使用
+% \renewcommand{\thesubfigure}{(\alph{subfigure})}
+
+%%% 表関連 %%%
+% 行の結合
+\usepackage{multirow}
+% 表のカスタマイズ性が高い tabularray パッケージ
+\usepackage{tabularray}
+% tblr 環境のセルの余白を変更
+\SetTblrInner{rowsep=0pt}
+
+%%% その他のパッケージ %%%
+% 単位
+\usepackage{siunitx}
+% natbib
+\usepackage{natbib}
+% ロゴ関連
+\usepackage{bxtexlogo}
+% 枠
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\tcbset{
+  fonttitle=\sffamily\bfseries % title をゴシック体（サンセリフ体）に設定
+}
+% レイアウト確認用
+% \usepackage{layout}
+% ダミーテキスト生成パッケージ
+\usepackage{lipsum}
+\usepackage{bxjalipsum}
+
+%%% 表示の変更 %%%
+\newcommand{\diff}{\mathit{diff}}
+% 無次元数など
+\newcommand{\Gr}{\mathit{Gr}}
+\newcommand{\Ma}{\mathit{Ma}}
+\newcommand{\Nu}{\mathit{Nu}}
+\newcommand{\Pe}{\mathit{Pe}}
+\renewcommand{\Pr}{\mathit{Pr}}
+% \renewcommand{\Re}{\mathit{Re}}
+\AtBeginDocument{\renewcommand{\Re}{\mathit{Re}}}
+\newcommand{\Ra}{\mathit{Ra}}
+\newcommand{\Sc}{\mathit{Sc}}
+\newcommand{\St}{\mathit{St}}
+\newcommand{\Ta}{\mathit{Ta}}
+\newcommand{\Wi}{\mathit{Wi}}
+\newcommand{\rmin}{\mathrm{in}}
+\newcommand{\rmout}{\mathrm{out}}
+\newcommand{\rms}{\mathrm{rms}}
+
+\renewcommand{\figurename}{Fig.~}
+\renewcommand{\tablename}{Table~}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%%% 章見出しの再定義 %%%
+%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\chpre}{第}
+\newcommand{\chpost}{章}
+\renewcommand{\contentsname}{目次}
+\newcommand{\signaryname}{記号表}
+% \renewcommand{\abstractname}{概要}
+\newcommand{\acknowledgename}{謝辞}
+\renewcommand{\bibname}{文献}
+\newcommand{\appname}{付録}
+
+%%% 英語で執筆する場合の設定
+% \jlreqsetup{
+%     appendix_heading = {
+%       chapter = {label_format = {Appendix~\thechapter .}}
+%     },
+% }
+
+
+%%% \author 等の再定義 %%%
+\def\thesis#1{\gdef\@thesis{#1}}
+\def\title#1{\gdef\@title{#1}}
+\def\date#1{\gdef\@date{#1}}
+\def\author#1{\gdef\@author{#1}}
+\def\coworker#1{\gdef\@coworker{#1}}
+\def\supervisor#1{\gdef\@supervisor{#1}}
+\def\cosupervisor#1{\gdef\@cosupervisor{#1}}
+\def\affiliation#1{\gdef\@affiliation{#1}}
+\def\laboratory#1{\gdef\@laboratory{#1}}
+\gdef\@date{\today}          %Default is today's date
+
+%%% 表紙の定義 \makecover %%%
+\newcommand\makecover{
+  \thispagestyle{empty}
+  \vspace*{35mm}
+  \begin{center}
+    {\large \@thesis}
+    \\\vspace{12mm}
+    {\Large \@title}
+    \\\vspace{60mm}
+    {\large \@date}
+    \\\vspace{12mm}
+    {\large \@affiliation}
+    \\\vspace{6mm}
+    {\large \@laboratory}
+    \\\vspace{18mm}
+    {\large \@author}
+  \end{center}
+  \newpage
+  \thispagestyle{empty}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% ページスタイル（柱・ノンブル）の設定 %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% 通常の本文ページスタイル %%%
+% 柱とノンブルをそれぞれページ上部の左右に表示
+% ページ下部は何も表示しない
+\NewPageStyle{normal}{
+  running_head_position=top-left,   % 柱の位置
+  nombre_position=top-right,        % ノンブルの位置
+  mark_format={_chapter=%           % 柱の内容
+    \ifx\empty\thechapter\empty%
+      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries#1\hfill}}}%
+    \else%
+      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\chpre\thechapter\chpost\quad#1\hfill}}}%
+    \fi%
+  },%
+  nombre={%                         % ノンブルの内容
+    \thepage%
+    % \underline{\rule[-5pt]{0pt}{14pt}\hbox to 0.1\columnwidth{\hfill\thepage}}%
+  },%
+  odd_running_head=_chapter,        % 奇数ページの柱
+  even_running_head=_chapter        % 偶数ページの柱
+}
+
+%%% 章の最初のページスタイル %%%
+% 柱は表示しない
+% ノンブルをページ下部中央に表示
+\NewPageStyle{chapterfirstpage}{
+  nombre_position=bottom-center,    % ノンブルの位置
+  nombre={--- {\thepage} ---}       % ノンブルの内容
+}
+
+%%% 目次用ページスタイル %%%
+\renewcommand{\tableofcontents}{
+  \chapter*{\contentsname}  % 目次タイトルの表示
+  \@starttoc{toc}           % 目次の内容を出力
+  \pagestyle{empty}         % 目次ページのスタイルを変更
+}
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
+
+%%% 記号表用ページスタイル %%%
+\NewPageStyle{signary}{
+  nombre_position=top-right,        % ノンブルの位置
+  nombre={\thepage}                 % ノンブルの内容
+}
+% 記号表の定義 \signary
+\newcommand\signary{%
+  \clearpage
+  \phantomsection % ハイパーリンクのズレを調整
+  \chapter*{\signaryname}
+  \markboth{}{}
+  \pagestyle{signary}
+  \addcontentsline{toc}{chapter}{\signaryname}
+  \setcounter{page}{0}
+  \pagenumbering{roman}
+}
+
+%%% 謝辞用ページスタイル %%%
+\NewPageStyle{acknowledge}{
+  running_head_position=top-left,   % 柱の位置
+  nombre_position=top-right,        % ノンブルの位置
+  nombre={\thepage},%               % ノンブルの内容
+  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}},        % 奇数ページの柱
+  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}}        % 偶数ページの柱
+}
+% 謝辞の定義 \acknowledge
+\newcommand\acknowledge{%
+  \clearpage
+  \phantomsection % ハイパーリンクのズレを調整
+  \chapter*{\acknowledgename}
+  \pagestyle{acknowledge}
+  \addcontentsline{toc}{chapter}{\acknowledgename}
+}
+
+%%% 参考文献用ページスタイル %%%
+% 柱の出力が思い通りにいかない
+\NewPageStyle{bibliography}{
+  running_head_position=top-left,   % 柱の位置
+  nombre_position=top-right,        % ノンブルの位置
+  nombre={\thepage},%               % ノンブルの内容
+  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}},        % 奇数ページの柱
+  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}        % 偶数ページの柱
+}
+% 参考文献の定義 \biblist
+\newcommand\biblist{%
+  \clearpage
+  \phantomsection % ハイパーリンクのズレを調整
+  \renewcommand\UrlFont{\rmfamily}  % 参考文献内の URL 表示をタイプライター調にしない
+  \markboth{% % なぜか参考文献 5 ページ目以降で柱の出力がおかしくなるのでここで追加設定
+  \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}%
+  {\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}
+  \pagestyle{bibliography}
+  \addcontentsline{toc}{chapter}{\bibname}  % 目次に「文献」を追加
+}
+
+%%% 付録用ページスタイル %%%
+\NewPageStyle{appendix}{
+  running_head_position=top-left,   % 柱の位置
+  nombre_position=top-right,        % ノンブルの位置
+  mark_format={_chapter=%           % 柱の内容
+    \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\appname\thechapter\quad#1\hfill}}}%
+  },%
+  nombre={\thepage},%               % ノンブルの内容
+  odd_running_head=_chapter,        % 奇数ページの柱
+  even_running_head=_chapter        % 偶数ページの柱
+}
+
+%%% 章の見出しを改行，空行後に表示 %%%
+\ModifyHeading{chapter}{%
+  label_format={\chpre\thechapter\chpost},
+  font={\huge\bfseries},
+  format={%
+    \ifx\empty#1\empty%
+      \noindent#2%
+      \vskip2\Cvs%
+    \else%
+      \vskip2\Cvs\noindent#1%
+      \vskip1\zw\noindent#2%
+      \vskip3\Cvs%
+    \fi%
+  },
+  pagestyle={chapterfirstpage}
+}
+
+%%%%%% End of This File %%%%%%
