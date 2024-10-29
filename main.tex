@@ -3,7 +3,7 @@
 %%%                東京理科大学 創域理工学部 機械航空宇宙工学科
 %%%                   【非公式】学位論文 LaTeX テンプレート
 %%%
-%%%      <https://github.com/Yuki-MATSUKAWA/TUS-ME_thesis_template>
+%%%       <https://github.com/tsukahara-lab/TUS-ME_thesis_template>
 %%%
 %%%                                  v1.0.0 Yuki MATSUKAWA 27 Dec. 2023
 %%%
@@ -28,8 +28,8 @@
 %%% 行番号の表示 %%%
 % 添削時には行番号を付けるとわかりやすい
 % 提出時にはコメントアウトする
-% \usepackage[mathlines,pagewise]{lineno}
-% \linenumbers\relax
+\usepackage[mathlines,pagewise]{lineno}
+\linenumbers\relax
 
 
 %%% ここから上を「プリアンブル」と言います．パッケージや独自の設定，マクロはプリアンブルや settings.styに書いてください．
@@ -47,7 +47,7 @@
 % 学位論文題目
 % ここには学位論文のタイトルを入れます．一文字でも間違えたら受理されません．
 % タイトルが長くて改行するときは \\ を入れる．
-\title{【非公式】機械航空宇宙工学科 学位論文テンプレート\\ ---\LaTeX で論文を書く際に必要な最低限の情報---}
+\title{ここには学位論文のタイトルを入れます \\ 一文字でも間違えたら受理されません}
 
 % 卒業・修了「年」を入力
 \date{２０＊＊年２月}
@@ -76,12 +76,10 @@
 \makecover
 
 %%% 目次 %%%
-\pagestyle{empty}
-\def\thepage{}
 \tableofcontents
 
 %%% 記号表 %%%
-\include{chapter/signary}
+\input{chapter/signary.tex}
 
 %%%%%%%%%%%%%%%%
 %%%%% 本文 %%%%%
@@ -94,23 +92,26 @@
 % 本文はこれ以降に記載する．
 
 % LaTeX ソースは一つの tex ファイルに書くのではなく，章ごとの tex ファイルに分割して書きましょう．
-% 分割したファイルを読み込むときは \include{xxx} または \input{xxx} を使います．
-\include{chapter/introduction}
+% 分割したファイルを読み込むときは \input{xxx} または \include{xxx} を使います．
+% 以下，論文構成例を示します．自分の論文構成に合わせて書き換えてください．
 
-\include{chapter/howtouse}
+%%% 序論 %%%
+\input{chapter/introduction.tex}
 
-\include{chapter/basic}
+%%% 計算手法 %%%
+\input{chapter/method.tex}
 
-\include{chapter/figure_table}
+%%% 結果 %%%
+\input{chapter/result.tex}
 
-\include{chapter/bibtex}
+%%% 考察 %%%
+\input{chapter/discussion.tex}
 
-\include{chapter/check}
-
-\include{chapter/information}
+%%% 結論 %%%
+\input{chapter/conclusion.tex}
 
 %%% 謝辞 %%%
-\include{chapter/acknowledgement}
+\input{chapter/acknowledgement.tex}
 
 %%% 文献 %%%
 \biblist
@@ -126,7 +127,7 @@
 }
 
 %%% 付録 %%%
-\include{chapter/appendix}
+\input{chapter/appendix.tex}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% 文章を書けるのはここまで %%%

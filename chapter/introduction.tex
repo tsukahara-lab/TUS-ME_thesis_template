@@ -1,90 +1,29 @@
-\chapter{はじめに}
+%%%%%%%%%%%%%%%%
+%%%%% 序論 %%%%%
+%%%%%%%%%%%%%%%%
+
+\chapter{序論}
 \label{ch:introduction}
 
-第~\ref{ch:introduction}~章では学位論文執筆の際の注意事項として，第~\ref{sec:template}~節でこのテンプレートの概要を，第~\ref{sec:composition}~節では GitHub リポジトリ内の各ファイルの説明を，第~\ref{sec:abstract}~節では卒論・修論要旨の \LaTeX テンプレートの紹介をします．
-このテンプレートを使用する方は現在の \LaTeX 習熟度によらず必ず目を通してください．
+% ダミーテキスト
+\jalipsum[1-2]{wagahai}
 
-\section{テンプレート概要}
-\label{sec:template}
+\section{研究背景}
+\label{sec:background}
 
-このファイルは東京理科大学創域理工学部機械航空宇宙工学科の卒業論文および同大学大学院創域理工学研究科機械航空宇宙工学専攻の修士論文を作成するにあたり，学科の論文執筆要件を満たした「非公式の」\LaTeX テンプレートです．
-一連のファイルは東京理科大学創域理工学部機械航空宇宙工学科塚原研究室\footnote{塚原研究室ウェブページ，\textless\url{https://www.rs.tus.ac.jp/~t2lab/index-j.html}\textgreater}の GitHub Organization\footnote{\texttt{TUS-ME\_thesis\_template}, \textless\url{https://github.com/tsukahara-lab/TUS-ME_thesis_template}\textgreater} から入手可能です．
-塚原研究室は熱流体系の研究室ですが，所属研究室によらずこのテンプレートは使用可能です．
-パブリックリポジトリなので，他研究室所属の方もご自身の PC に入れることができます．
-また，使用する際に塚原研究室の許可を取る必要はありません．
-ご自由にお使いください．
+% ダミーテキスト
+\jalipsum[3-4]{wagahai}
 
-このテンプレートは研究室に配属されて初めて \LaTeX で文書を書くことになった学部 4 年生を対象に，環境構築から \verb|pdf| ファイルの生成，卒業論文執筆まで滞りなく行えるように作成しています．
-そのため基本事項から説明をしていますが，表紙のタイトルにもある通り「必要最低限の情報」しか記載していません．
-\LaTeX 入門書は既に良書がたくさんありますが，本当の初心者は知らなくてもいい情報や学位論文執筆だけを目指すうえでは不要な情報がたくさん書かれているため，困惑した読者も多いのではないかと思います．
-このテンプレートには学位論文執筆をするうえで学生が欲しがるであろう情報のみを厳選し，その情報とこのテンプレートだけあれば学位論文を書き上げるくらいのことはできるようにしておきました．
-そのため，\TeX/\LaTeX で一から文書を作成することを目指している方には情報が足りていないと思います．
-さらに詳しい情報が欲しい人は書籍やインターネット上の情報を参考にしてください（第~\ref{ch:information}~章を参照）．
-また，この \verb|main.pdf| はモダンな \LaTeX である \LuaLaTeX で作成しているほか，\verb|jlreq| というドキュメントクラスや \verb|unicode-math| など最新の機能をふんだんに使用しています．
-これからこのテンプレートを使い始めるという方はモダン \LaTeX を使えるようになっておきましょう．
-しかし，学会の講演論文執筆の際はこれらの機能に対応していない場合もあるため，念のためレガシーな \LaTeX のコンパイル方法等についても説明をしています．
-さらに，このテンプレートでは \LaTeX に関する説明はもちろんのこと，学生が論文を書くうえで躓きやすい箇所をまとめています．
-特に表記に関して細かく記載しているので参考になる箇所は多いかと思います．
+\section{先行研究}
+\label{sec:previous}
 
-もしこのテンプレートに関してバグ等，使用上の問題が発生した際は GitHub の Issues にコメントしてください．
-ただし，このテンプレートを使用したことで生じた問題に関して大学・学科・塚原研究室および研究室に所属する個人は一切の責任を負いませんのでご了承ください．
-また，この文書に書かれている \TeX/\LaTeX 技術に関する内容はできるだけ正確な記述を心掛けていますが，完全な正確性を保証するものではありません．
+\subsection{A の先行研究}
+\label{ssec:previous_A}
 
-このテンプレートを使用される皆様が無事に学位論文を執筆し，卒業・修了されることを心の底から願っております．
+\subsection{B の先行研究}
+\label{ssec:previous_B}
 
-\begin{flushright}
-    \today \\
-    塚原研究室　学生有志
-\end{flushright}
 
-\clearpage
-\section{リポジトリ内のファイル構成}
-\label{sec:composition}
-
-\begin{tcolorbox}[enhanced, title={\texttt{tsukahara-lab/TUS-ME\_thesis\_template}}, drop fuzzy shadow]
-    \begin{tabular}{ll}
-        \verb|chapter/|     & 分割した \verb|tex| ファイルが入っているフォルダ \\
-        \verb|figure/|      & 図が入っているフォルダ \\
-        \verb|table/|       & 表の \verb|tex| ファイルが入っているフォルダ \\
-        \verb|.gitignore|   & Git で管理しないファイル一覧 \\
-        \verb|README.md|    & GitHub リポジトリの説明書 \\
-        \verb|jsme.bst|     & 日本機械学会対応の \BibTeX スタイルファイル \\
-        \verb|latexmkrc|    & 詳細は第~\ref{ssec:latexmk}~節を参照 \\
-        \verb|main.pdf|     & \verb|main.tex| をコンパイルした \verb|pdf| ファイル \\
-        \verb|main.tex|     & メインの文書ファイル \\
-        \verb|mybib_en.bib| & 英語の参考文献リストファイル \\
-        \verb|mybib_jp.bib| & 日本語の参考文献リストファイル \\
-        \verb|settings.sty| & \verb|main.tex| で読み込むスタイルファイル
-    \end{tabular}
-\end{tcolorbox}
-
-\verb|README.md| はこの GitHub リポジトリを開いたときに一番最初に目に入ってくる説明書です．
-内容をよく読んで使用するようにしてください．
-
-今皆さんが読んでいるこの \verb|pdf| ファイルは \verb|main.pdf| で，\verb|main.tex| を基に作成しています．
-% 今 LaTeX のソースコードを読んでいる人はこれが main.tex です．
-文書のレイアウト等細かい設定は全てスタイルファイル \verb|settings.sty| に書いています．
-\verb|main.tex| 冒頭の \verb|\usepackage{settings}| で読み込んでいるので間違って消さないようにしてください．
-\verb|main.tex| を適切なテキストエディター（第~\ref{sec:editor}~節を参照）で開いてもらうと，\verb|\include{chapter/xxx}| と書かれた文字列が複数目に入ってくると思います．
-学位論文のような長い文書を一つの \verb|tex| ファイルに書き込むとわかりにくくなるので，\verb|chapter/| 以下のディレクトリに章（chapter）ごとに分割した \verb|tex| ファイルを置いておき，それを \verb|\include{}| コマンドで読み込むようにしています．
-皆さんが学位論文を執筆する際にもこのように \verb|tex| ファイルを分割しておきましょう．
-また，コンパイルの際には \verb|latexmk| という機能を使用し，その際 \verb|latexmkrc| が必要になります．
-\verb|latexmk| でコンパイルした際のファイル出力先を \verb|latex.out/| に設定してあります．
-\verb|latexmk| の使用方法も含め，具体的なコンパイルの方法等については第~\ref{ch:howtouse}~章を参照してください．
-
-\verb|jsme.bst|, \verb|mybib_en.bib|, \verb|mybib_jp.bib| は参考文献の出力に使用するファイル群です．
-具体的な使用方法は第~\ref{ch:bibtex}~章を参照してください．
-
-最後に，\verb|.gitignore| は Git で管理しないファイルが書かれています．
-Git の詳細はここでは割愛しますが，\LaTeX で学位論文を執筆する際は Git でバージョン管理するようにしましょう．
-先生や先輩に添削してもらうときに前回見せたときとの差分を \verb|latexdiff-vc|（第~\ref{sec:latexdiff-vc}~節を参照）で見せることができるほか，GitHub のプライベートリポジトリに上げることでそれ自体がバックアップとなり，大変便利です．
-このリポジトリで使用している \verb|.gitignore| は GitHub で \TeX/\LaTeX に対して与えられる標準の \verb|.gitignore| を使用しています．
-
-\section{卒論・修論要旨}
-\label{sec:abstract}
-
-卒業論文・修士論文を提出する際は同時に要旨が必要です．
-要旨についても \LaTeX テンプレートを作成したので，GitHub リポジトリ\footnote{\texttt{TUS-ME\_thesis\_abstract}: \textless\url{https://github.com/Yuki-MATSUKAWA/TUS-ME_thesis_abstract}\textgreater}からダウンロードしてください．
-コンパイル方法はこのテンプレートと同様です．
-要旨に関する詳細な説明はここでは省略しますが，\verb|README.md| にしっかりと目を通すようにしてください．
+\section{本研究の意義・目的}
+\label{sec:objective}
 

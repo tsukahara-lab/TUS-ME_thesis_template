@@ -1,0 +1,140 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%                東京理科大学 創域理工学部 機械航空宇宙工学科
+%%%                   【非公式】学位論文 LaTeX テンプレート
+%%%
+%%%       <https://github.com/tsukahara-lab/TUS-ME_thesis_template>
+%%%
+%%%                                  v1.0.0 Yuki MATSUKAWA 27 Dec. 2023
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%%% 文書クラスの設定 %%%
+\documentclass[
+    paper=a4paper,      % A4 用紙サイズ
+    report,             % report 相当の文書クラス
+    fleqn,              % 数式を左寄せ
+    fontsize=12pt,      % 欧文サイズ 12 pt
+    jafontsize=12pt,    % 和文サイズ 12 pt
+    head_space=33mm,    % 天の余白（柱とノンブルがあるので 20 mm よりも広い）
+    foot_space=30mm,    % 地の余白（ノンブルが下の場合があるので 15 mm よりも広い）
+    gutter=25mm,        % のどの余白
+    fore-edge=10mm      % 小口の余白
+    ]{jlreq}            % jlreq クラスを使用
+
+%%% 学位論文設定ファイル %%%
+\usepackage{settings}
+
+%%% 行番号の表示 %%%
+% 添削時には行番号を付けるとわかりやすい
+% 提出時にはコメントアウトする
+% \usepackage[mathlines,pagewise]{lineno}
+% \linenumbers\relax
+
+
+%%% ここから上を「プリアンブル」と言います．パッケージや独自の設定，マクロはプリアンブルや settings.styに書いてください．
+%%% ここから下が論文の本体です．
+\begin{document}
+
+%%%%%%%%%%%%%%%%
+%%%%% 表紙 %%%%%
+%%%%%%%%%%%%%%%%
+
+% 卒業・修了「年度」を入力
+% \thesis{２０＊＊年度卒業論文}   % 卒業論文はこれ
+\thesis{２０＊＊年度修士論文}   % 修士論文はこれ
+
+% 学位論文題目
+% ここには学位論文のタイトルを入れます．一文字でも間違えたら受理されません．
+% タイトルが長くて改行するときは \\ を入れる．
+\title{【非公式】機械航空宇宙工学科 学位論文テンプレート\\ ---\LaTeX で論文を書く際に必要な最低限の情報---}
+
+% 卒業・修了「年」を入力
+\date{２０＊＊年２月}
+
+% 卒業論文の場合はこれ
+% 大学名，学部名，学科名の間にスペースは不要
+% \affiliation{東京理科大学創域理工学部機械航空宇宙工学科}
+
+% 修士論文の場合はこれ
+% 大学名，研究科名，専攻名の間にスペースは不要
+\affiliation{東京理科大学大学院創域理工学研究科機械航空宇宙工学専攻}
+
+% 研究室名を入力
+\laboratory{〇〇研究室}
+
+% 著者情報
+\author{%
+% 学籍番号を全角 7 桁で入力
+７５＊＊＊＊＊
+\hskip2\zw% 学籍番号と氏名の間のスペース，消さない
+% 姓と名の間は全角 1 文字スペース
+姓姓　名名
+} % 消さない
+
+% 表紙の出力
+\makecover
+
+%%% 目次 %%%
+\tableofcontents
+
+%%% 記号表 %%%
+\input{chapter/signary.tex}
+
+%%%%%%%%%%%%%%%%
+%%%%% 本文 %%%%%
+%%%%%%%%%%%%%%%%
+\clearpage
+\pagestyle{normal}
+\setcounter{page}{0}
+\pagenumbering{arabic}
+% 上のコマンドは消さないで．
+% 本文はこれ以降に記載する．
+
+% LaTeX ソースは一つの tex ファイルに書くのではなく，章ごとの tex ファイルに分割して書きましょう．
+% 分割したファイルを読み込むときは \input{xxx} または \include{xxx} を使います．
+
+%%% はじめに %%%
+\input{chapter/introduction.tex}
+
+%%% 環境構築・操作方法 %%%
+\input{chapter/howtouse.tex}
+
+%%% LaTeX の基本 %%%
+\input{chapter/basic.tex}
+
+%%% 図表の配置 %%%
+\input{chapter/figure_table.tex}
+
+%%% BibTeX による参考文献一覧の出力 %%%
+\input{chapter/bibtex.tex}
+
+%%% 先生や先輩に添削してもらうときの注意点 %%%
+\input{chapter/check.tex}
+
+%%% さらに詳しい情報が欲しい人は %%%
+\input{chapter/information.tex}
+
+%%% 謝辞 %%%
+\input{chapter/acknowledgement.tex}
+
+%%% 文献 %%%
+\biblist
+% \nocite{*} が有効のとき，引用していない文献も含めて全て表示
+% 確認用なので論文提出前には必ず \nocite{*} をコメントアウトすること
+% \nocite{*}
+% 使用する bst ファイル
+\bibliographystyle{jsme}
+% 読み込む bib ファイル
+\bibliography{
+    mybib_en.bib,
+    mybib_jp.bib
+}
+
+%%% 付録 %%%
+\input{chapter/appendix.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% 文章を書けるのはここまで %%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{document}

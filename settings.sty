@@ -194,8 +194,16 @@
 % ノンブルをページ下部中央に表示
 \NewPageStyle{chapterfirstpage}{
   nombre_position=bottom-center,    % ノンブルの位置
-  nombre={---\thepage---}           % ノンブルの内容
+  nombre={--- {\thepage} ---}       % ノンブルの内容
 }
+
+%%% 目次用ページスタイル %%%
+\renewcommand{\tableofcontents}{
+  \chapter*{\contentsname}  % 目次タイトルの表示
+  \@starttoc{toc}           % 目次の内容を出力
+  \pagestyle{empty}         % 目次ページのスタイルを変更
+}
+\AtBeginDocument{\addtocontents{toc}{\protect\thispagestyle{empty}}}
 
 %%% 記号表用ページスタイル %%%
 \NewPageStyle{signary}{
