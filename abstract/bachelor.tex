@@ -1,0 +1,132 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%                東京理科大学 創域理工学部 機械航空宇宙工学科
+%%%                   【非公式】卒業論文要旨 テンプレート
+%%%
+%%%      <https://github.com/Yuki-MATSUKAWA/TUS-ME_thesis_abstract>
+%%%
+%%%                                  v1.3.0 Yuki MATSUKAWA 01 Feb. 2023
+%%%                                  v2.0.4 Yuki MATSUKAWA 19 Jan. 2024
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\RequirePackage{plautopatch}
+
+% pLaTeX でコンパイルする場合はこれを使う
+\documentclass[a4paper,fleqn,dvipdfmx,12pt]{jsarticle}
+% upLaTeX でコンパイルする場合はこれを使う
+% \documentclass[a4paper,fleqn,dvipdfmx,uplatex,12pt]{jsarticle}
+
+%%% abstract style %%%
+% 卒論要旨設定ファイル
+\usepackage{bachelor_settings}
+
+% 行番号の表示
+% 添削時には行番号を付けるとわかりやすい
+% 提出時にはコメントアウトする
+% \usepackage[mathlines,pagewise]{lineno}
+% \linenumbers\relax
+
+% ページ番号を付けない
+\pagestyle{empty}
+
+\begin{document}
+
+%%%%%%%%%%%%%%%%%
+%%% 日本語要旨 %%%
+%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\fontsize{16pt}{18pt}\selectfont
+\gtfamily\bfseries
+% 卒業論文の日本語題目
+ここには卒業論文のタイトルを入れます．\\ 一文字でも間違えたら受理されません．
+% 卒業論文の日本語題目
+\end{center}
+
+\noindent
+% 姓，名の間に「全角」スペース忘れずに
+% 学籍番号と姓の間はスペース不要
+% xx を研究室名に変更
+% \hfill は消さない
+［xx研究室］ \hfill 75*****姓姓　名名
+
+\setlength{\baselineskip}{15pt}
+\vskip\baselineskip
+%%% ここから書き始める %%%
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト．
+
+図~\ref{fig:abst1}は虎，図~\ref{fig:abst2}も虎．
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
+アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト．
+
+% 画像は 1, 2 枚程度にしておきましょう
+\begin{figure}[b]
+	\centering
+	\begin{minipage}{0.3\columnwidth}
+		\centering
+		\includegraphics[width=\columnwidth]{tiger1.pdf}
+		\caption{Tiger 1.}
+		\label{fig:abst1}
+	\end{minipage}
+	\hspace{15mm}	% 図の間隔は適宜調整
+	\begin{minipage}{0.3\columnwidth}
+		\centering
+		\includegraphics[width=\columnwidth]{tiger2.pdf}
+		\caption{Tiger 2.}
+		\label{fig:abst2}
+	\end{minipage}
+\end{figure}
+
+%%% ここまで %%%
+
+%%% ここで改ページ %%%
+\clearpage
+
+%%%%%%%%%%%%%%%%%
+%%%% 英語要旨 %%%%
+%%%%%%%%%%%%%%%%%
+
+\begin{center}
+\sffamily\bfseries 
+% 卒業論文の英語題目
+Enter the title of your graduation thesis here. \\ If you make a mistake in even one letter, it will not be accepted.
+% 卒業論文の英語題目
+\end{center}
+
+\noindent
+% 氏名の大文字小文字に注意（名は冒頭のみ大文字，姓は全て大文字）
+% 学籍番号，名，姓の間に「半角」スペース忘れずに
+% 英語要旨は日本語要旨と異なり，学籍番号と名の間に半角スペースが必要
+% xx を研究室名に変更
+% \hfill は消さない
+[xx Group] \hfill 75***** First FAMILY
+
+\vskip\baselineskip
+%%% ここから書き始める %%%
+Abstract abstract abstract abstract abstract abstract abstract abstract abstract 
+abstract abstract abstract abstract abstract abstract abstract abstract abstract
+abstract abstract abstract abstract abstract abstract abstract abstract abstract
+abstract abstract abstract abstract abstract abstract abstract abstract abstract
+abstract abstract abstract abstract abstract abstract abstract abstract abstract
+abstract abstract abstract abstract abstract abstract abstract abstract abstract
+abstract abstract abstract abstract abstract abstract abstract abstract abstract
+abstract abstract abstract abstract abstract abstract abstract abstract abstract.
+
+%%% ここまで %%%
+
+\end{document}
