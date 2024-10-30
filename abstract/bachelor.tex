@@ -17,10 +17,11 @@
     fleqn,              % 数式を左寄せ
     fontsize=12pt,      % 欧文サイズ 12 pt
     jafontsize=12pt,    % 和文サイズ 12 pt
-    head_space=33mm,    % 天の余白（柱とノンブルがあるので 20 mm よりも広い）
-    foot_space=30mm,    % 地の余白（ノンブルが下の場合があるので 15 mm よりも広い）
+    head_space=20mm,    % 天の余白
+    foot_space=15mm,    % 地の余白
     gutter=25mm,        % のどの余白
-    fore-edge=10mm      % 小口の余白
+    fore-edge=10mm,     % 小口の余白
+	baselineskip=18pt	% 行送り
     ]{jlreq}            % jlreq クラスを使用
 
 % \RequirePackage{plautopatch}
@@ -50,7 +51,7 @@
 
 \begin{center}
 \fontsize{16pt}{18pt}\selectfont
-\gtfamily\bfseries
+\sffamily\bfseries
 % 卒業論文の日本語題目
 ここには卒業論文のタイトルを入れます．Taylor\\ 一文字でも間違えたら受理されません．
 % 卒業論文の日本語題目
@@ -63,7 +64,6 @@
 % \hfill は消さない
 ［xx研究室］ \hfill 75*****姓姓　名名
 
-\setlength{\baselineskip}{15pt}
 \vskip\baselineskip
 %%% ここから書き始める %%%
 アブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクトアブストラクト
@@ -89,14 +89,14 @@
 % 画像は 1, 2 枚程度にしておきましょう
 \begin{figure}[b]
 	\centering
-	\begin{minipage}{0.3\columnwidth}
+	\begin{minipage}{0.4\columnwidth}
 		\centering
 		\includegraphics[width=\columnwidth]{example-image-a}
 		\caption{Tiger 1.}
 		\label{fig:abst1}
 	\end{minipage}
 	\hspace{15mm}	% 図の間隔は適宜調整
-	\begin{minipage}{0.3\columnwidth}
+	\begin{minipage}{0.4\columnwidth}
 		\centering
 		\includegraphics[width=\columnwidth]{example-image-b}
 		\caption{Tiger 2.}
