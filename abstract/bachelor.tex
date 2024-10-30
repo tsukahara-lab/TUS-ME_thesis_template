@@ -24,13 +24,6 @@
 	baselineskip=18pt	% 行送り
     ]{jlreq}            % jlreq クラスを使用
 
-% \RequirePackage{plautopatch}
-
-% % pLaTeX でコンパイルする場合はこれを使う
-% \documentclass[a4paper,fleqn,dvipdfmx,12pt]{jsarticle}
-% % upLaTeX でコンパイルする場合はこれを使う
-% % \documentclass[a4paper,fleqn,dvipdfmx,uplatex,12pt]{jsarticle}
-
 %%% abstract style %%%
 % 卒論要旨設定ファイル
 \usepackage{settings_bachelor}
@@ -38,10 +31,7 @@
 % 行番号の表示
 % 添削時には行番号を付けるとわかりやすい
 % 提出時にはコメントアウトする
-% \linenumbers
-
-% ページ番号を付けない
-\pagestyle{empty}
+\linenumbers
 
 \begin{document}
 
@@ -92,14 +82,14 @@
 	\begin{minipage}{0.4\columnwidth}
 		\centering
 		\includegraphics[width=\columnwidth]{example-image-a}
-		\caption{Tiger 1.}
+		\caption{Example 1.}
 		\label{fig:abst1}
 	\end{minipage}
 	\hspace{15mm}	% 図の間隔は適宜調整
 	\begin{minipage}{0.4\columnwidth}
 		\centering
 		\includegraphics[width=\columnwidth]{example-image-b}
-		\caption{Tiger 2.}
+		\caption{Example 2.}
 		\label{fig:abst2}
 	\end{minipage}
 \end{figure}

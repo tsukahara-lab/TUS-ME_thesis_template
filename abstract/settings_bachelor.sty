@@ -1,6 +1,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%
-%%%               bachelor_settings.sty
+%%%               settings_bachelor.sty
 %%%               卒業論文要旨設定ファイル
 %%%
 %%%               v1.0.0 Yuki MATSUKAWA 15 Dec. 2021
@@ -8,24 +8,12 @@
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%%% テキストエリア指定 %%%
-%%% A4 paper:297 mm x 210 mm %%%
-% \setlength{\hoffset}{-2truept}
-% \setlength{\voffset}{-15truept}
-% \setlength{\oddsidemargin}{0truept}
-% \setlength{\evensidemargin}{0truept}
-% \setlength{\topmargin}{0truept}
-% \setlength{\footskip}{0truept}
-% \setlength{\textheight}{743truept}
-% \setlength{\textwidth}{493truept}
-% \setlength{\headsep}{0truept}
-% \setlength{\headheight}{0truept}
-% \setlength{\marginparsep}{0truept}
-% \setlength{\marginparwidth}{0truept}
-
-% これは学位論文のメインファイル（main.tex）の設定を書いたスタイルファイル（.sty）です．
-% pdf 作成時には \usepackage{settings} で必ず読み込んでください．
+% これは卒業論文要旨のメインファイル（bachelor.tex）の設定を書いたスタイルファイル（.sty）です．
+% pdf 作成時には \usepackage{settings_bachelor} で必ず読み込んでください．
 % 大事な設定がたくさん書いてあるので慣れないうちはあまり触らない方がいいかもしれません．
+
+%%% ページ番号を付けない %%%
+\pagestyle{empty}
 
 %%%%%%%%%%%%%%%%
 %%% Packages %%%
@@ -112,3 +100,4 @@
 
 \renewcommand{\figurename}{Fig.~}
 \renewcommand{\tablename}{Table~}
+
