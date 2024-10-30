@@ -34,6 +34,11 @@
 
 \begin{document}
 
+% 1 行あたり文字数の指定
+\mojiparline{35}
+% 1 ページあたり行数の指定
+\linesparpage{30}
+
 \begin{center}
 % 修士論文題目
 ここには修士論文のタイトルを入れます．\\ 一文字でも間違えたら受理されません．
@@ -86,14 +91,14 @@
 
 \begin{figure}[b]
 	\centering
-	\begin{minipage}{0.35\columnwidth}
+	\begin{minipage}{0.45\columnwidth}
 		\centering
 		\includegraphics[width=\columnwidth]{example-image-a}
 		\caption{Example 1.}
 		\label{fig:abst1}
 	\end{minipage}
-	\hspace{15mm}
-	\begin{minipage}{0.35\columnwidth}
+	\hspace{10mm}
+	\begin{minipage}{0.45\columnwidth}
 		\centering
 		\includegraphics[width=\columnwidth]{example-image-b}
 		\caption{Example 2.}
