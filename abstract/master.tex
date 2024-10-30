@@ -10,32 +10,39 @@
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage{plautopatch}
+%%% 文書クラスの設定 %%%
+\documentclass[
+    paper=a4paper,      % A4 用紙サイズ
+    article,            % article 相当の文書クラス
+    fleqn,              % 数式を左寄せ
+    fontsize=12pt,      % 欧文サイズ 12 pt
+    jafontsize=12pt,    % 和文サイズ 12 pt
+    head_space=30mm,    % 天の余白
+    foot_space=20mm,    % 地の余白
+    gutter=18mm,        % のどの余白
+    fore-edge=18mm,     % 小口の余白
+	% line_length=35zw,
+	% number_of_lines=30,
+	% baselineskip=24pt	% 行送り
+    ]{jlreq}            % jlreq クラスを使用
 
-% pLaTeX でコンパイルする場合はこれを使う
-\documentclass[a4paper,fleqn,dvipdfmx,12pt]{jsarticle}
-% upLaTeX でコンパイルする場合はこれを使う
-% \documentclass[a4paper,fleqn,dvipdfmx,uplatex,12pt]{jsarticle}
+% \RequirePackage{plautopatch}
+
+% % pLaTeX でコンパイルする場合はこれを使う
+% \documentclass[a4paper,fleqn,dvipdfmx,12pt]{jsarticle}
+% % upLaTeX でコンパイルする場合はこれを使う
+% % \documentclass[a4paper,fleqn,dvipdfmx,uplatex,12pt]{jsarticle}
 
 %%% abstract style %%%
 % 修論要旨設定ファイル
-\usepackage{master_settings}
+\usepackage{settings_master}
 
 % 行番号の表示
 % 添削時には行番号を付けるとわかりやすい
 % 提出時にはコメントアウトする
-% \usepackage[mathlines,pagewise]{lineno}
-% \linenumbers\relax
-
-% ページ番号を付けない
-\pagestyle{empty}
+\linenumbers
 
 \begin{document}
-
-% 1 行あたり文字数の指定
-\mojiparline{35}
-% 1 ページあたり行数の指定
-\linesparpage{30}
 
 \begin{center}
 % 修士論文題目
@@ -47,7 +54,7 @@
 \noindent
 % 姓と名の間に「全角」スペース忘れずに
 \begin{flushright}
-    \begin{tabular}{r@{\hspace{3zw}}r@{\hspace{0pt}\vspace{9pt}}}
+    \begin{tabular}{r@{\hspace{3\zw}}r@{\hspace{0pt}\vspace{9pt}}}
         機械航空宇宙工学専攻 &
         % 自分の氏名を記入
         % \\ は消さない
@@ -91,15 +98,15 @@
 	\centering
 	\begin{minipage}{0.35\columnwidth}
 		\centering
-		\includegraphics[width=\columnwidth]{tiger1.pdf}
-		\caption{Tiger 1.}
+		\includegraphics[width=\columnwidth]{example-image-a}
+		\caption{Example 1.}
 		\label{fig:abst1}
 	\end{minipage}
 	\hspace{15mm}
 	\begin{minipage}{0.35\columnwidth}
 		\centering
-		\includegraphics[width=\columnwidth]{tiger2.pdf}
-		\caption{Tiger 2.}
+		\includegraphics[width=\columnwidth]{example-image-b}
+		\caption{Example 2.}
 		\label{fig:abst2}
 	\end{minipage}
 \end{figure}
