@@ -1,0 +1,125 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%
+%%%                settings_master.sty
+%%%               修士論文要旨設定ファイル
+%%%
+%%%               v1.0.0 Yuki MATSUKAWA 15 Dec. 2021
+%%%               v2.0.0 Yuki MATSUKAWA 14 Dec. 2023
+%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% これは修士論文要旨のメインファイル（master.tex）の設定を書いたスタイルファイル（.sty）です．
+% pdf 作成時には \usepackage{settings_master} で必ず読み込んでください．
+% 大事な設定がたくさん書いてあるので慣れないうちはあまり触らない方がいいかもしれません．
+
+%%% ページ番号を付けない %%%
+\pagestyle{empty}
+
+%%%%%%%%%%%%%%%%
+%%% Packages %%%
+%%%%%%%%%%%%%%%%
+%%% 数式・フォント %%%
+% Times 系フォント + Unicode Math
+\usepackage{fontspec} % 欧文フォントの設定
+\usepackage{luatexja} % LuaLaTeX 用の日本語処理パッケージ
+\usepackage{luatexja-fontspec} % LuaLaTeX 用の日本語フォント設定
+\usepackage[math-style=TeX,bold-style=TeX]{unicode-math} % 数学フォント設定
+% 欧文フォント設定
+\setmainfont[Ligatures=TeX]{XITS}
+\setsansfont[Ligatures=TeX]{TeX Gyre Heros}
+% 数学フォント設定
+\setmathfont{XITS Math}
+\setmathfont{XITS Math}[range={cal,bfcal},StylisticSet=1]
+% 数式用パッケージ
+% \usepackage{physics}
+\usepackage{physics2}
+\usephysicsmodule{ab}
+\usepackage{fixdif}
+\usepackage{derivative}
+
+%%% 図関連 %%%
+% 図の読み込みに必要
+\usepackage{graphicx}
+% 図の配置オプション H 用
+\usepackage{float}
+%%% 関連する図を並べる際に使用
+% Fig. xxx の後ろをコロンではなくスペースに設定
+\usepackage[labelsep=quad]{caption}
+% サブ図のキャプションの出力を (a) xxx に設定
+\usepackage[labelsep=space]{subcaption}
+% サブ図参照時の出力を括弧ありをデフォルトにしたい場合は下記コマンドを使用
+% \renewcommand{\thesubfigure}{(\alph{subfigure})}
+
+%%% 表関連 %%%
+% 行の結合
+\usepackage{multirow}
+% 表のカスタマイズ性が高い tabularray パッケージ
+\usepackage{tabularray}
+% tblr 環境のセルの余白を変更
+\SetTblrInner{rowsep=0pt}
+
+%%% その他のパッケージ %%%
+% 単位
+\usepackage{siunitx}
+% natbib
+\usepackage{natbib}
+% ロゴ関連
+\usepackage{bxtexlogo}
+% 枠
+\usepackage{tcolorbox}
+\tcbuselibrary{skins}
+\tcbset{
+  fonttitle=\sffamily\bfseries % title をゴシック体（サンセリフ体）に設定
+}
+% レイアウト確認用
+% \usepackage{layout}
+% ダミーテキスト生成パッケージ
+\usepackage{lipsum}
+\usepackage{bxjalipsum}
+% 行番号の表示
+\usepackage[mathlines,pagewise]{lineno}
+
+%%% 表示の変更 %%%
+\newcommand{\diff}{\mathit{diff}}
+% 無次元数など
+\newcommand{\Gr}{\mathit{Gr}}
+\newcommand{\Ma}{\mathit{Ma}}
+\newcommand{\Nu}{\mathit{Nu}}
+\newcommand{\Pe}{\mathit{Pe}}
+\renewcommand{\Pr}{\mathit{Pr}}
+% \renewcommand{\Re}{\mathit{Re}}
+\AtBeginDocument{\renewcommand{\Re}{\mathit{Re}}}
+\newcommand{\Ra}{\mathit{Ra}}
+\newcommand{\Sc}{\mathit{Sc}}
+\newcommand{\St}{\mathit{St}}
+\newcommand{\Ta}{\mathit{Ta}}
+\newcommand{\Wi}{\mathit{Wi}}
+\newcommand{\rmin}{\mathrm{in}}
+\newcommand{\rmout}{\mathrm{out}}
+\newcommand{\rms}{\mathrm{rms}}
+
+\renewcommand{\figurename}{Fig.~}
+\renewcommand{\tablename}{Table~}
+
+%%% 文字数・行数設定 %%%
+% 1 行あたり文字数の指定
+\makeatletter
+\def\mojiparline#1{
+    \newcounter{mpl}
+    \setcounter{mpl}{#1}
+    \@tempdima=\linewidth
+    \advance\@tempdima by-\value{mpl}\zw
+    \addtocounter{mpl}{-1}
+    \divide\@tempdima by \value{mpl}
+    \ltjsetparameter{kanjiskip=\@tempdima}
+    \advance\parindent by\@tempdima
+}
+% 1 ページあたり行数の指定
+\makeatother
+\def\linesparpage#1{
+    \baselineskip=\textheight
+    \divide\baselineskip by #1
+}
+
+%%%%%% End of This File %%%%%%
+
