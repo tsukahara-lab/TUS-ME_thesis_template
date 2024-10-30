@@ -10,22 +10,34 @@
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\RequirePackage{plautopatch}
+%%% 文書クラスの設定 %%%
+\documentclass[
+    paper=a4paper,      % A4 用紙サイズ
+    article,            % article 相当の文書クラス
+    fleqn,              % 数式を左寄せ
+    fontsize=12pt,      % 欧文サイズ 12 pt
+    jafontsize=12pt,    % 和文サイズ 12 pt
+    head_space=33mm,    % 天の余白（柱とノンブルがあるので 20 mm よりも広い）
+    foot_space=30mm,    % 地の余白（ノンブルが下の場合があるので 15 mm よりも広い）
+    gutter=25mm,        % のどの余白
+    fore-edge=10mm      % 小口の余白
+    ]{jlreq}            % jlreq クラスを使用
 
-% pLaTeX でコンパイルする場合はこれを使う
-\documentclass[a4paper,fleqn,dvipdfmx,12pt]{jsarticle}
-% upLaTeX でコンパイルする場合はこれを使う
-% \documentclass[a4paper,fleqn,dvipdfmx,uplatex,12pt]{jsarticle}
+% \RequirePackage{plautopatch}
+
+% % pLaTeX でコンパイルする場合はこれを使う
+% \documentclass[a4paper,fleqn,dvipdfmx,12pt]{jsarticle}
+% % upLaTeX でコンパイルする場合はこれを使う
+% % \documentclass[a4paper,fleqn,dvipdfmx,uplatex,12pt]{jsarticle}
 
 %%% abstract style %%%
 % 卒論要旨設定ファイル
-\usepackage{bachelor_settings}
+\usepackage{settings_bachelor}
 
 % 行番号の表示
 % 添削時には行番号を付けるとわかりやすい
 % 提出時にはコメントアウトする
-% \usepackage[mathlines,pagewise]{lineno}
-% \linenumbers\relax
+% \linenumbers
 
 % ページ番号を付けない
 \pagestyle{empty}
@@ -40,7 +52,7 @@
 \fontsize{16pt}{18pt}\selectfont
 \gtfamily\bfseries
 % 卒業論文の日本語題目
-ここには卒業論文のタイトルを入れます．\\ 一文字でも間違えたら受理されません．
+ここには卒業論文のタイトルを入れます．Taylor\\ 一文字でも間違えたら受理されません．
 % 卒業論文の日本語題目
 \end{center}
 
@@ -79,14 +91,14 @@
 	\centering
 	\begin{minipage}{0.3\columnwidth}
 		\centering
-		\includegraphics[width=\columnwidth]{tiger1.pdf}
+		\includegraphics[width=\columnwidth]{example-image-a}
 		\caption{Tiger 1.}
 		\label{fig:abst1}
 	\end{minipage}
 	\hspace{15mm}	% 図の間隔は適宜調整
 	\begin{minipage}{0.3\columnwidth}
 		\centering
-		\includegraphics[width=\columnwidth]{tiger2.pdf}
+		\includegraphics[width=\columnwidth]{example-image-b}
 		\caption{Tiger 2.}
 		\label{fig:abst2}
 	\end{minipage}
