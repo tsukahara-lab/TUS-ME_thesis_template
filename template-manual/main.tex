@@ -104,6 +104,9 @@
 %%% 図表の配置 %%%
 \input{chapter/figure_table.tex}
 
+%%% 表記に関するあれこれ %%%
+\input{chapter/notation.tex}
+
 %%% BibTeX による参考文献一覧の出力 %%%
 \input{chapter/bibtex.tex}
 
@@ -120,7 +123,7 @@
 \biblist
 % \nocite{*} が有効のとき，引用していない文献も含めて全て表示
 % 確認用なので論文提出前には必ず \nocite{*} をコメントアウトすること
-% \nocite{*}
+\nocite{*}
 % 使用する bst ファイル
 \bibliographystyle{jsme}
 % 読み込む bib ファイル

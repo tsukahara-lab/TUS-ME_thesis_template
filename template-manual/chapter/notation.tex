@@ -1,0 +1,194 @@
+\chapter{表記に関するあれこれ}
+\label{ch:notation}
+
+\section{書体}
+\label{sec:typeface}
+
+\LaTeX では文書中で書体を変える命令が豊富に用意されています．
+ここで，通常の文章中で書体を変える命令と数式環境中で書体を変える命令は異なるという点に注意してください．
+よく \LaTeX 初心者が混同して使用しているケースを見かけるので気をつけましょう．
+また，この節で述べる書体変更の命令は全体のごく一部を抜粋したものです．
+実際にはもっと多くの命令がありますが，機械系学生にとって使用頻度が高いものを選んで載せています．
+
+\subsection{通常の文章中で書体を変える方法}
+\label{ssec:typeface_normal}
+
+通常の文章中で書体を変える方法を紹介します．
+何もしなければ本文は直立体で表示されます．
+強調する場合は \textbf{Boldface} 体や \textit{Italic} 体に変更します．
+これらは本来欧文書体に対して適用する命令です．
+和文書体に関してはここでは \textgt{ゴシック} 体を紹介します．
+ただし，普通に学位論文を書いている分には文章中で書体を変える場面はあまりないと思います．
+
+\begin{tcolorbox}[enhanced, title={通常の文章中で書体を変える方法}, drop fuzzy shadow]
+    \begin{tabular}{lll}
+        \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
+        直立（roman, upright）  & \verb|\textrm{Roman}|   & \textrm{Roman} \\
+        ボールド（boldface）    & \verb|\textbf{Boldface}|  & \textbf{Boldface} \\
+        イタリック（italic）    & \verb|\textit{Italic}|  & \textit{Italic} \\
+        サンセリフ（sans-serif） & \verb|\textsf{Sans-serif}|   & \textsf{Sans-serif} \\
+        タイプライター（typewriter）    & \verb|\texttt{Typewriter}|    & \texttt{Typewriter} \\
+        ゴシック（gothic）  & \verb|\textgt{ゴシック}|  & \textgt{ゴシック}
+    \end{tabular}
+\end{tcolorbox}
+
+\subsection{数式環境中で書体を変える方法}
+\label{ssec:typeface_math}
+
+次に数式環境中で書体を変える方法を説明します．
+普通に学位論文を書いている場合であっても数式環境中で書体を変える場面はそれなりにあるはずです．
+カリグラフィーは Hamiltonian $\mathcal{H}$ や Lagrangian $\mathcal{L}$ で使います．
+また，ベクトルをボールドイタリック体で表記することがありますが，\LaTeX 標準ではボールドイタリック体がサポートされていません．
+そのため，レガシー \LaTeX では \verb|bm| パッケージという外部のパッケージをわざわざ読み込んで \verb|\bm{abcABC123}| とする必要がありました．
+
+\begin{tcolorbox}[enhanced, title={数式環境中で書体を変える方法（従来の \LaTeX でサポートされている命令）}, drop fuzzy shadow]
+    \begin{tabular}{lll}
+        \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
+        直立（roman, upright）  & \verb|\mathrm{abcABC123}|   & $\mathrm{abcABC123}$ \\
+        ボールド（boldface）    & \verb|\mathbf{abcABC123}|  & $\mathbf{abcABC123}$ \\
+        イタリック（italic）    & \verb|\mathit{abcABC123}|  & $\mathit{abcABC123}$ \\
+        カリグラフィー（calligraphy）   & \verb|\mathcal{ABCDEFG}|    & $\mathcal{ABCDEFG}$
+    \end{tabular}
+\end{tcolorbox}
+
+この学位論文テンプレートではモダン \LaTeX で使われる \verb|unicode-math| を使用しているため，この問題を解決できます．
+\verb|unicode-math| では従来の \verb|\math..| というコマンド以外に \verb|\sym..| といコマンドが用意されています．
+先程のボールドイタリック体は \verb|unicode-math| の標準でサポートされており，\verb|\symbfit{}| コマンドを使用します．
+ただし，\verb|unicode-math| に対応していない \LaTeX テンプレートはまだまだ多く存在しているので，そのようなテンプレートを使用する際は自分で \verb|bm| パッケージを読み込む必要があります．
+また，下記コマンドは書く文字をそれぞれ独立した変数として扱っているため，複数文字で成る変数を扱うのには適していません（後述）．
+一文字ずつ扱いたい場合には下記コマンド群を使用できます．
+
+\begin{tcolorbox}[enhanced, title={数式環境中で書体を変える方法（\texttt{unicode-math} でサポートされている新しい命令）}, drop fuzzy shadow]
+    \begin{tabular}{lll}
+        \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
+        直立（roman, upright）  & \verb|\symup{abcABC123}|   & $\symup{abcABC123}$ \\
+        ボールド（boldface）    & \verb|\symbf{abcABC123}|  & $\symbf{abcABC123}$ \\
+        イタリック（italic）    & \verb|\symit{abcABC123}|  & $\symit{abcABC123}$ \\
+        カリグラフィー（calligraphy）   & \verb|\symcal{ABCDEFG}|    & $\symcal{ABCDEFG}$ \\
+        ボールドイタリック（bold italic）   & \verb|\symbfit{abcABC123}| & $\symbfit{abcABC123}$
+    \end{tabular}
+\end{tcolorbox}
+
+基本的に数式環境中のアルファベットは \textit{Italic} 体で，数字は直立体で表示されます．
+日本機械学会の規定では無次元数を含め物理量は全て \textit{Italic} 体で記述するように決められているので，物理量自体を直立体にすることはありません．
+ただし，添え字などで直立体にすることは考えられます．
+飽和温度を $T_\mathrm{sat}$ と表記する場合には \verb|$T_\mathrm{sat}$| と入力します．
+
+数式中のアルファベットは \textit{Italic} 体なのになぜ \verb|\mathit{}| コマンドが用意されているのでしょうか．
+
+\begin{tcolorbox}[enhanced, drop fuzzy shadow]
+    \begin{tabular}{llllll}
+        \textgt{コマンド}  & \textgt{出力}  & \textgt{コマンド}  & \textgt{出力}    & \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \verb|$diff$|   & $diff$    & \verb|$\mathit{diff}$| & $\mathit{diff}$  & \verb|$\symit{diff}$| & $\symit{diff}$ \\
+        \verb|$II$|   & $II$    & \verb|$\mathit{II}$| & $\mathit{II}$  & \verb|$\symit{II}$| & $\symit{II}$
+    \end{tabular}
+\end{tcolorbox}
+
+このように，\verb|$diff$| とするとそれぞれの文字が別の変数として扱われてしまいます．
+\verb|$II$| の場合も同様です．
+そのため，複数文字から成る変数は \verb|\mathit{}| で全て指定してあげるのが理想です．
+新しいコマンドとして \verb|sty| ファイル内に \verb|\newcommand{\diff}{\mathit{diff}}| のように定義してあげると \verb|\diff| と打てばいいだけなので楽です．
+また，\verb|$\symit{diff}$| も \verb|$diff$| と同様の出力結果です．
+これは前述のように，\verb|\sym..| のコマンドはそれぞれの文字を独立した変数と解釈するからです．
+複数文字で成る変数を扱う際は従来の \verb|\math..| コマンドを使用しましょう．
+
+\section{記号の用法}
+\label{sec:mark}
+
+記号を適切に使用していない学位論文をよく見かけるので，学術論文等での使用が想定される各種記号の使用方法を記載します．
+使い方は研究分野やその人の思想，入力環境などにも依存するので明確な規則はありませんが，大まかな目安として考えてください．
+
+\subsection*{横棒}
+
+\begin{itemize}
+    \item ハイフン（hyphen, -）
+    \begin{itemize}
+        \item Unicode: U+002D（厳密にはハイフンマイナス）
+        \item \LaTeX での入力：\verb|-|
+        \item 一般的な JIS キーボードであれば「ほ」や「=」があるキーを押すと出てくる．
+        \item 英語などで見られる複合的な単語（例：large-scale structure）．
+        \item 大小関係の無い数字の接続（例：郵便番号など，278-8510）．
+        \item 厳密にはハイフン（hyphen, U+2010）ではなくハイフンマイナス（hyphen-minus）．一般的なキーボードから入力できるものはハイフンとマイナスの両方に用いられることがあるハイフンマイナスである．
+    \end{itemize}
+    \item en ダッシュ（en dash, --）
+    \begin{itemize}
+        \item Unicode: U+2013
+        \item \LaTeX での入力：\verb|--|（ハイフン二つ）
+        \item 複数の人物等を繋ぐ場合（例：Navier--Stokes equation）．
+        \item 大小関係のある数字を繋ぐ場合（例：Figs.~2--4, $\Re = 150$--$180$）．日本語の文章では「～」の使用（Figs.~2～4, $\Re = 150$～$180$）をよく見るが，科学的な文章では不適切．en ダッシュを使うように．また，数式環境中で \verb|$--$| と入力するとマイナスが二つ出力されてしまう（$--$）ので，一度数式環境を抜けて \verb|$150$--$180$| とするか \verb|$150\text{--}180$| とすること．
+        \item 図の軸ラベルどうし（$x$--$y$ 平面）．\verb|$x-y$| としている例をよく見るがこれはマイナスとして処理されるので見た目が $x-y$ となってしまう．
+    \end{itemize}
+    \item em ダッシュ（em dash, ---）
+    \begin{itemize}
+        \item Unicode: U+2014
+        \item \LaTeX での入力：\verb|---|（ハイフン三つ）
+        \item 欧文中で文の区切りなどに用いる．理科系の文章ではあまり使用しない．
+        \item 欧文中で説明や副題を設ける場合に使用．
+    \end{itemize}
+    \item 水平バー（horizontal bar, ―）
+    \begin{itemize}
+        \item Unicode: U+2015
+        \item \LaTeX での入力：\verb|―|（直接入力する場合），\verb|\symbol{"2015}|（Unicode で指定して入力する場合）
+        \item 和文中で説明や副題を設ける場合に使用するが，環境によっては間に空白が入ってしまうので工夫が必要（例：「〇〇に関する研究 ――△△の観点から――」）．
+    \end{itemize}
+    \item マイナス（minus, $-$）
+    \begin{itemize}
+        \item Unicode: U+2212
+        \item \LaTeX での入力：\verb|$-$|
+        \item 数式で減算・差を表す際に使用．数式環境に入れ忘れてハイフンで出力されているケースをよく見るので注意．
+    \end{itemize}
+\end{itemize}
+
+\subsection*{引用符}
+\label{ssec:quotation}
+
+例えば次のような文を出力したい場合どのように入力すればいいでしょうか．
+\begin{quotation}
+    ``I'm a student!'' \qquad `I'm a student!'
+\end{quotation}
+正解は
+\begin{quotation}
+    \verb|``I'm a student!''| \qquad \verb|`I'm a student!'|
+\end{quotation}
+です．
+引用や強調の際に使用する引用符を \LaTeX で出力する際は，左引用符を \verb|`| で\footnote{\texttt{`} は普段あまり使用しないキーなのでどこにあるのか探し回る人が多いです．一般的な JIS キーボードであればアットマーク @ のキーにあります．\texttt{Shift + @} で出力されます．}，右引用符を \verb|'| で囲います\footnote{I'm のアポストロフィと同じです．一般的な JIS キーボードであれば数字の 7 のキーにあります．\texttt{Shift + 7} で出力されます．}．
+単一引用符 \verb|`'| の場合も二重引用符 \verb|``''| の場合も同様です．
+キーボードにデフォルトで搭載されている二重引用符 \verb|"| で囲って \verb|"I'm a student!"| のようにはしないので注意してください．
+仮に
+\begin{quotation}
+    \verb|"I'm a student!"| \qquad \verb|'I'm a student!'|
+\end{quotation}
+と入力したらどのように出力されるでしょうか．
+\begin{quotation}
+    "I'm a student!" \qquad 'I'm a student!'
+\end{quotation}
+このようになりました．
+明らかに変ですよね．
+気をつけましょう．
+また，日本機械学会の規定では文献リストの各文献タイトルを引用符で括ることはしないので問題ありませんが，海外ジャーナルなどでは文献タイトルを二重引用符で括るのはよく使われる方法なので覚えておきましょう．
+
+\section{特殊な文字を含む固有名詞などを出力する方法}
+\label{sec:unicode}
+
+本節の内容は特に謝辞や文献リストの作成など，人名を多く書く際に役立つと思います．
+例えば「あれ，Schrödinger ってどうやって出せばいいんだ？」みたいな経験をされた方は多いのではないでしょうか．
+また，日本人の人名にはさまざまな漢字が使われており，中には通常の変換機能ではなかなか出せない漢字を使用している人もいます．
+
+このテンプレートでは \LuaLaTeX を採用しているため，デフォルトで UTF-8 がサポートされています．
+したがって，特殊な文字を直接 \verb|tex| ファイルに入力してもエラーにならずにそのまま出力できます．
+例えば先程の Schrödinger の場合は，どこか別のところから文字だけコピーしてきて直接 \verb|Schrödinger| と打てばそのまま出力できます．
+コピーしてくる先が無い場合は \pLaTeX などレガシー \LaTeX で使用するコマンドで \verb|Schr\"{o}dinger| とすることで出力できます．
+欧文で使用するアクセント類は \LaTeX の入門書には大抵記載があるので詳細はそちらを読んでください．
+
+日本語の場合でも同様で，Unicode でサポートされている文字であればそのまま出力できます．
+例えば，いわゆる梯子高の「髙橋」さんや「飛驒山脈」などは問題無く出力できます．
+「髙」や「驒」は環境によっては文字化けの原因になるので，これは UTF-8 がサポートされている大きなメリットですね．
+ただ，こちらもコピーしてくる先があればいいのですが，無い場合は困ります．
+その際は Unicode を指定して文字を出力するようにしましょう\footnote{異体字などの Unicode を調べるには \href{https://glyphwiki.org/wiki/}{グリフウィキ} を使用すると便利です．}．
+例えば「飛\symbol{"9A52}山脈」の場合は「\verb|飛\symbol{"9A52}山脈|」とすれば出力できます．
+「驒」の Unicode は U+9A52 です．
+Unicode の U+ 以降の文字列を \verb|\symbol{"xxxx}| の \verb|xxxx| の箇所に入れれば大丈夫です．
+ただし，「\CID{1481}」と「\CID{7652}」など一部例外として別の字体に同じ Unicode が割り当てられていることがあるので，その際は OpenType の CID 番号を使って \verb|\CID{1481}|, \verb|\CID{7652}| のように書きます\footnote{「\CID{1481}」と「\CID{7652}」の場合はどちらも U+845B です．CID 番号をグリフウィキで調べる際は aj1-01481 など，aj1 を目印に探してください．aj1 は Adobe-Japan1 の略称です．}．
+
+
+
