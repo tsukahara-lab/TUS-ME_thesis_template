@@ -1,0 +1,58 @@
+\chapter{表記に関するあれこれ}
+\label{ch:notation}
+
+\section{書体}
+\label{sec:typeface}
+
+\section{記号の用法}
+\label{sec:mark}
+
+記号を適切に使用していない学位論文をよく見かけるので，学術論文等での使用が想定される各種記号の使用方法を記載します．
+使い方は研究分野やその人の思想，入力環境などにも依存するので明確な規則はありませんが，大まかな目安として考えてください．
+
+\subsection*{横棒}
+
+\begin{itemize}
+    \item ハイフン（hyphen, -）
+    \begin{itemize}
+        \item Unicode: U+002D（厳密にはハイフンマイナス）
+        \item \LaTeX での入力：\verb|-|
+        \item 一般的な JIS キーボードであれば「ほ」や「=」があるキーを押すと出てくる．
+        \item 英語などで見られる複合的な単語（例：large-scale structure）．
+        \item 大小関係の無い数字の接続（例：郵便番号など，278-8510）．
+        \item 厳密にはハイフン（hyphen, U+2010）ではなくハイフンマイナス（hyphen-minus）．一般的なキーボードから入力できるものはハイフンとマイナスの両方に用いられることがあるハイフンマイナスである．
+    \end{itemize}
+    \item en ダッシュ（en dash, --）
+    \begin{itemize}
+        \item Unicode: U+2013
+        \item \LaTeX での入力：\verb|--|（ハイフン二つ）
+        \item 複数の人物等を繋ぐ場合（例：Navier--Stokes equation）．
+        \item 大小関係のある数字を繋ぐ場合（例：Figs.~2--4, $\Re = 150$--$180$）．日本語の文章では「～」の使用（Figs.~2～4, $\Re = 150$～$180$）をよく見るが，科学的な文章では不適切．en ダッシュを使うように．また，数式環境中で \verb|$--$| と入力するとマイナスが二つ出力されてしまう（$--$）ので，一度数式環境を抜けて \verb|$150$--$180$| とするか \verb|$150\text{--}180$| とすること．
+        \item 図の軸ラベルどうし（$x$--$y$ 平面）．\verb|$x-y$| としている例をよく見るがこれはマイナスとして処理されるので見た目が $x-y$ となってしまう．
+    \end{itemize}
+    \item em ダッシュ
+    \begin{itemize}
+        \item Unicode: U+2014
+        \item \LaTeX での入力：\verb|---|（ハイフン三つ）
+        \item 欧文中で文の区切りなどに用いる．理科系の文章ではあまり使用しない．
+        \item 欧文中で説明や副題を設ける場合に使用．
+    \end{itemize}
+    \item 水平バー（horizontal bar, ―）
+    \begin{itemize}
+        \item Unicode: U+2015
+        \item \LaTeX での入力：\verb|―|（直接入力する場合），\verb|\symbol{"2015}|（Unicode で指定して入力する場合）
+        \item 和文中で説明や副題を設ける場合に使用するが，環境によっては間に空白が入ってしまうので工夫が必要（例：「〇〇に関する研究 ――△△の観点から――」）．
+    \end{itemize}
+    \item マイナス（minus, $-$）
+    \begin{itemize}
+        \item Unicode: U+2212
+        \item \LaTeX での入力：\verb|$-$|
+        \item 数式で減算・差を表す際に使用．数式環境に入れ忘れてハイフンで出力されているケースをよく見るので注意．
+    \end{itemize}
+\end{itemize}
+
+\section{Unicode で文字を直接指定する方法}
+\label{sec:unicode}
+
+
+
