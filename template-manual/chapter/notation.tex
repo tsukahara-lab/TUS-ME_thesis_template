@@ -4,6 +4,94 @@
 \section{書体}
 \label{sec:typeface}
 
+\LaTeX では文書中で書体を変える命令が豊富に用意されています．
+ここで，通常の文章中で書体を変える命令と数式環境中で書体を変える命令は異なるという点に注意してください．
+よく \LaTeX 初心者が混同して使用しているケースを見かけるので気をつけましょう．
+また，この節で述べる書体変更の命令は全体のごく一部を抜粋したものです．
+実際にはもっと多くの命令がありますが，機械系学生にとって使用頻度が高いものを選んで載せています．
+
+\subsection{通常の文章中で書体を変える方法}
+\label{ssec:typeface_normal}
+
+通常の文章中で書体を変える方法を紹介します．
+何もしなければ本文は直立体で表示されます．
+強調する場合は \textbf{Boldface} 体や \textit{Italic} 体に変更します．
+これらは本来欧文書体に対して適用する命令です．
+和文書体に関してはここでは \textgt{ゴシック} 体を紹介します．
+ただし，普通に学位論文を書いている分には文章中で書体を変える場面はあまりないと思います．
+
+\begin{tcolorbox}[enhanced, title={通常の文章中で書体を変える方法}, drop fuzzy shadow]
+    \begin{tabular}{lll}
+        \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
+        直立（roman, upright）  & \verb|\textrm{Roman}|   & \textrm{Roman} \\
+        ボールド（boldface）    & \verb|\textbf{Boldface}|  & \textbf{Boldface} \\
+        イタリック（italic）    & \verb|\textit{Italic}|  & \textit{Italic} \\
+        サンセリフ（sans-serif） & \verb|\textsf{Sans-serif}|   & \textsf{Sans-serif} \\
+        タイプライター（typewriter）    & \verb|\texttt{Typewriter}|    & \texttt{Typewriter} \\
+        ゴシック（gothic）  & \verb|\textgt{ゴシック}|  & \textgt{ゴシック}
+    \end{tabular}
+\end{tcolorbox}
+
+\subsection{数式環境中で書体を変える方法}
+\label{ssec:typeface_math}
+
+次に数式環境中で書体を変える方法を説明します．
+普通に学位論文を書いている場合であっても数式環境中で書体を変える場面はそれなりにあるはずです．
+カリグラフィーは Hamiltonian $\mathcal{H}$ や Lagrangian $\mathcal{L}$ で使います．
+また，ベクトルをボールドイタリック体で表記することがありますが，\LaTeX 標準ではボールドイタリック体がサポートされていません．
+そのため，レガシー \LaTeX では \verb|bm| パッケージという外部のパッケージをわざわざ読み込んで \verb|\bm{abcABC123}| とする必要がありました．
+
+\begin{tcolorbox}[enhanced, title={数式環境中で書体を変える方法（従来の \LaTeX でサポートされている命令）}, drop fuzzy shadow]
+    \begin{tabular}{lll}
+        \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
+        直立（roman, upright）  & \verb|\mathrm{abcABC123}|   & $\mathrm{abcABC123}$ \\
+        ボールド（boldface）    & \verb|\mathbf{abcABC123}|  & $\mathbf{abcABC123}$ \\
+        イタリック（italic）    & \verb|\mathit{abcABC123}|  & $\mathit{abcABC123}$ \\
+        カリグラフィー（calligraphy）   & \verb|\mathcal{ABCDEFG}|    & $\mathcal{ABCDEFG}$
+    \end{tabular}
+\end{tcolorbox}
+
+この学位論文テンプレートではモダン \LaTeX で使われる \verb|unicode-math| を使用しているため，この問題を解決できます．
+\verb|unicode-math| では従来の \verb|\math..| というコマンド以外に \verb|\sym..| といコマンドが用意されています．
+先程のボールドイタリック体は \verb|unicode-math| の標準でサポートされており，\verb|\symbfit{}| コマンドを使用します．
+ただし，\verb|unicode-math| に対応していない \LaTeX テンプレートはまだまだ多く存在しているので，そのようなテンプレートを使用する際は自分で \verb|bm| パッケージを読み込む必要があります．
+また，下記コマンドは書く文字をそれぞれ独立した変数として扱っているため，複数文字で成る変数を扱うのには適していません（後述）．
+一文字ずつ扱いたい場合には下記コマンド群を使用できます．
+
+\begin{tcolorbox}[enhanced, title={数式環境中で書体を変える方法（\texttt{unicode-math} でサポートされている新しい命令）}, drop fuzzy shadow]
+    \begin{tabular}{lll}
+        \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
+        直立（roman, upright）  & \verb|\symup{abcABC123}|   & $\symup{abcABC123}$ \\
+        ボールド（boldface）    & \verb|\symbf{abcABC123}|  & $\symbf{abcABC123}$ \\
+        イタリック（italic）    & \verb|\symit{abcABC123}|  & $\symit{abcABC123}$ \\
+        カリグラフィー（calligraphy）   & \verb|\symcal{ABCDEFG}|    & $\symcal{ABCDEFG}$ \\
+        ボールドイタリック（bold italic）   & \verb|\symbfit{abcABC123}| & $\symbfit{abcABC123}$
+    \end{tabular}
+\end{tcolorbox}
+
+基本的に数式環境中のアルファベットは \textit{Italic} 体で，数字は直立体で表示されます．
+日本機械学会の規定では無次元数を含め物理量は全て \textit{Italic} 体で記述するように決められているので，物理量自体を直立体にすることはありません．
+ただし，添え字などで直立体にすることは考えられます．
+飽和温度を $T_\mathrm{sat}$ と表記する場合には \verb|$T_\mathrm{sat}$| と入力します．
+
+数式中のアルファベットは \textit{Italic} 体なのになぜ \verb|\mathit{}| コマンドが用意されているのでしょうか．
+
+\begin{tcolorbox}[enhanced, drop fuzzy shadow]
+    \begin{tabular}{llllll}
+        \textgt{コマンド}  & \textgt{出力}  & \textgt{コマンド}  & \textgt{出力}    & \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \verb|$diff$|   & $diff$    & \verb|$\mathit{diff}$| & $\mathit{diff}$  & \verb|$\symit{diff}$| & $\symit{diff}$ \\
+        \verb|$II$|   & $II$    & \verb|$\mathit{II}$| & $\mathit{II}$  & \verb|$\symit{II}$| & $\symit{II}$
+    \end{tabular}
+\end{tcolorbox}
+
+このように，\verb|$diff$| とするとそれぞれの文字が別の変数として扱われてしまいます．
+\verb|$II$| の場合も同様です．
+そのため，複数文字から成る変数は \verb|\mathit{}| で全て指定してあげるのが理想です．
+新しいコマンドとして \verb|sty| ファイル内に \verb|\newcommand{\diff}{\mathit{diff}}| のように定義してあげると \verb|\diff| と打てばいいだけなので楽です．
+また，\verb|$\symit{diff}$| も \verb|$diff$| と同様の出力結果です．
+これは前述のように，\verb|\sym..| のコマンドはそれぞれの文字を独立した変数と解釈するからです．
+複数文字で成る変数を扱う際は従来の \verb|\math..| コマンドを使用しましょう．
+
 \section{記号の用法}
 \label{sec:mark}
 
@@ -65,7 +153,7 @@
 です．
 引用や強調の際に使用する引用符を \LaTeX で出力する際は，左引用符を \verb|`| で\footnote{\texttt{`} は普段あまり使用しないキーなのでどこにあるのか探し回る人が多いです．一般的な JIS キーボードであればアットマーク @ のキーにあります．\texttt{Shift + @} で出力されます．}，右引用符を \verb|'| で囲います\footnote{I'm のアポストロフィと同じです．一般的な JIS キーボードであれば数字の 7 のキーにあります．\texttt{Shift + 7} で出力されます．}．
 単一引用符 \verb|`'| の場合も二重引用符 \verb|``''| の場合も同様です．
-キーボードにデフォルトで搭載されているダブルクォーテーション \verb|"| で囲って \verb|"I'm a student!"| のようにはしないので注意してください．
+キーボードにデフォルトで搭載されている二重引用符 \verb|"| で囲って \verb|"I'm a student!"| のようにはしないので注意してください．
 仮に
 \begin{quotation}
     \verb|"I'm a student!"| \qquad \verb|'I'm a student!'|
