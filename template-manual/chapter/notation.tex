@@ -13,7 +13,7 @@
 \subsection{通常の文章中で書体を変える方法}
 \label{ssec:typeface_normal}
 
-通常の文章中で書体を変える方法を紹介します．
+通常の文章中で書体を変える方法の一部を下に示します．
 何もしなければ本文は直立体で表示されます．
 強調する場合は \textbf{Boldface} 体や \textit{Italic} 体に変更します．
 これらは本来欧文書体に対して適用する命令です．
@@ -35,36 +35,22 @@
 \subsection{数式環境中で書体を変える方法}
 \label{ssec:typeface_math}
 
-次に数式環境中で書体を変える方法を説明します．
+次に数式環境中で書体を変える方法の一部を下に示します．
 普通に学位論文を書いている場合であっても数式環境中で書体を変える場面はそれなりにあるはずです．
 カリグラフィーは Hamiltonian $\mathcal{H}$ や Lagrangian $\mathcal{L}$ で使います．
 また，ベクトルをボールドイタリック体で表記することがありますが，\LaTeX 標準ではボールドイタリック体がサポートされていません．
 そのため，レガシー \LaTeX では \verb|bm| パッケージという外部のパッケージをわざわざ読み込んで \verb|\bm{abcABC123}| とする必要がありました．
+この学位論文テンプレートではモダン \LaTeX で使われる \verb|unicode-math| を使用しており，\verb|unicode-math| では従来の \verb|\math..| というコマンド以外に \verb|\sym..| というコマンドが用意されています．
+ボールドイタリック体は \verb|unicode-math| に標準で存在し，\verb|\symbfit{}| コマンドを使用すると出力できます．
+ただし，\verb|unicode-math| に対応していない \LaTeX テンプレートはまだまだ多く存在しているので，そのようなテンプレートを使用する際は自分で \verb|bm| パッケージを読み込む必要があります．
 
-\begin{tcolorbox}[enhanced, title={数式環境中で書体を変える方法（従来の \LaTeX でサポートされている命令）}, drop fuzzy shadow]
+\begin{tcolorbox}[enhanced, title={数式環境中で書体を変える方法}, drop fuzzy shadow]
     \begin{tabular}{lll}
         \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
         直立（roman, upright）  & \verb|\mathrm{abcABC123}|   & $\mathrm{abcABC123}$ \\
         ボールド（boldface）    & \verb|\mathbf{abcABC123}|  & $\mathbf{abcABC123}$ \\
         イタリック（italic）    & \verb|\mathit{abcABC123}|  & $\mathit{abcABC123}$ \\
-        カリグラフィー（calligraphy）   & \verb|\mathcal{ABCDEFG}|    & $\mathcal{ABCDEFG}$
-    \end{tabular}
-\end{tcolorbox}
-
-この学位論文テンプレートではモダン \LaTeX で使われる \verb|unicode-math| を使用しているため，この問題を解決できます．
-\verb|unicode-math| では従来の \verb|\math..| というコマンド以外に \verb|\sym..| といコマンドが用意されています．
-先程のボールドイタリック体は \verb|unicode-math| の標準でサポートされており，\verb|\symbfit{}| コマンドを使用します．
-ただし，\verb|unicode-math| に対応していない \LaTeX テンプレートはまだまだ多く存在しているので，そのようなテンプレートを使用する際は自分で \verb|bm| パッケージを読み込む必要があります．
-また，下記コマンドは書く文字をそれぞれ独立した変数として扱っているため，複数文字で成る変数を扱うのには適していません（後述）．
-一文字ずつ扱いたい場合には下記コマンド群を使用できます．
-
-\begin{tcolorbox}[enhanced, title={数式環境中で書体を変える方法（\texttt{unicode-math} でサポートされている新しい命令）}, drop fuzzy shadow]
-    \begin{tabular}{lll}
-        \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
-        直立（roman, upright）  & \verb|\symup{abcABC123}|   & $\symup{abcABC123}$ \\
-        ボールド（boldface）    & \verb|\symbf{abcABC123}|  & $\symbf{abcABC123}$ \\
-        イタリック（italic）    & \verb|\symit{abcABC123}|  & $\symit{abcABC123}$ \\
-        カリグラフィー（calligraphy）   & \verb|\symcal{ABCDEFG}|    & $\symcal{ABCDEFG}$ \\
+        カリグラフィー（calligraphy）   & \verb|\mathcal{ABCDEFG}|    & $\mathcal{ABCDEFG}$ \\
         ボールドイタリック（bold italic）   & \verb|\symbfit{abcABC123}| & $\symbfit{abcABC123}$
     \end{tabular}
 \end{tcolorbox}
@@ -77,10 +63,10 @@
 数式中のアルファベットは \textit{Italic} 体なのになぜ \verb|\mathit{}| コマンドが用意されているのでしょうか．
 
 \begin{tcolorbox}[enhanced, drop fuzzy shadow]
-    \begin{tabular}{llllll}
-        \textgt{コマンド}  & \textgt{出力}  & \textgt{コマンド}  & \textgt{出力}    & \textgt{コマンド}  & \textgt{出力} \\ \hline
-        \verb|$diff$|   & $diff$    & \verb|$\mathit{diff}$| & $\mathit{diff}$  & \verb|$\symit{diff}$| & $\symit{diff}$ \\
-        \verb|$II$|   & $II$    & \verb|$\mathit{II}$| & $\mathit{II}$  & \verb|$\symit{II}$| & $\symit{II}$
+    \begin{tabular}{llll}
+        \textgt{コマンド}  & \textgt{出力}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \verb|$diff$|   & $diff$    & \verb|$\mathit{diff}$| & $\mathit{diff}$ \\
+        \verb|$II$|   & $II$    & \verb|$\mathit{II}$| & $\mathit{II}$
     \end{tabular}
 \end{tcolorbox}
 
@@ -88,9 +74,6 @@
 \verb|$II$| の場合も同様です．
 そのため，複数文字から成る変数は \verb|\mathit{}| で全て指定してあげるのが理想です．
 新しいコマンドとして \verb|sty| ファイル内に \verb|\newcommand{\diff}{\mathit{diff}}| のように定義してあげると \verb|\diff| と打てばいいだけなので楽です．
-また，\verb|$\symit{diff}$| も \verb|$diff$| と同様の出力結果です．
-これは前述のように，\verb|\sym..| のコマンドはそれぞれの文字を独立した変数と解釈するからです．
-複数文字で成る変数を扱う際は従来の \verb|\math..| コマンドを使用しましょう．
 
 \section{記号の用法}
 \label{sec:mark}
