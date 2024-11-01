@@ -18,6 +18,36 @@
 - `mybib_jp.bib`: 日本語の参考文献リストファイル
 - `settings.syt`: `main.tex` で読み込むスタイルファイル
 
+## 卒論・修論用リポジトリの作成
+
+ここでは塚原研究室の GitHub Organization に所属しているメンバー向けの，学位論文用リポジトリの作成方法を説明します．
+まずは空のリポジトリを作成します．
+リポジトリ名は 2024「年度」卒論なら `B-2024_name` とし，2024「年度」修論なら `M-2024_name` とします．
+`name` には苗字を入れればいいですが，苗字被りがあったら下の名前を入れてもいいでしょう．
+リポジトリ作成時に `README.md` や `.gitignore` は作成しなくて大丈夫です．
+Private になっていることを確認したら Create repository を押してください．
+その後，Settings からリポジトリの可視性を変更します（all を選択してください）．
+
+次にこのテンプレートのリポジトリをローカルにクローンします．
+2024 年度卒業の塚原さんの場合：
+
+```bash
+# ローカルにテンプレートをクローン
+$ git clone https://github.com/tsukahara-lab/TUS-ME_thesis_template B-2024_tsukahara
+$ cd B-2024_tsukahara
+
+# リモート URL を自身のものに変更
+$ git clone set-url origin https://github.com/tsukahara-lab/B-2024_tsukahara
+
+# URL の変更が反映されているか確認
+$ git remote -v
+
+# 自身のリモートリポジトリにテンプレートの中身を反映
+$ git push origin HEAD
+```
+
+これでテンプレートの中身が自身の学位論文リポジトリに反映されたので自由に編集して大丈夫です．
+
 ## latexdiff-vc を使用する際の注意事項（Windows）
 
 latexdiff-vc を Windows で使用する際に実行できない不具合を確認しています．
