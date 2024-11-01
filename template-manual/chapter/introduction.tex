@@ -43,15 +43,16 @@
 
 \begin{tcolorbox}[enhanced, title={\texttt{tsukahara-lab/TUS-ME\_thesis\_template}}, drop fuzzy shadow]
     \begin{tabular}{ll}
-        \verb|chapter/|     & 分割した \verb|tex| ファイルが入っているフォルダ \\
-        \verb|figure/|      & 図が入っているフォルダ \\
-        \verb|table/|       & 表の \verb|tex| ファイルが入っているフォルダ \\
+        \verb|abstract/|     & 卒論・修論要旨のテンプレートが入っているディレクトリ \\
+        \verb|chapter/|     & 分割した \verb|tex| ファイルが入っているディレクトリ \\
+        \verb|figure/|      & 図が入っているディレクトリ \\
+        \verb|template-manual/|  & 学位論文テンプレートの使用方法が入っているディレクトリ \\
         \verb|.gitignore|   & Git で管理しないファイル一覧 \\
         \verb|README.md|    & GitHub リポジトリの説明書 \\
         \verb|jsme.bst|     & 日本機械学会対応の \BibTeX スタイルファイル \\
         \verb|latexmkrc|    & 詳細は第~\ref{ssec:latexmk}~節を参照 \\
         \verb|main.pdf|     & \verb|main.tex| をコンパイルした \verb|pdf| ファイル \\
-        \verb|main.tex|     & メインの文書ファイル \\
+        \verb|main.tex|     & メインの文書ファイル（これを編集すればよい） \\
         \verb|mybib_en.bib| & 英語の参考文献リストファイル \\
         \verb|mybib_jp.bib| & 日本語の参考文献リストファイル \\
         \verb|settings.sty| & \verb|main.tex| で読み込むスタイルファイル
@@ -61,12 +62,14 @@
 \verb|README.md| はこの GitHub リポジトリを開いたときに一番最初に目に入ってくる説明書です．
 内容をよく読んで使用するようにしてください．
 
-今皆さんが読んでいるこの \verb|pdf| ファイルは \verb|main.pdf| で，\verb|main.tex| を基に作成しています．
-% 今 LaTeX のソースコードを読んでいる人はこれが main.tex です．
+\verb|template-manual/| 以下のディレクトリにはこの学位論文テンプレートの使用方法を説明したファイル一式が入っています．
+今皆さんが読んでいるこの \verb|pdf| ファイルは \verb|template-manual/main.pdf| で，\verb|template-manual/main.tex| を基に作成しています．
+% 今 LaTeX のソースコードを読んでいる人はこれが template-manual/main.tex です．
+\verb|template-manual/| 以下のファイル群をユーザーが書き換えて使えるようにしたものをこのリポジトリの一番上の階層に置いてあります（\verb|main.tex| など）．
 文書のレイアウト等細かい設定は全てスタイルファイル \verb|settings.sty| に書いています．
 \verb|main.tex| 冒頭の \verb|\usepackage{settings}| で読み込んでいるので間違って消さないようにしてください．
-\verb|main.tex| を適切なテキストエディター（第~\ref{sec:editor}~節を参照）で開いてもらうと，\verb|\include{chapter/xxx}| と書かれた文字列が複数目に入ってくると思います．
-学位論文のような長い文書を一つの \verb|tex| ファイルに書き込むとわかりにくくなるので，\verb|chapter/| 以下のディレクトリに章（chapter）ごとに分割した \verb|tex| ファイルを置いておき，それを \verb|\include{}| コマンドで読み込むようにしています．
+\verb|main.tex| を適切なテキストエディター（第~\ref{sec:editor}~節を参照）で開いてもらうと，\verb|\input{chapter/xxx.tex}| と書かれた文字列が複数目に入ってくると思います．
+学位論文のような長い文書を一つの \verb|tex| ファイルに書き込むとわかりにくくなるので，\verb|chapter/| 以下のディレクトリに章（chapter）ごとに分割した \verb|tex| ファイルを置いておき，それを \verb|\input{}| コマンドで読み込むようにしています．
 皆さんが学位論文を執筆する際にもこのように \verb|tex| ファイルを分割しておきましょう．
 また，コンパイルの際には \verb|latexmk| という機能を使用し，その際 \verb|latexmkrc| が必要になります．
 \verb|latexmk| でコンパイルした際のファイル出力先を \verb|latex.out/| に設定してあります．
@@ -80,11 +83,4 @@ Git の詳細はここでは割愛しますが，\LaTeX で学位論文を執筆
 先生や先輩に添削してもらうときに前回見せたときとの差分を \verb|latexdiff-vc|（第~\ref{sec:latexdiff-vc}~節を参照）で見せることができるほか，GitHub のプライベートリポジトリに上げることでそれ自体がバックアップとなり，大変便利です．
 このリポジトリで使用している \verb|.gitignore| は GitHub で \TeX/\LaTeX に対して与えられる標準の \verb|.gitignore| を使用しています．
 
-\section{卒論・修論要旨}
-\label{sec:abstract}
-
-卒業論文・修士論文を提出する際は同時に要旨が必要です．
-要旨についても \LaTeX テンプレートを作成したので，GitHub リポジトリ\footnote{\texttt{TUS-ME\_thesis\_abstract}: \textless\url{https://github.com/Yuki-MATSUKAWA/TUS-ME_thesis_abstract}\textgreater}からダウンロードしてください．
-コンパイル方法はこのテンプレートと同様です．
-要旨に関する詳細な説明はここでは省略しますが，\verb|README.md| にしっかりと目を通すようにしてください．
 

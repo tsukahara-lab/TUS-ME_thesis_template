@@ -9,7 +9,7 @@
 \label{ssec:ch_sec_ssec}
 
 この学位論文テンプレートは \verb|report| と呼ばれる文書クラスを使用しているため，章（chapter），節（section），小節（subsection）に分けて文章を書けます．
-例えば今読んでいるこの文章は第~\ref{ch:basic}章の第~\ref{ssec:ch_sec_ssec}節に位置しています．
+例えば今読んでいるこの文章は第~\ref{ch:basic}~章の第~\ref{ssec:ch_sec_ssec}~節に位置しています．
 それぞれの章や節のタイトルをつけるには \verb|\chapter{}|，\verb|\section{}|，\verb|\subsection{}| のコマンドを使います．
 \verb|{}| の中にタイトルの文字列を入れてコンパイルすると章題目などが出力されます．
 \textcolor{red}{一つの論文の中で同じ名前の章や節が存在することは望ましくありません．
@@ -19,7 +19,7 @@
 分けるつもりがないのであれば節（小節）を作らないようにしましょう．
 また，この \verb|pdf| ファイルのソースコード中で \verb|\chapter{}| や \verb|\section{}| の次の行で \verb|\label{}| コマンドが使われているのがわかると思います．
 これは \LaTeX の相互参照の機能を使うために各章・節にラベルをつけているのです．
-詳細は第~\ref{ssec:ref} 節を参照してください．
+詳細は第~\ref{ssec:ref}~節を参照してください．
 
 \subsection{改行・改段落・空白}
 \label{ssec:space}
@@ -83,7 +83,7 @@ This is a pen.
 \label{ssec:ref}
 
 \LaTeX で文書を書くメリットの一つに相互参照の機能が充実していることが挙げられます．
-相互参照は「第~\ref{ssec:ref} 節を参照されたい．」や「式~\eqref{eq:NSr} を代入すると～」のような文脈において，対応する章・節・式・図・表などの番号を文書中から探し出す機能です．
+相互参照は「第~\ref{ssec:ref}~節を参照されたい．」や「式~\eqref{eq:NSr} を代入すると～」のような文脈において，対応する章・節・式・図・表などの番号を文書中から探し出す機能です．
 また，ハイパーリンクを有効にしておくことで，\verb|pdf| ファイルに適切なリンクが埋め込まれ，クリックで該当箇所に飛ぶことができ大変便利です．
 この学位論文テンプレートでもハイパーリンクを有効化しており，青字の文字列をクリックすると参照先に飛べます．
 図表や章題目などを \verb|\label{}| コマンドでラベリングし，参照する文章中で \verb|\ref{}| コマンドを使って呼び出すのが基本的な相互参照の形です．
@@ -108,6 +108,7 @@ This is a pen.
 式~\eqref{eq:NSr} の数式は \LaTeX でサポートされている最も標準的なコマンドで記述しています．
 上付き添え字はキャレット \verb|^|，下付き添え字はアンダースコア \verb|_| で表現します．
 したがって，$u_\theta^2$ は \verb|u_\theta^2| と書きます．
+ここで注意点として，添え字が $u_\theta^2$ のように一文字であれば問題無いのですが，$R_{ij}$ のように二文字以上の場合は \verb|R_{ij}| のように括弧 \verb|{}| で囲んでください．
 分数は \verb|\frac{分子}{分母}| で書き，常微分・偏微分の場合も同様です．
 $\rho$ や $\theta$ のようなギリシャ文字も出力できるほか，$\nabla$ や $\sin$，$\log$ のような数学で使う関数の類もコマンドが存在しています．
 $\sin$ や $\log$ は通常アップライト体（立体，Roman 体）で書きます．
@@ -118,7 +119,9 @@ $sin x$ などと書くことのないように気をつけましょう．
 括弧の大きさを自動で調整するコマンドとして，\verb|\left(|，\verb|\right)| コマンドがあります．
 左辺第二項では速度 $\mathbf{u}$ がベクトルであるため，\textbf{Bold} 体になっています．
 これは \verb|\mathbf{u}| とすることで出力できます．
-このテンプレートでは \verb|unicode-math| を使用しているので \verb|\symbfup{u}| というコマンドもサポートされています．
+このテンプレートでは \verb|unicode-math| を使用しているので \verb|\symbf{u}| というコマンドもサポートされています．
+ベクトルをボールドイタリック体 $\symbfit{u}$ にしたい場合は \verb|$\symbfit{u}$| というコマンドを使用してください（第~\ref{ssec:typeface_math}~節を参照）．
+このテンプレートでは \verb|bm| パッケージを使用していません．
 
 式~\eqref{eq:NSr} は別行立ての数式でしたが，$E = mc^2$ のように文章中に組み込む数式（インライン数式）を出力する場合は \verb|$$| で数式を囲って \verb|$E = mc^2$| と書きます．
 
@@ -151,17 +154,53 @@ $sin x$ などと書くことのないように気をつけましょう．
 できるだけ数式を簡単に書くためのツールとして \verb|physics| パッケージが開発され，現在まで広く使われています．
 ただ，\verb|physics| パッケージはいくつかの問題点を抱えており，最近は \verb|physics| パッケージの代替となる \verb|physics2| パッケージが開発されています．
 \verb|physics2| パッケージは現在も開発途上のパッケージであるため，使い方は公式ドキュメントをよく読んでください．
-このテンプレートでは \verb|physics2| パッケージと併せて \verb|fixdif| パッケージと \verb|derivative| パッケージを使用しています．
+\verb|physics2| パッケージでは常微分・偏微分用のコマンドはサポートされていないので，このテンプレートでは \verb|fixdif| パッケージと \verb|derivative| パッケージを併せて使用しています．
 \begin{equation}
     \pdv{u_r}{t} + (\mathbf{u}\cdot\nabla)u_r - \frac{u_\theta^2}{r} = -\frac{1}{\rho}\pdv{p}{r} + \nu\ab(\nabla^2 u_r - \frac{u_r}{r^2} - \frac{2}{r^2}\pdv{u_\theta}{\theta})
     \label{eq:NSr2}
 \end{equation}
-式~\eqref{eq:NSr2} は式~\eqref{eq:NSr} を \verb|physics2| パッケージで書き換えたものです．
+式~\eqref{eq:NSr2} は式~\eqref{eq:NSr} を \verb|physics2| パッケージなどで書き換えたものです．
 偏微分と大きさ調整が必要な括弧の記述が幾分か楽になりましたね．
+また，微積分で使用する $\d$ は物理量の $d$ と区別するために直立体で表記することが推奨されています．
+\verb|fixdif| パッケージのコマンドで $\d x$ と出力するには \verb|\d x| と入力します．
+また，常微分の記法としては \verb|derivative| パッケージの \verb|\odv| コマンドを使用します．
 
 \subsection{\texttt{siunitx} パッケージ}
 \label{ssec:siunitx}
 
-これから書きます……
+数式中の物理量は \textit{Italic} 体で表記しますが，単位は直立体で表記するのが一般的です．
+また，数値と単位の間には空白を設けるのが一般的な書き方です\footnote{例外的に空白を設けなくてもいい単位として，角度を表す $\si{\degree}$ があります．$\ang{45}$ のように数値と単位を詰めて書くことが許容されています．ただし，温度を表す $\si{\degreeCelsius}$ は空白が必要です（$\SI{45}{\degreeCelsius}$）．}．
+これらの要求を満たして簡単に単位を書けるのが \verb|siunitx| パッケージです．
+\verb|siunitx| パッケージでは大きく分けてテキストモードとマクロモードの二種類の書き方があります．
+テキストモードでは \verb|\si{W/m^2 K}| の数式のように書けるのに対し，マクロモードでは \verb|\si{\watt/\meter^2\kelvin}| のようにそれぞれの単位で用意されているコマンドで出力します．
+出力結果はどちらも $\si{W/m^2 K}$ です．
+$\si{\degreeCelsius}$ のようにマクロモードでしか使用できない単位もあります．
+\verb|siunitx| パッケージは非常に便利なので以下のコマンドを積極的に使用しましょう．
+単位のみの出力は \verb|\si{}| コマンド，数値と単位を併せての出力は \verb|\SI{}| コマンドを使用します．
+\verb|\SI{}| コマンドを使用すると，数値と単位の間に適切な長さの空白を自動で入れてくれます．
+
+\begin{tcolorbox}[enhanced, title={\texttt{siunitx} パッケージ}, drop fuzzy shadow]
+    \begin{tabular}{lll}
+        【テキストモードとマクロモードと混在】\\
+        \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \verb|\si{W/m^2 K}|   & $\si{W/m^2 K}$ \\
+        \verb|\si[per-mode=symbol]{\watt\per{\square\meter\kelvin}}|  & $\si[per-mode=symbol]{\watt\per{\square\meter\kelvin}}$ \\
+        \verb|\si{\watt/\meter^2\kelvin}|  & $\si{\watt/\meter^2\kelvin}$
+    \end{tabular}
+    \tcblower
+    \begin{tabular}{ll}
+        【さまざまな単位の出力】\\
+        \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \verb|\SI{45}{W/m^2 K}|   & $\SI{45}{W/m^2 K}$ \\
+        \verb|\SI{45}{\degreeCelsius}|  & $\SI{45}{\degreeCelsius}$ \\
+        \verb|\SI{45}{\micro\meter}|    & $\SI{45}{\micro\meter}$ \\
+        \verb|\SI{45}{\um}|    & $\SI{45}{\um}$ \\
+        \verb|\SI{45}{mL}|    & $\SI{45}{mL}$ \\
+    \end{tabular}
+\end{tcolorbox}
+
+最後に示したミリリットル $\si{mL}$ には気をつけてください．
+リットル $\si{L}$ を昔は $\ell$ と表記したこともありましたが，「単位は直立体」という原則に合わないのでやめましょう．
+また，小文字の $\si{l}$ だと数字の $1$ と紛らわしいので，人名由来の単位ではありませんがリットルは大文字 $\si{L}$ で書くようにしましょう．
 
 
