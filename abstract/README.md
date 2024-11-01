@@ -7,14 +7,6 @@
 学部 4 年生の卒業論文の注意事項は [こちら](#卒業論文要旨b4-向け) ．
 修士 2 年生の修士論文の注意事項は [こちら](#修士論文要旨m2-向け) ．
 
-> [!NOTE]
-> 2024 年度新 B4 配属前に改訂予定です．2023 年度卒業論文要旨・修士論文要旨は書き上げることを最優先にするため一旦現在のものを使用してください．
-
-## latexdiff-vc を使用する際の注意事項（Windows）
-
-latexdiff-vc を Windows で使用する際に実行できない不具合を確認しています．
-これに関してはデバッグしたファイルを [こちら](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows) に用意してあるので，Windows ユーザーは latexdiff-vc を使用する前に [README](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows?tab=readme-ov-file#readme) をよく読んで，`latexdiff-vc.pl` を TeX Live 標準のものから置き換えてください．
-
 ## 卒業論文要旨（B4 向け）
 
 使用するファイルは以下の通り．

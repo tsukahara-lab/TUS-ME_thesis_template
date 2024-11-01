@@ -2,11 +2,21 @@
 
 東京理科大学創域理工学部機械航空宇宙工学科および大学院創域理工学研究科機械航空宇宙工学専攻の【非公式】学位論文テンプレートです．
 
-> [!NOTE]
-> 未完成なのでまだ使わないでください．
-> 2024 年度新 B4 配属までに完成を目指します．
+## リポジトリ内のファイル構成
 
-論文要旨テンプレートは[こちら](https://github.com/Yuki-MATSUKAWA/TUS-ME_thesis_abstract)．
+- `abstract/`: 卒論・修論要旨のテンプレート
+- `chapter/`: 分割した `tex` ファイルを格納
+- `figure/`: 論文で使用する図を格納
+- `template-manual/`: 学位論文テンプレートの説明書を格納
+- `.gitignore`: Git で管理しないファイル一覧
+- `README.md`: このファイル
+- `jsme.bst`: 日本機械学会対応の BibTeX スタイルファイル
+- `latexmkrc`: LaTeX のコンパイル設定
+- `main.pdf`: `main.tex` の実行結果
+- `main.tex`: メインの文書ファイル（これをコンパイルすればよい）
+- `mybib_en.bib`: 英語の参考文献リストファイル
+- `mybib_jp.bib`: 日本語の参考文献リストファイル
+- `settings.syt`: `main.tex` で読み込むスタイルファイル
 
 ## latexdiff-vc を使用する際の注意事項（Windows）
 
