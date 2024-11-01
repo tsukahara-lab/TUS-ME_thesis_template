@@ -108,6 +108,7 @@ This is a pen.
 式~\eqref{eq:NSr} の数式は \LaTeX でサポートされている最も標準的なコマンドで記述しています．
 上付き添え字はキャレット \verb|^|，下付き添え字はアンダースコア \verb|_| で表現します．
 したがって，$u_\theta^2$ は \verb|u_\theta^2| と書きます．
+ここで注意点として，添え字が $u_\theta^2$ のように一文字であれば問題無いのですが，$R_{ij}$ のように二文字以上の場合は \verb|R_{ij}| のように括弧 \verb|{}| で囲んでください．
 分数は \verb|\frac{分子}{分母}| で書き，常微分・偏微分の場合も同様です．
 $\rho$ や $\theta$ のようなギリシャ文字も出力できるほか，$\nabla$ や $\sin$，$\log$ のような数学で使う関数の類もコマンドが存在しています．
 $\sin$ や $\log$ は通常アップライト体（立体，Roman 体）で書きます．
@@ -118,7 +119,8 @@ $sin x$ などと書くことのないように気をつけましょう．
 括弧の大きさを自動で調整するコマンドとして，\verb|\left(|，\verb|\right)| コマンドがあります．
 左辺第二項では速度 $\mathbf{u}$ がベクトルであるため，\textbf{Bold} 体になっています．
 これは \verb|\mathbf{u}| とすることで出力できます．
-このテンプレートでは \verb|unicode-math| を使用しているので \verb|\symbfup{u}| というコマンドもサポートされています．
+このテンプレートでは \verb|unicode-math| を使用しているので \verb|\symbf{u}| というコマンドもサポートされています．
+ベクトルをボールドイタリック体 $\symbfit{u}$ にしたい場合は \verb|$\symbfit{u}$| というコマンドを使用してください（第~\ref{ssec:typeface_math}~節を参照）．
 
 式~\eqref{eq:NSr} は別行立ての数式でしたが，$E = mc^2$ のように文章中に組み込む数式（インライン数式）を出力する場合は \verb|$$| で数式を囲って \verb|$E = mc^2$| と書きます．
 
@@ -151,12 +153,12 @@ $sin x$ などと書くことのないように気をつけましょう．
 できるだけ数式を簡単に書くためのツールとして \verb|physics| パッケージが開発され，現在まで広く使われています．
 ただ，\verb|physics| パッケージはいくつかの問題点を抱えており，最近は \verb|physics| パッケージの代替となる \verb|physics2| パッケージが開発されています．
 \verb|physics2| パッケージは現在も開発途上のパッケージであるため，使い方は公式ドキュメントをよく読んでください．
-このテンプレートでは \verb|physics2| パッケージと併せて \verb|fixdif| パッケージと \verb|derivative| パッケージを使用しています．
+\verb|physics2| パッケージでは常微分・偏微分用のコマンドはサポートされていないので，このテンプレートでは \verb|fixdif| パッケージと \verb|derivative| パッケージを併せて使用しています．
 \begin{equation}
     \pdv{u_r}{t} + (\mathbf{u}\cdot\nabla)u_r - \frac{u_\theta^2}{r} = -\frac{1}{\rho}\pdv{p}{r} + \nu\ab(\nabla^2 u_r - \frac{u_r}{r^2} - \frac{2}{r^2}\pdv{u_\theta}{\theta})
     \label{eq:NSr2}
 \end{equation}
-式~\eqref{eq:NSr2} は式~\eqref{eq:NSr} を \verb|physics2| パッケージで書き換えたものです．
+式~\eqref{eq:NSr2} は式~\eqref{eq:NSr} を \verb|physics2| パッケージなどで書き換えたものです．
 偏微分と大きさ調整が必要な括弧の記述が幾分か楽になりましたね．
 
 \subsection{\texttt{siunitx} パッケージ}
