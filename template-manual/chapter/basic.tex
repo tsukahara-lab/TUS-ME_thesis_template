@@ -121,6 +121,7 @@ $sin x$ などと書くことのないように気をつけましょう．
 これは \verb|\mathbf{u}| とすることで出力できます．
 このテンプレートでは \verb|unicode-math| を使用しているので \verb|\symbf{u}| というコマンドもサポートされています．
 ベクトルをボールドイタリック体 $\symbfit{u}$ にしたい場合は \verb|$\symbfit{u}$| というコマンドを使用してください（第~\ref{ssec:typeface_math}~節を参照）．
+このテンプレートでは \verb|bm| パッケージを使用していません．
 
 式~\eqref{eq:NSr} は別行立ての数式でしたが，$E = mc^2$ のように文章中に組み込む数式（インライン数式）を出力する場合は \verb|$$| で数式を囲って \verb|$E = mc^2$| と書きます．
 
@@ -160,10 +161,46 @@ $sin x$ などと書くことのないように気をつけましょう．
 \end{equation}
 式~\eqref{eq:NSr2} は式~\eqref{eq:NSr} を \verb|physics2| パッケージなどで書き換えたものです．
 偏微分と大きさ調整が必要な括弧の記述が幾分か楽になりましたね．
+また，微積分で使用する $\d$ は物理量の $d$ と区別するために直立体で表記することが推奨されています．
+\verb|fixdif| パッケージのコマンドで $\d x$ と出力するには \verb|\d x| と入力します．
+また，常微分の記法としては \verb|derivative| パッケージの \verb|\odv| コマンドを使用します．
 
 \subsection{\texttt{siunitx} パッケージ}
 \label{ssec:siunitx}
 
-これから書きます……
+数式中の物理量は \textit{Italic} 体で表記しますが，単位は直立体で表記するのが一般的です．
+また，数値と単位の間には空白を設けるのが一般的な書き方です\footnote{例外的に空白を設けなくてもいい単位として，角度を表す $\si{\degree}$ があります．$\ang{45}$ のように数値と単位を詰めて書くことが許容されています．ただし，温度を表す $\si{\degreeCelsius}$ は空白が必要です（$\SI{45}{\degreeCelsius}$）．}．
+これらの要求を満たして簡単に単位を書けるのが \verb|siunitx| パッケージです．
+\verb|siunitx| パッケージでは大きく分けてテキストモードとマクロモードの二種類の書き方があります．
+テキストモードでは \verb|\si{W/m^2 K}| の数式のように書けるのに対し，マクロモードでは \verb|\si{\watt/\meter^2\kelvin}| のようにそれぞれの単位で用意されているコマンドで出力します．
+出力結果はどちらも $\si{W/m^2 K}$ です．
+$\si{\degreeCelsius}$ のようにマクロモードでしか使用できない単位もあります．
+\verb|siunitx| パッケージは非常に便利なので以下のコマンドを積極的に使用しましょう．
+単位のみの出力は \verb|\si{}| コマンド，数値と単位を併せての出力は \verb|\SI{}| コマンドを使用します．
+\verb|\SI{}| コマンドを使用すると，数値と単位の間に適切な長さの空白を自動で入れてくれます．
+
+\begin{tcolorbox}[enhanced, title={\texttt{siunitx} パッケージ}, drop fuzzy shadow]
+    \begin{tabular}{lll}
+        【テキストモードとマクロモードと混在】\\
+        \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \verb|\si{W/m^2 K}|   & $\si{W/m^2 K}$ \\
+        \verb|\si[per-mode=symbol]{\watt\per{\square\meter\kelvin}}|  & $\si[per-mode=symbol]{\watt\per{\square\meter\kelvin}}$ \\
+        \verb|\si{\watt/\meter^2\kelvin}|  & $\si{\watt/\meter^2\kelvin}$
+    \end{tabular}
+    \tcblower
+    \begin{tabular}{ll}
+        【さまざまな単位の出力】\\
+        \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \verb|\SI{45}{W/m^2 K}|   & $\SI{45}{W/m^2 K}$ \\
+        \verb|\SI{45}{\degreeCelsius}|  & $\SI{45}{\degreeCelsius}$ \\
+        \verb|\SI{45}{\micro\meter}|    & $\SI{45}{\micro\meter}$ \\
+        \verb|\SI{45}{\um}|    & $\SI{45}{\um}$ \\
+        \verb|\SI{45}{mL}|    & $\SI{45}{mL}$ \\
+    \end{tabular}
+\end{tcolorbox}
+
+最後に示したミリリットル $\si{mL}$ には気をつけてください．
+リットル $\si{L}$ を昔は $\ell$ と表記したこともありましたが，「単位は直立体」という原則に合わないのでやめましょう．
+また，小文字の $\si{l}$ だと数字の $1$ と紛らわしいので，人名由来の単位ではありませんがリットルは大文字 $\si{L}$ で書くようにしましょう．
 
 
