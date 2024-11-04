@@ -8,7 +8,7 @@
 - [ ] 第 n 章完成目標（xx 月 xx 日）
 - [ ] 〇〇さんのチェック（xx 月 xx 日）
 - [ ] 〇〇先生のチェック（xx 月 xx 日）
-- [ ] 提出日（xx 月 xx 日）
+- [ ] 提出（xx 月 xx 日）
 
 ## リポジトリ内のファイル構成
 
@@ -24,7 +24,7 @@
 - `main.tex`: メインの文書ファイル（これをコンパイルすればよい）
 - `mybib_en.bib`: 英語の参考文献リストファイル
 - `mybib_jp.bib`: 日本語の参考文献リストファイル
-- `settings.syt`: `main.tex` で読み込むスタイルファイル
+- `settings.sty`: `main.tex` で読み込むスタイルファイル
 
 ## 卒論・修論用リポジトリの作成
 
@@ -40,25 +40,41 @@ Private になっていることを確認したら Create repository を押し�
 
 ```bash
 # ローカルにテンプレートをクローン
-$ git clone https://github.com/tsukahara-lab/TUS-ME_thesis_template master_thesis
-$ cd B-2024_tsukahara
+git clone https://github.com/tsukahara-lab/TUS-ME_thesis_template master_thesis
+cd B-2024_tsukahara
 
 # リモート URL を自身のものに変更
-$ git remote set-url origin https://github.com/tsukapom/master_thesis
+git remote set-url origin https://github.com/tsukapom/master_thesis
 
 # URL の変更が反映されているか確認
-$ git remote -v
+git remote -v
 
 # 自身のリモートリポジトリにテンプレートの中身を反映
-$ git push origin HEAD
+git push origin HEAD
 ```
 
 これでテンプレートの中身が自身の学位論文リポジトリに反映されたので自由に編集して大丈夫です．
 
-## latexdiff-vc を使用する際の注意事項（Windows）
+## 添削時の注意点
 
-latexdiff-vc を Windows で使用する際に実行できない不具合を確認しています．
-これに関してはデバッグしたファイルを[こちら](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows)に用意してあるので，Windows ユーザーは latexdiff-vc を使用する前に [README](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows?tab=readme-ov-file#readme) をよく読んで，`latexdiff-vc.pl` を TeX Live 標準のものから置き換えてください．
+### `latexdiff` を用いた差分管理
+
+```bash
+latexdiff -e utf8 -t CFONT --flatten old.tex new.tex > diff.tex
+latexmk diff.tex
+```
+
+### `latexdiff-vc` を用いた差分管理
+
+```bash
+latexdiff-vc -e utf8 -t CFONT --flatten --git --force -r HEAD^ main.tex
+latexmk diff.tex
+```
+
+### `latexdiff-vc` を使用する際の注意事項（Windows ユーザー向け）
+
+`latexdiff-vc` を Windows で使用する際に実行できない不具合を確認しています．
+これに関してはデバッグしたファイルを [`latexdiff-vc_windows`](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows) で公開しているので，Windows ユーザーは `latexdiff-vc` を使用する前に [README](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows?tab=readme-ov-file#readme) をよく読んで，`latexdiff-vc.pl` を TeX Live 標準のものから置き換えてください．
 
 ## 卒業論文執筆における注意事項
 
