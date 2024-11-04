@@ -28,24 +28,23 @@
 
 ## 卒論・修論用リポジトリの作成
 
-ここでは塚原研究室の GitHub Organization に所属しているメンバー向けの，学位論文用リポジトリの作成方法を説明します．
-まずは空のリポジトリを作成します．
-リポジトリ名は 2024「年度」卒論なら `B-2024_name` とし，2024「年度」修論なら `M-2024_name` とします．
-`name` には苗字を入れればいいですが，苗字被りがあったら下の名前を入れてもいいでしょう．
+ここでは学位論文用リポジトリの作成方法を説明します．
+まずは個人の GitHub アカウントに空のリポジトリを作成します．
+塚原研究室の GitHub Organization に所属しているメンバーであっても学位論文は Organization ではなく個人のアカウントで管理してください．
+ここでは仮に `master_thesis` というリポジトリ名にします．
 リポジトリ作成時に `README.md` や `.gitignore` は作成しなくて大丈夫です．
 Private になっていることを確認したら Create repository を押してください．
-その後，Settings からリポジトリの可視性を変更します（all を選択してください）．
 
 次にこのテンプレートのリポジトリをローカルにクローンします．
-2024 年度卒業の塚原さんの場合：
+例えば塚原先生（`tsukapom`）が修士論文を執筆する場合：
 
 ```bash
 # ローカルにテンプレートをクローン
-$ git clone https://github.com/tsukahara-lab/TUS-ME_thesis_template B-2024_tsukahara
+$ git clone https://github.com/tsukahara-lab/TUS-ME_thesis_template master_thesis
 $ cd B-2024_tsukahara
 
 # リモート URL を自身のものに変更
-$ git clone set-url origin https://github.com/tsukahara-lab/B-2024_tsukahara
+$ git remote set-url origin https://github.com/tsukapom/master_thesis
 
 # URL の変更が反映されているか確認
 $ git remote -v
