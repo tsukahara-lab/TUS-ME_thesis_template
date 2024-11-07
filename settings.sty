@@ -4,11 +4,12 @@
 %%%            学位論文設定ファイル
 %%%
 %%%               v1.0.0 Yuki MATSUKAWA 27 Dec. 2023
+%%%               v2.0.0 Yuki MATSUKAWA 07 Nov. 2024
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % これは学位論文のメインファイル（main.tex）の設定を書いたスタイルファイル（.sty）です．
-% pdf 作成時には \usepackage{settings} で必ず読み込んでください．
+% PDF 作成時には \usepackage{settings} で必ず読み込んでください．
 % 大事な設定がたくさん書いてあるので慣れないうちはあまり触らない方がいいかもしれません．
 
 %%%%%%%%%%%%%%%%
@@ -66,11 +67,17 @@
 % tblr 環境のセルの余白を変更
 \SetTblrInner{rowsep=0pt}
 
+%%% 文献関連 %%%
+% natbib
+\usepackage{natbib}
+% \citep の括弧を全角に変更．英語で執筆する場合はコメントアウトする．
+\renewcommand{\citep}[1]{（\citealp{#1}）}
+% 日本語で執筆する場合でも図表のキャプションは英語なので，半角括弧で出力する場合に使用するオリジナルコマンド．
+\newcommand{\citepe}[1]{(\citealp{#1})}
+
 %%% その他のパッケージ %%%
 % 単位
 \usepackage{siunitx}
-% natbib
-\usepackage{natbib}
 % ロゴ関連
 \usepackage{bxtexlogo}
 % 枠
