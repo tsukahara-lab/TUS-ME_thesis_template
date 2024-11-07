@@ -1,6 +1,9 @@
 # TUS-ME_thesis_template
 
 東京理科大学創域理工学部機械航空宇宙工学科および大学院創域理工学研究科機械航空宇宙工学専攻の【非公式】学位論文テンプレートです．
+塚原研究室は熱流体系の研究室ですが，同学科・同専攻であれば所属研究室によらずこのテンプレートを使用可能です．
+パブリックリポジトリなので，他研究室所属の方もご自身の PC に入れることができます．
+使用する際に塚原研究室の許可を取る必要はありませんが，このテンプレートを使用したことで生じた問題に関して大学・学科・塚原研究室および研究室に所属する個人は一切の責任を負いませんのでご了承ください．
 
 ## 学位論文 ToDO リスト（使いやすいように書き換えてください）
 
@@ -29,19 +32,17 @@
 ## 卒論・修論用リポジトリの作成
 
 ここでは学位論文用リポジトリの作成方法を説明します．
-まずは個人の GitHub アカウントに空のリポジトリを作成します．
-塚原研究室の GitHub Organization に所属しているメンバーであっても学位論文は Organization ではなく個人のアカウントで管理してください．
-ここでは仮に `master_thesis` というリポジトリ名にします．
-リポジトリ作成時に `README.md` や `.gitignore` は作成しなくて大丈夫です．
-Private になっていることを確認したら Create repository を押してください．
 
-次にこのテンプレートのリポジトリをローカルにクローンします．
+1. Organization ではなく個人の GitHub アカウントに空のリポジトリを作成．ここでは仮に `master_thesis` というリポジトリ名にする．**リポジトリ作成時に `README.md` や `.gitignore` は作成しない．**
+2. Private になっていることを確認したら Create repository を押す．
+3. このテンプレートのリポジトリをローカルにクローンする．
+
 例えば塚原先生（`tsukapom`）が修士論文を執筆する場合：
 
 ```bash
 # ローカルにテンプレートをクローン
 git clone https://github.com/tsukahara-lab/TUS-ME_thesis_template master_thesis
-cd B-2024_tsukahara
+cd master_thesis
 
 # リモート URL を自身のものに変更
 git remote set-url origin https://github.com/tsukapom/master_thesis
@@ -54,6 +55,24 @@ git push origin HEAD
 ```
 
 これでテンプレートの中身が自身の学位論文リポジトリに反映されたので自由に編集して大丈夫です．
+
+## テンプレートへの修正の反映
+
+この学位論文テンプレートが更新された場合は，以下のコマンドを実行して自身のリポジトリに反映してください．
+
+```bash
+# この学位論文テンプレートのリポジトリを登録
+git remote add upstream https://github.com/tsukahara-lab/TUS-ME_thesis_template.git
+
+# テンプレートの最新状態を取得
+git fetch upstream
+
+# 自分が main ブランチにいることを確認し，テンプレートの最新状態をマージ
+git switch main && git merge upstream/main
+
+# 自身のリモートリポジトリを更新
+git push origin HEAD
+```
 
 ## 添削時の注意点
 
