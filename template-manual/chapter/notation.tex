@@ -20,7 +20,7 @@
 和文書体に関してはここでは \textgt{ゴシック} 体を紹介します．
 ただし，普通に学位論文を書いている分には文章中で書体を変える場面はあまりないと思います．
 
-\begin{tcolorbox}[enhanced, title={通常の文章中で書体を変える方法}, drop fuzzy shadow]
+\begin{tcolorbox}[title={通常の文章中で書体を変える方法}]
     \begin{tabular}{lll}
         \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
         直立（roman, upright）  & \verb|\textrm{Roman}|   & \textrm{Roman} \\
@@ -44,7 +44,7 @@
 ボールドイタリック体は \verb|unicode-math| に標準で存在し，\verb|\symbfit{}| コマンドを使用すると出力できます．
 ただし，\verb|unicode-math| に対応していない \LaTeX テンプレートはまだまだ多く存在しているので，そのようなテンプレートを使用する際は自分で \verb|bm| パッケージを読み込む必要があります．
 
-\begin{tcolorbox}[enhanced, title={数式環境中で書体を変える方法}, drop fuzzy shadow]
+\begin{tcolorbox}[title={数式環境中で書体を変える方法}]
     \begin{tabular}{lll}
         \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
         直立（roman, upright）  & \verb|\mathrm{abcABC123}|   & $\mathrm{abcABC123}$ \\
@@ -62,7 +62,7 @@
 
 数式中のアルファベットは \textit{Italic} 体なのになぜ \verb|\mathit{}| コマンドが用意されているのでしょうか．
 
-\begin{tcolorbox}[enhanced, drop fuzzy shadow]
+\begin{tcolorbox}
     \begin{tabular}{llll}
         \textgt{コマンド}  & \textgt{出力}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
         \verb|$diff$|   & $diff$    & \verb|$\mathit{diff}$| & $\mathit{diff}$ \\

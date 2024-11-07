@@ -1,15 +1,74 @@
 \chapter{先生や先輩に添削してもらうときの注意点}
 \label{ch:check}
 
-\begin{tcolorbox}[enhanced, drop fuzzy shadow]
-    後で書きます．
+先生や先輩に学位論文を添削してもらう際は，貴重な時間を割いて見てもらっているので添削者への配慮が大事です．
+特にこのマニュアルの第~\ref{ch:basic}~章から第~\ref{ch:bibtex}~章にかけての内容をよく読んで，研究内容と関係の無い些末なミスばかり指摘されることのないように気をつけましょう．
+学位論文執筆時に参考になる自己チェックリストは \href{https://github.com/ryo-ARAKI/thesis_template_ou_es/blob/master/self_checklist.md}{こちら}．
+また，学位論文の PDF ファイルには本文だけでなく，これから書き足す予定の内容や添削者に対する相談・メモなども併せて書いておくといいでしょう．
+\verb|tcolorbox| パッケージの「枠」を使うと，一目見て本文とは別のメモ書きであるとわかるのでオススメです．
+このテンプレートのマニュアルでも \verb|tcolorbox| を活用しています．
+\verb|tcolorbox| の使い方の例：
+\begin{tcolorbox}[title={ここにタイトルを入れる}]
+    枠にタイトルを入れる場合．
+    \tcblower
+\begin{verbatim}
+    \begin{tcolorbox}[title={ここにタイトルを入れる}]
+        枠にタイトルを入れる場合．
+    \end{tcolorbox}
+\end{verbatim}
 \end{tcolorbox}
+
+\begin{tcolorbox}
+    枠にタイトルを入れない場合．
+    \tcblower
+\begin{verbatim}
+    \begin{tcolorbox}
+        枠にタイトルを入れない場合．
+    \end{tcolorbox}
+\end{verbatim}
+\end{tcolorbox}
+
+また，\verb|tex| ファイルの差分は Git を使えば確認できますが，添削者が読む PDF ファイルを見てもどこが変わったか簡単にはわかりません．
+\verb|latexdiff| や \verb|latexdiff-vc| という機能を使えば \verb|tex| ファイルの差分を PDF ファイルに反映できます．
+先生や先輩からの添削・指摘を受け，文章のどこがどのように変わったかを確認する際に便利です．
+Git を利用していない人は \hyperref[sec:latexdiff]{\texttt{latexdiff}} を，Git を利用している人は \hyperref[sec:latexdiff-vc]{\texttt{latexdiff-vc}} を使いましょう．
 
 \section{\texttt{latexdiff}}
 \label{sec:latexdiff}
 
-
+ここでは \verb|latexdiff| を用いた差分ファイルの作成方法を説明します．
+修正前のファイル名を \verb|old.tex|，修正後のファイル名を \verb|new.tex| とすると，
+\begin{tcolorbox}[title={\texttt{latexdiff} を使用した差分ファイルの生成方法}]
+\begin{verbatim}
+$ latexdiff -e utf8 -t CFONT --flatten old.tex new.tex > diff.tex
+$ latexmk diff.tex
+\end{verbatim}
+\end{tcolorbox}
+\noindent
+のようにすれば差分ファイル \verb|diff.tex| から \verb|diff.pdf| ファイルを生成できます．
+変更前の消した箇所が\textcolor{red}{\scriptsize 小さい赤字}で，変更後の新しく入れた箇所が\textcolor{blue}{\sffamily 通常サイズの青字}で表示されます．
+ただし，修正があまりにも大きい場合はうまくコンパイルできないことがあるので気をつけましょう．
 
 \section{\texttt{latexdiff-vc}}
 \label{sec:latexdiff-vc}
+
+\verb|latexdiff-vc| を使えば Git で管理している任意のコミットとの差分を取ることができ大変便利です．
+Git ユーザーは \verb|latexdiff-vc| を使いましょう．
+例えば現在の \verb|main.tex| と一つ前のコミットとの差分を見たいときは，
+\begin{tcolorbox}[title={\texttt{latexdiff-vc} を使用した差分ファイルの生成方法}]
+\begin{verbatim}
+$ latexdiff-vc -e utf8 -t CFONT --flatten --git --force -r HEAD^ main.tex
+\end{verbatim}
+\end{tcolorbox}
+\noindent
+とすることで差分ファイルを生成できます．
+指定するコミットを変える際は \verb|HEAD^| を置き換えてください．
+任意のコミットのハッシュ値を指定することもできます．
+生成される差分 \verb|tex| ファイルの名前は指定したコミットによって異なります．
+
+また，\verb|latexdiff-vc| を Windows で使用する際に実行できない不具合を確認しています．
+これに関してはデバッグしたファイルを \href{https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows}{\texttt{latexdiff-vc\_windows}} で公開しているので，Windows ユーザーは \verb|latexdiff-vc| を使用する前に \href{https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows?tab=readme-ov-file#readme}{\texttt{README}} をよく読んで，\verb|latexdiff-vc.pl| を TeX Live 標準のものから置き換えてください．
+指定するコミットに対応して出力されるファイル名も異なるので注意してください．
+
+
 

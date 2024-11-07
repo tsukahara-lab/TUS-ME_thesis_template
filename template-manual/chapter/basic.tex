@@ -41,7 +41,7 @@ Microsoft Word などでの文書作成に慣れた人は \LaTeX の改行や空
 逆に，改段落するつもりではない場所で空白行を入れてしまい，うっかり改段落してしまうというケースも見ます．
 \LaTeX 初心者が引っ掛かりやすいポイントなので気をつけましょう．
 
-\begin{tcolorbox}[enhanced, title=改行・改段落, drop fuzzy shadow]
+\begin{tcolorbox}[title=改行・改段落]
 【入力（\verb|tex| ファイルの中身）】
 \begin{verbatim}
 祇園精舍の鐘の声、諸行無常の響きあり。
@@ -67,7 +67,7 @@ Microsoft Word などでの文書作成に慣れた人は \LaTeX の改行や空
 ここの例では半角空白に関して説明します．
 少々わかりにくいですが，【入力】では \verb|This| と \verb|is| の間に半角空白を一つ，\verb|is| と \verb|a| の間に半角空白を二つ，\verb|a| と \verb|pen.| の間に半角空白を三つ入れていますが，【出力】では無視されて一つ分の空白しか出てきません．
 
-\begin{tcolorbox}[enhanced, title=空白の処理, drop fuzzy shadow]
+\begin{tcolorbox}[title={空白の処理}]
 【入力（\verb|tex| ファイルの中身）】
 \begin{verbatim}
 This is  a   pen.
@@ -179,7 +179,7 @@ $\si{\degreeCelsius}$ のようにマクロモードでしか使用できない�
 単位のみの出力は \verb|\si{}| コマンド，数値と単位を併せての出力は \verb|\SI{}| コマンドを使用します．
 \verb|\SI{}| コマンドを使用すると，数値と単位の間に適切な長さの空白を自動で入れてくれます．
 
-\begin{tcolorbox}[enhanced, title={\texttt{siunitx} パッケージ}, drop fuzzy shadow]
+\begin{tcolorbox}[title={\texttt{siunitx} パッケージ}]
     \begin{tabular}{lll}
         【テキストモードとマクロモードと混在】\\
         \textgt{コマンド}  & \textgt{出力} \\ \hline
