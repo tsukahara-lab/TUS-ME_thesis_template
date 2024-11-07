@@ -172,9 +172,9 @@
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%           % 柱の内容
     \ifx\empty\thechapter\empty%
-      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries#1\hfill}}}%
+      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries#1\hfill}}}%
     \else%
-      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\chpre\thechapter\chpost\quad#1\hfill}}}%
+      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\chpre\thechapter\chpost\quad#1\hfill}}}%
     \fi%
   },%
   nombre={%                         % ノンブルの内容
@@ -223,8 +223,8 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   nombre={\thepage},%               % ノンブルの内容
-  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}},        % 奇数ページの柱
-  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}}        % 偶数ページの柱
+  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\acknowledgename\hfill}}}},        % 奇数ページの柱
+  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\acknowledgename\hfill}}}}        % 偶数ページの柱
 }
 % 謝辞の定義 \acknowledge
 \newcommand\acknowledge{%
@@ -241,8 +241,8 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   nombre={\thepage},%               % ノンブルの内容
-  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}},        % 奇数ページの柱
-  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}        % 偶数ページの柱
+  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\bibname\hfill}}}},        % 奇数ページの柱
+  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\bibname\hfill}}}}        % 偶数ページの柱
 }
 % 参考文献の定義 \biblist
 \newcommand\biblist{%
@@ -250,8 +250,8 @@
   \phantomsection % ハイパーリンクのズレを調整
   \renewcommand\UrlFont{\rmfamily}  % 参考文献内の URL 表示をタイプライター調にしない
   \markboth{% % なぜか参考文献 5 ページ目以降で柱の出力がおかしくなるのでここで追加設定
-  \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}%
-  {\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}
+  \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\bibname\hfill}}}}%
+  {\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\bibname\hfill}}}}
   \pagestyle{bibliography}
   \addcontentsline{toc}{chapter}{\bibname}  % 目次に「文献」を追加
 }
@@ -261,7 +261,7 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%           % 柱の内容
-    \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\appname\thechapter\quad#1\hfill}}}%
+    \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\appname\thechapter\quad#1\hfill}}}%
   },%
   nombre={\thepage},%               % ノンブルの内容
   odd_running_head=_chapter,        % 奇数ページの柱
@@ -271,7 +271,7 @@
 %%% 章の見出しを改行，空行後に表示 %%%
 \ModifyHeading{chapter}{%
   label_format={\chpre\thechapter\chpost},
-  font={\huge\bfseries},
+  font={\huge\sffamily\bfseries},
   format={%
     \ifx\empty#1\empty%
       \noindent#2%
