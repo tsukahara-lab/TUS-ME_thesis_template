@@ -77,6 +77,7 @@
 \usepackage[mathlines,pagewise]{lineno}
 
 %%% 表示の変更 %%%
+% 無次元数など
 \newcommand{\Gr}{\mathit{Gr}}
 \newcommand{\Ma}{\mathit{Ma}}
 \newcommand{\Nu}{\mathit{Nu}}
@@ -91,8 +92,12 @@
 \newcommand{\Wi}{\mathit{Wi}}
 \newcommand{\rms}{\mathrm{rms}}
 
+% 図表の番号表示を変更
 \renewcommand{\figurename}{Fig.~}
 \renewcommand{\tablename}{Table~}
+
+% 倍角ダッシュの隙間を詰める
+\def\――{―\kern-.5\zw―\kern-.5\zw―}
 
 %%% 文字数・行数設定 %%%
 % 1 行あたり文字数の指定
