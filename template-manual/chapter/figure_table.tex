@@ -37,7 +37,7 @@
 ハイパーリンクも埋め込まれているので該当する図が遠く離れた位置にあっても便利です．
 ここで「図」と番号の間にチルダ \verb|~| を入れているのはここでの改行を防止を目的としています．
 
-\begin{tcolorbox}[enhanced, title={\texttt{\textbackslash includegraphics} で図の大きさの指定によく使うコマンド}, drop fuzzy shadow]
+\begin{tcolorbox}[title={\texttt{\textbackslash includegraphics} で図の大きさの指定によく使うコマンド}]
     【指定するもの】\\
     \begin{tabular}{lll}
         \textgt{コマンド}    & \textgt{意味}  & \textgt{使用例} \\ \hline
@@ -78,7 +78,7 @@
 関連するサブ図を横だけでなく縦方向にも配置したいときは，図~\ref{fig:four_figures}のように横並びの \verb|\columnwidth| の合計が大きくなりすぎると自動的に縦に配列してくれます．
 ここでは縦方向のスペースを確保するために \verb|\vspace{5mm}| を挿入しています．
 
-\begin{tcolorbox}[enhanced, title={図のラベルの参照方法}, drop fuzzy shadow]
+\begin{tcolorbox}[title={図のラベルの参照方法}]
     \begin{tabular}{ll}
         \textgt{入力}     & \textgt{出力} \\ \hline
         \verb|\ref{fig:one_figure}|                                                 & \ref{fig:one_figure} \\
@@ -368,7 +368,7 @@ Overleaf の表作成機能はかなり便利だと思うので，ローカル�
 \verb|\hline| がその行全体に横罫線を入れるのに対して \verb|\cline{}| はその行に部分的な横罫線を入れるコマンドです．
 横罫線を消すことでセル結合したような出力を得られます．
 
-\begin{tcolorbox}[enhanced, title={\texttt{tabular} 環境でセル結合する際に使用するコマンド}, drop fuzzy shadow]
+\begin{tcolorbox}[title={\texttt{tabular} 環境でセル結合する際に使用するコマンド}]
     \begin{tabular}{ll}
         \verb|\multicolumn{結合する列数}{揃え位置}{セルの中身}| & 列のセル結合  \\
         \verb|\multirow{結合する行数}{幅}{セルの中身}|  & 行のセル結合  \\
@@ -417,7 +417,7 @@ Overleaf の表作成機能はかなり便利だと思うので，ローカル�
 1 行 1 列目では \verb|\SetCell{c} 学会名| とすることでこのセルだけ中央揃えに変えています．
 7 行 1 列目の \verb|\SetCell[r=4]{l} 日本架空学会| は「縦並びの 4 つのセルを結合し，『日本架空学会』という文字列を左揃えで配置する」命令です．
 
-\begin{tcolorbox}[enhanced, title={\texttt{tblr} 環境でセル結合する際に使用するコマンド}, drop fuzzy shadow]
+\begin{tcolorbox}[title={\texttt{tblr} 環境でセル結合する際に使用するコマンド}]
     \begin{tabular}{ll}
         \verb|\SetCell{c}|   & そのセルだけ中央揃えに変更 \\
         \verb|\SetCell[r=3]{c}|  & 3 行をセル結合し中央揃え \\
