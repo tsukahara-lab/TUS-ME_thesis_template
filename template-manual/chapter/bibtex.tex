@@ -137,6 +137,26 @@
 参照キーの書き方に特に規則は無く，半角カンマ以外の半角記号も使用可能です．
 ただ，自分の中でマイルールを設けておくと引用する際に楽です．
 
+\verb|journal| フィールドは学術雑誌論文が出された誌名を入力するフィールドです．
+このフィールドに入力された文字はそのまま出力されるので，title case にすることを忘れないようにしてください\footnote{例えば，\texttt{Journal of Fluid Mechanics} と入力するべきところを \texttt{Journal of fluid mechanics} と入力するとそのまま出力されてしまいます．}．
+一方，文献のタイトルを入力する \verb|title| フィールドは sentence case で出力するように \verb|jsme.bst| で設定しています．
+したがって，\verb|low Reynolds number| と入力していても \verb|low reynolds number| と，固有名詞の冒頭まで小文字で出力されてしまいます．
+これを防ぐにはそのままの形で出力したい箇所を
+\begin{verbatim}
+    title = {{DNS} of turbulent channel flow at very low {R}eynolds numbers}
+    title = {Subcritical transition of {Taylor--Couette--Poiseuille} flow 
+            at high radius ratio}
+    title = {A mathematical consideration of vortex thinning in {2D} turbulence}
+\end{verbatim}
+のように括弧 \verb|{ }| で囲ってあげる必要があります．
+これらの作業はどうしても人力で確認する必要があるので \verb|bib| ファイル作成時には注意しましょう．
+また，\verb|yomi| フィールドに著者の読みを入力すると，内容から判断してアルファベット順に文献をソートしてくれます．
+詳細は \verb|JSME-bst| の \href{https://github.com/Yuki-MATSUKAWA/JSME-bst/blob/main/JSME-template1.pdf}{\texttt{JSME-template1.pdf}} を参照してください．
+
+このテンプレートに付属している \verb|mybib_en.bib| は英語の参考文献リストファイル，\verb|mybib_jp.bib| は日本語の参考文献リストファイルです．
+\verb|bib| ファイルの書き方の参考になると思うのでこれらに倣って書くようにしましょう．
+また \verb|template-manual.pdf| の末尾にある文献リストは \verb|mybib_en.bib| と \verb|mybib_jp.bib| を読み込んだ際の出力結果の見本です．
+
 \subsection{本文中での引用方法}
 \label{ssec:cite}
 
