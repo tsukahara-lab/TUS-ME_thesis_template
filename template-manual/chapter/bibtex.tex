@@ -49,4 +49,34 @@
 参照キーの書き方に特に規則は無く，半角カンマ以外の半角記号も使用可能です．
 ただ，自分の中でマイルールを設けておくと引用する際に楽です．
 
+\section{本文中での引用方法}
+\label{sec:cite}
+
+このテンプレートでは \verb|natbib| パッケージを読み込んでいるため，本文中での文献引用方法が豊富に用意されています．
+詳細は \verb|JSME-bst| の \href{https://github.com/Yuki-MATSUKAWA/JSME-bst/blob/main/JSME-template1.pdf}{\texttt{JSME-template1.pdf}} にも記載しているので，詳細はそちらを参照してください．
+ただ，\verb|natbib| でサポートされているコマンドを全て使用する必要はなく，このテンプレートでの使用が想定されるのは以下のものです．
+下記コマンドのうち，最後の \verb|\citepe{}| のみ，このテンプレート用に作成したオリジナルのコマンドなので注意してください．
+
+\begin{tcolorbox}[enhanced, title=\textgt{本文中での文献引用コマンド（テンプレート用に一部改変・追加）}, drop fuzzy shadow]
+    \begin{tabular}{ll}
+        \textgt{コマンド}    & \textgt{出力} \\ \hline
+        \verb|\citet{Matsukawa:PoF2022}|    & \citet{Matsukawa:PoF2022} \\
+        \verb|\citet{松川:流力年会2022}|    & \citet{松川:流力年会2022} \\
+        \verb|\citep{Matsukawa:PoF2022}|    & \citep{Matsukawa:PoF2022} \\
+        \verb|\citep{松川:流力年会2022}|    & \citep{松川:流力年会2022} \\
+        \verb|\citepe{Matsukawa:PoF2022}|   & \citepe{Matsukawa:PoF2022}
+    \end{tabular}
+\end{tcolorbox}
+
+文献を通常の文章中に \citet{Matsukawa:PoF2022}, \citet{松川:流力年会2022} のように挿入する場合は \verb|\citet{}| で引用してください．
+また，文末等に括弧に入れる形で\citep{Matsukawa:PoF2022,松川:流力年会2022}のように挿入する場合は \verb|\citep{}| で引用してください．
+本来 \verb|\citep{}| コマンドで出力する括弧は半角括弧 () ですが，この学位論文テンプレートは日本語での執筆を想定しているので設定ファイル内で全角括弧（）に変更しています．
+この学位論文テンプレートではなく，海外のジャーナル論文を執筆する際は \verb|\citep{}| で半角括弧が出力されます．
+ただし，日本語で論文を執筆している場合でも図表のキャプションは英語で書きます．
+英文中に全角括弧が出現したら不自然なので，キャプション中は \verb|\citepe{}| というオリジナルのコマンドを使用してください．
+また，図表のキャプション中で日本語文献を引用する場合は引用の出力を英語にしたいですね．
+この場合は \verb|\citealias{}| コマンド や \verb|\citepalias{}| コマンドが便利です．
+詳細は \verb|JSME-bst| の \href{https://github.com/Yuki-MATSUKAWA/JSME-bst/blob/main/JSME-template1.pdf}{\texttt{JSME-template1.pdf}} にも記載していますが，\verb|\defcitealias{}| コマンドを使い，読み込む文献と出力結果を自分で定義することで任意の形での出力が可能です．
+
+
 
