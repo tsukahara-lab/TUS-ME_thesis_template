@@ -2,7 +2,7 @@
 
 東京理科大学創域理工学部機械航空宇宙工学科および大学院創域理工学研究科機械航空宇宙工学専攻の【非公式】学位論文テンプレートです．
 塚原研究室は熱流体系の研究室ですが，同学科・同専攻であれば所属研究室によらずこのテンプレートを使用可能です．
-パブリックリポジトリなので，他研究室所属の方もご自身の PC に入れることができます．
+パブリックリポジトリなので他研究室所属の方もご自身の PC に入れることができます．
 使用する際に塚原研究室の許可を取る必要はありませんが，このテンプレートを使用したことで生じた問題に関して大学・学科・塚原研究室および研究室に所属する個人は一切の責任を負いませんのでご了承ください．
 
 ## 学位論文 ToDO リスト（使いやすいように書き換えてください）
@@ -76,24 +76,63 @@ git push origin HEAD
 
 ## 添削時の注意点
 
+詳細は `template-manual/template-manual.pdf` の第 7 章にも記載しています．
+論文執筆の途中で先生や先輩に添削をお願いする際は，これから書き足す予定の内容や添削者に対する相談・メモなども併せて書いておくといいでしょう．
+`tcolorbox` パッケージの「枠」を使うと，一目見て本文とは別のメモ書きであるとわかるのでオススメです．
+このテンプレートのマニュアルでも `tcolorbox` を活用しています．
+`tcolorbox` の使い方の例：
+
+```LaTeX
+% 枠にタイトルを入れる場合
+\begin{tcolorbox}[title={タイトルを入れる}]
+    文章を入れる．
+\end{tcolorbox}
+
+% 枠にタイトルを入れない場合
+\begin{tcolorbox}
+    文章を入れる．
+\end{tcolorbox}
+```
+
+また，`tex` ファイルの差分は Git を使えば確認できますが，添削者が読む PDF ファイルを見てもどこが変わったか簡単にはわかりません．
+`latexdiff` や `latexdiff-vc` という機能を使えば `tex` ファイルの差分を PDF ファイルに反映できます．
+先生や先輩からの添削・指摘を受け，文章のどこがどのように変わったかを確認する際に便利です．
+Git を利用していない人は `latexdiff` を，Git を利用している人は `latexdiff-vc` を使いましょう．
+
 ### `latexdiff` を用いた差分管理
+
+`latexdiff` を用いた差分ファイルの作成方法を説明します．
+修正前のファイル名を `old.tex`，修正後のファイル名を `new.tex` とすると，
 
 ```bash
 latexdiff -e utf8 -t CFONT --flatten old.tex new.tex > diff.tex
 latexmk diff.tex
 ```
 
+のようにすれば差分ファイル `diff.tex` から `diff.pdf` ファイルを生成できます．
+変更前の消した箇所が小さい赤字で，変更後の新しく入れた箇所が大きい青字で表示されます．
+ただし，修正があまりにも大きい場合はうまくコンパイルできないことがあるので気をつけましょう．
+
 ### `latexdiff-vc` を用いた差分管理
+
+`latexdiff-vc` を使えば Git で管理している任意のコミットとの差分を取ることができ大変便利です．
+Git ユーザーは `latexdiff-vc` を使いましょう．
+例えば現在の `main.tex` と一つ前のコミットとの差分を見たいときは，
 
 ```bash
 latexdiff-vc -e utf8 -t CFONT --flatten --git --force -r HEAD^ main.tex
-latexmk diff.tex
 ```
+
+とすることで差分ファイルを生成できます．
+指定するコミットを変える際は `HEAD^` を置き換えてください．
+任意のコミットのハッシュ値を指定することもできます．
+生成される `tex` 差分ファイルの名前は指定したコミットによって異なります．
 
 ### `latexdiff-vc` を使用する際の注意事項（Windows ユーザー向け）
 
 `latexdiff-vc` を Windows で使用する際に実行できない不具合を確認しています．
 これに関してはデバッグしたファイルを [`latexdiff-vc_windows`](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows) で公開しているので，Windows ユーザーは `latexdiff-vc` を使用する前に [README](https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows?tab=readme-ov-file#readme) をよく読んで，`latexdiff-vc.pl` を TeX Live 標準のものから置き換えてください．
+指定するコミットに対応して出力されるファイル名も異なるので注意してください．
 
 ## 卒業論文執筆における注意事項
 
