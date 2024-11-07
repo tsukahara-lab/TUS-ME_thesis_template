@@ -28,6 +28,11 @@
 \end{verbatim}
 \end{tcolorbox}
 
+添削者が iPad 等のタブレットを持っていれば添削は比較的楽にできますが，人によっては指摘点を文章に書き起こす人もいるでしょう．
+\verb|main.tex| のプリアンブルに書いてある \verb|\linenumbers| は行番号を PDF ファイルに出力する命令です．
+添削時は行番号を表示したものを渡すとよいでしょう．
+ただし，\textcolor{red}{最終提出時は \texttt{\textbackslash linenumbers} をコメントアウトして行番号を消すのを忘れないように}．
+
 また，\verb|tex| ファイルの差分は Git を使えば確認できますが，添削者が読む PDF ファイルを見てもどこが変わったか簡単にはわかりません．
 \verb|latexdiff| や \verb|latexdiff-vc| という機能を使えば \verb|tex| ファイルの差分を PDF ファイルに反映できます．
 先生や先輩からの添削・指摘を受け，文章のどこがどのように変わったかを確認する際に便利です．
