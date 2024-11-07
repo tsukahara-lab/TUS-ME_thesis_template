@@ -5,11 +5,12 @@
 %%%
 %%%               v1.0.0 Yuki MATSUKAWA 15 Dec. 2021
 %%%               v2.0.0 Yuki MATSUKAWA 14 Dec. 2023
+%%%               v3.0.0 Yuki MATSUKAWA 07 Nov. 2024
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % これは修士論文要旨のメインファイル（master.tex）の設定を書いたスタイルファイル（.sty）です．
-% pdf 作成時には \usepackage{settings_master} で必ず読み込んでください．
+% PDF 作成時には \usepackage{settings_master} で必ず読み込んでください．
 % 大事な設定がたくさん書いてあるので慣れないうちはあまり触らない方がいいかもしれません．
 
 %%% ページ番号を付けない %%%
@@ -23,7 +24,7 @@
 \usepackage{fontspec} % 欧文フォントの設定
 \usepackage{luatexja} % LuaLaTeX 用の日本語処理パッケージ
 \usepackage{luatexja-fontspec} % LuaLaTeX 用の日本語フォント設定
-\usepackage{luatexja-otf} % Luatex 用の OTF フォントサポート
+\usepackage{luatexja-otf} % LuaLaTeX 用の OTF フォントサポート
 \usepackage[math-style=TeX,bold-style=TeX]{unicode-math} % 数学フォント設定
 % 欧文フォント設定
 \setmainfont[Ligatures=TeX]{XITS}
@@ -41,8 +42,6 @@
 %%% 図関連 %%%
 % 図の読み込みに必要
 \usepackage{graphicx}
-% 図の配置オプション H 用
-\usepackage{float}
 %%% 関連する図を並べる際に使用
 % Fig. xxx の後ろをコロンではなくスペースに設定
 \usepackage[labelsep=quad]{caption}
@@ -62,8 +61,6 @@
 %%% その他のパッケージ %%%
 % 単位
 \usepackage{siunitx}
-% natbib
-\usepackage{natbib}
 % ロゴ関連
 \usepackage{bxtexlogo}
 % 枠
@@ -81,6 +78,7 @@
 \usepackage[mathlines,pagewise]{lineno}
 
 %%% 表示の変更 %%%
+% 無次元数など
 \newcommand{\Gr}{\mathit{Gr}}
 \newcommand{\Ma}{\mathit{Ma}}
 \newcommand{\Nu}{\mathit{Nu}}
@@ -95,8 +93,12 @@
 \newcommand{\Wi}{\mathit{Wi}}
 \newcommand{\rms}{\mathrm{rms}}
 
+% 図表の番号表示を変更
 \renewcommand{\figurename}{Fig.~}
 \renewcommand{\tablename}{Table~}
+
+% 倍角ダッシュの隙間を詰める
+\def\――{―\kern-.5\zw―\kern-.5\zw―}
 
 %%% 文字数・行数設定 %%%
 % 1 行あたり文字数の指定

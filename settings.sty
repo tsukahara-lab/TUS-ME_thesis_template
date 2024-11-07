@@ -4,11 +4,12 @@
 %%%            学位論文設定ファイル
 %%%
 %%%               v1.0.0 Yuki MATSUKAWA 27 Dec. 2023
+%%%               v2.0.0 Yuki MATSUKAWA 07 Nov. 2024
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 % これは学位論文のメインファイル（main.tex）の設定を書いたスタイルファイル（.sty）です．
-% pdf 作成時には \usepackage{settings} で必ず読み込んでください．
+% PDF 作成時には \usepackage{settings} で必ず読み込んでください．
 % 大事な設定がたくさん書いてあるので慣れないうちはあまり触らない方がいいかもしれません．
 
 %%%%%%%%%%%%%%%%
@@ -19,7 +20,7 @@
 \usepackage{fontspec} % 欧文フォントの設定
 \usepackage{luatexja} % LuaLaTeX 用の日本語処理パッケージ
 \usepackage{luatexja-fontspec} % LuaLaTeX 用の日本語フォント設定
-\usepackage{luatexja-otf} % Luatex 用の OTF フォントサポート
+\usepackage{luatexja-otf} % LuaLaTeX 用の OTF フォントサポート
 \usepackage[math-style=TeX,bold-style=TeX]{unicode-math} % 数学フォント設定
 % 欧文フォント設定
 \setmainfont[Ligatures=TeX]{XITS}
@@ -39,7 +40,7 @@
 %%% hyperref %%%
 % ハイパーリンクに色が付かないようにしたいときは hidelinks のコメントアウトをはずす
 \usepackage[%
-  bookmarks=true,% pdf にしおりをつける
+  bookmarks=true,% PDF にしおりをつける
   bookmarksnumbered=true,% しおりに章・節番号を含める
   setpagesize=false,% 紙のサイズを変更しない
   colorlinks=true,% リンクのテキストに色をつける
@@ -50,8 +51,6 @@
 %%% 図関連 %%%
 % 図の読み込みに必要
 \usepackage{graphicx}
-% 図の配置オプション H 用
-\usepackage{float}
 %%% 関連する図を並べる際に使用
 % Fig. xxx の後ろをコロンではなくスペースに設定
 \usepackage[labelsep=quad]{caption}
@@ -68,11 +67,17 @@
 % tblr 環境のセルの余白を変更
 \SetTblrInner{rowsep=0pt}
 
+%%% 文献関連 %%%
+% natbib
+\usepackage{natbib}
+% \citep の括弧を全角に変更．英語で執筆する場合はコメントアウトする．
+\renewcommand{\citep}[1]{（\citealp{#1}）}
+% 日本語で執筆する場合でも図表のキャプションは英語なので，半角括弧で出力する場合に使用するオリジナルコマンド．
+\newcommand{\citepe}[1]{(\citealp{#1})}
+
 %%% その他のパッケージ %%%
 % 単位
 \usepackage{siunitx}
-% natbib
-\usepackage{natbib}
 % ロゴ関連
 \usepackage{bxtexlogo}
 % 枠
@@ -91,6 +96,7 @@
 
 
 %%% 表示の変更 %%%
+% 無次元数など
 \newcommand{\Gr}{\mathit{Gr}}
 \newcommand{\Ma}{\mathit{Ma}}
 \newcommand{\Nu}{\mathit{Nu}}
@@ -105,9 +111,12 @@
 \newcommand{\Wi}{\mathit{Wi}}
 \newcommand{\rms}{\mathrm{rms}}
 
+% 図表の番号表示を変更
 \renewcommand{\figurename}{Fig.~}
 \renewcommand{\tablename}{Table~}
 
+% 倍角ダッシュの隙間を詰める
+\def\――{―\kern-.5\zw―\kern-.5\zw―}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %%% 章見出しの再定義 %%%
@@ -174,9 +183,9 @@
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%           % 柱の内容
     \ifx\empty\thechapter\empty%
-      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries#1\hfill}}}%
+      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries#1\hfill}}}%
     \else%
-      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\chpre\thechapter\chpost\quad#1\hfill}}}%
+      \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\chpre\thechapter\chpost\quad#1\hfill}}}%
     \fi%
   },%
   nombre={%                         % ノンブルの内容
@@ -225,8 +234,8 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   nombre={\thepage},%               % ノンブルの内容
-  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}},        % 奇数ページの柱
-  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\acknowledgename\hfill}}}}        % 偶数ページの柱
+  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\acknowledgename\hfill}}}},        % 奇数ページの柱
+  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\acknowledgename\hfill}}}}        % 偶数ページの柱
 }
 % 謝辞の定義 \acknowledge
 \newcommand\acknowledge{%
@@ -243,8 +252,8 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   nombre={\thepage},%               % ノンブルの内容
-  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}},        % 奇数ページの柱
-  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}        % 偶数ページの柱
+  odd_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\bibname\hfill}}}},        % 奇数ページの柱
+  even_running_head={\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\bibname\hfill}}}}        % 偶数ページの柱
 }
 % 参考文献の定義 \biblist
 \newcommand\biblist{%
@@ -252,8 +261,8 @@
   \phantomsection % ハイパーリンクのズレを調整
   \renewcommand\UrlFont{\rmfamily}  % 参考文献内の URL 表示をタイプライター調にしない
   \markboth{% % なぜか参考文献 5 ページ目以降で柱の出力がおかしくなるのでここで追加設定
-  \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}%
-  {\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\bibname\hfill}}}}
+  \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\bibname\hfill}}}}%
+  {\underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\bibname\hfill}}}}
   \pagestyle{bibliography}
   \addcontentsline{toc}{chapter}{\bibname}  % 目次に「文献」を追加
 }
@@ -263,7 +272,7 @@
   running_head_position=top-left,   % 柱の位置
   nombre_position=top-right,        % ノンブルの位置
   mark_format={_chapter=%           % 柱の内容
-    \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\bfseries\appname\thechapter\quad#1\hfill}}}%
+    \underline{{\rule[-5pt]{0pt}{14pt}\hbox to 0.9\columnwidth{\sffamily\bfseries\appname\thechapter\quad#1\hfill}}}%
   },%
   nombre={\thepage},%               % ノンブルの内容
   odd_running_head=_chapter,        % 奇数ページの柱
@@ -273,7 +282,7 @@
 %%% 章の見出しを改行，空行後に表示 %%%
 \ModifyHeading{chapter}{%
   label_format={\chpre\thechapter\chpost},
-  font={\huge\bfseries},
+  font={\huge\sffamily\bfseries},
   format={%
     \ifx\empty#1\empty%
       \noindent#2%
