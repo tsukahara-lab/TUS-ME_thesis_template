@@ -28,6 +28,11 @@
 \end{verbatim}
 \end{tcolorbox}
 
+添削者が iPad 等のタブレットを持っていれば添削は比較的楽にできますが，人によっては指摘点を文章に書き起こす人もいるでしょう．
+\verb|main.tex| のプリアンブルに書いてある \verb|\linenumbers| は行番号を PDF ファイルに出力する命令です．
+添削時は行番号を表示したものを渡すとよいでしょう．
+ただし，\textcolor{red}{最終提出時は \texttt{\textbackslash linenumbers} をコメントアウトして行番号を消すのを忘れないように}．
+
 また，\verb|tex| ファイルの差分は Git を使えば確認できますが，添削者が読む PDF ファイルを見てもどこが変わったか簡単にはわかりません．
 \verb|latexdiff| や \verb|latexdiff-vc| という機能を使えば \verb|tex| ファイルの差分を PDF ファイルに反映できます．
 先生や先輩からの添削・指摘を受け，文章のどこがどのように変わったかを確認する際に便利です．
@@ -70,5 +75,14 @@ $ latexdiff-vc -e utf8 -t CFONT --flatten --git --force -r HEAD^ main.tex
 これに関してはデバッグしたファイルを \href{https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows}{\texttt{latexdiff-vc\_windows}} で公開しているので，Windows ユーザーは \verb|latexdiff-vc| を使用する前に \href{https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows?tab=readme-ov-file#readme}{\texttt{README}} をよく読んで，\verb|latexdiff-vc.pl| を TeX Live 標準のものから置き換えてください．
 指定するコミットに対応して出力されるファイル名も異なるので注意してください．
 
+\begin{tcolorbox}[title={第~\ref{ch:check}~章の参考文献}, colback=yellow!5!white, colframe=yellow!75!black, coltitle=black]
+    \begin{itemize}
+        \item \href{https://github.com/ryo-ARAKI/thesis_template_ou_es}{GitHub: \texttt{thesis\_template\_ou\_es}}
+        \item \href{https://www.overleaf.com/learn/latex/Articles/How_to_use_latexdiff_on_Overleaf}{Overleaf: How to use latexdiff on Overleaf}
+        \item \href{https://nekketsuuu.github.io/entries/2017/01/27/latexdiff-vc.html}{Gitで管理しているLaTeXのdiffをpdfで見る(TeXLive2015版)}
+        \item \href{https://abenori.blogspot.com/2016/06/latexdiff.html}{latexdiff}
+        \item \href{https://github.com/Yuki-MATSUKAWA/latexdiff-vc_windows}{GitHub: \texttt{latexdiff-vc\_windows}}
+    \end{itemize}
+\end{tcolorbox}
 
 
