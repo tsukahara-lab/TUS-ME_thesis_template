@@ -102,19 +102,19 @@ Git を利用していない人は `latexdiff` を，Git を利用している�
 ### `latexdiff` を用いた差分管理
 
 `latexdiff` を用いた差分ファイルの作成方法を説明します．
-修正前のファイル名を `main-old.tex`，修正後のファイル名を `main-new.tex` とすると，
+修正前のファイル名を `old.tex`，修正後のファイル名を `new.tex` とすると，
 
 ```bash
-latexdiff -e utf8 -t CFONT --flatten main-old.tex main-new.tex > main-diff.tex
-latexmk main-diff.tex
+latexdiff -e utf8 -t CFONT --flatten old.tex new.tex > diff.tex
+latexmk diff.tex
 ```
 
-のようにすれば差分ファイル `main-diff.tex` から `main-diff.pdf` ファイルを生成できます．
+のようにすれば差分ファイル `diff.tex` から `diff.pdf` ファイルを生成できます．
 変更前の消した箇所が小さい赤字で，変更後の新しく入れた箇所が通常サイズの青字で表示されます．
 ただし，修正があまりにも大きい場合はうまくコンパイルできないことがあるので気をつけましょう．
 `--flatten` オプションを使用することで，`\input{}` の部分を実際に読み込むファイルに置き換えてくれます．
 しかし，`\input{}` で読み込むファイル名を変えておかないと古い内容と新しい内容を比較できません．
-そのため，差分を取る基準となる時点で `chapter/` を `chapter-old/` などに変更し，`main-old.tex` 内で
+そのため，差分を取る基準となる時点で `chapter/` を `chapter-old/` などに変更し，`old.tex` 内で
 
 ```LaTeX
 %%% 序論 %%%
@@ -137,6 +137,7 @@ latexmk main-diff.tex
 ```
 
 のようにすることで章ごとの変更を正しく反映できます．
+このとき，`new.tex` の中身は `\input{chapter/introduction.tex}` のままで大丈夫です．
 
 ### `latexdiff-vc` を用いた差分管理
 
