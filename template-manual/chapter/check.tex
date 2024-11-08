@@ -53,21 +53,40 @@ $ latexmk diff.tex
 のようにすれば差分ファイル \verb|diff.tex| から \verb|diff.pdf| ファイルを生成できます．
 変更前の消した箇所が\textcolor{red}{\scriptsize 小さい赤字}で，変更後の新しく入れた箇所が\textcolor{blue}{\sffamily 通常サイズの青字}で表示されます．
 ただし，修正があまりにも大きい場合はうまくコンパイルできないことがあるので気をつけましょう．
+\verb|--flatten| オプションを使用することで，\verb|\input{}| の部分を実際に読み込むファイルに置き換えてくれます．
+しかし，\verb|\input{}| で読み込むファイル名を変えておかないと古い内容と新しい内容を比較できません．
+そのため，差分を取る基準となる時点で \verb|chapter/| を \verb|chapter-old/| などの名称でコピーを作成し，\verb|old.tex| 内で
+\begin{verbatim}
+\input{chapter-old/introduction.tex}
+
+\input{chapter-old/method.tex}
+
+\input{chapter-old/result.tex}
+
+\input{chapter-old/discussion.tex}
+
+\input{chapter-old/conclusion.tex}
+
+\input{chapter-old/acknowledgement.tex}
+\end{verbatim}
+のようにすることで章ごとの変更を正しく反映できます．
+このとき，\verb|new.tex| の中身は \verb|\input{chapter/introduction.tex}| のままで大丈夫です．
 
 \section{\texttt{latexdiff-vc}}
 \label{sec:latexdiff-vc}
 
+\verb|latexdiff| は \verb|tex| ファイルの差分を PDF ファイルに書き起こせる便利なツールですが，ファイル名を変更するなどの作業はやはり面倒です．
 \verb|latexdiff-vc| を使えば Git で管理している任意のコミットとの差分を取ることができ大変便利です．
 Git ユーザーは \verb|latexdiff-vc| を使いましょう．
 例えば現在の \verb|main.tex| と一つ前のコミットとの差分を見たいときは，
 \begin{tcolorbox}[title={\texttt{latexdiff-vc} を使用した差分ファイルの生成方法}]
 \begin{verbatim}
-$ latexdiff-vc -e utf8 -t CFONT --flatten --git --force -r HEAD^ main.tex
+$ latexdiff-vc -e utf8 -t CFONT --flatten --git --force -r HEAD~ main.tex
 \end{verbatim}
 \end{tcolorbox}
 \noindent
 とすることで差分ファイルを生成できます．
-指定するコミットを変える際は \verb|HEAD^| を置き換えてください．
+指定するコミットを変える際は \verb|HEAD~| を置き換えてください．
 任意のコミットのハッシュ値を指定することもできます．
 生成される差分 \verb|tex| ファイルの名前は指定したコミットによって異なります．
 
