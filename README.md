@@ -102,29 +102,55 @@ Git を利用していない人は `latexdiff` を，Git を利用している�
 ### `latexdiff` を用いた差分管理
 
 `latexdiff` を用いた差分ファイルの作成方法を説明します．
-修正前のファイル名を `old.tex`，修正後のファイル名を `new.tex` とすると，
+修正前のファイル名を `main-old.tex`，修正後のファイル名を `main-new.tex` とすると，
 
 ```bash
-latexdiff -e utf8 -t CFONT --flatten old.tex new.tex > diff.tex
-latexmk diff.tex
+latexdiff -e utf8 -t CFONT --flatten main-old.tex main-new.tex > main-diff.tex
+latexmk main-diff.tex
 ```
 
-のようにすれば差分ファイル `diff.tex` から `diff.pdf` ファイルを生成できます．
+のようにすれば差分ファイル `main-diff.tex` から `main-diff.pdf` ファイルを生成できます．
 変更前の消した箇所が小さい赤字で，変更後の新しく入れた箇所が通常サイズの青字で表示されます．
 ただし，修正があまりにも大きい場合はうまくコンパイルできないことがあるので気をつけましょう．
+`--flatten` オプションを使用することで，`\input{}` の部分を実際に読み込むファイルに置き換えてくれます．
+しかし，`\input{}` で読み込むファイル名を変えておかないと古い内容と新しい内容を比較できません．
+そのため，差分を取る基準となる時点で `chapter/` を `chapter-old/` などに変更し，`main-old.tex` 内で
+
+```LaTeX
+%%% 序論 %%%
+\input{chapter-old/introduction.tex}
+
+%%% 計算手法 %%%
+\input{chapter-old/method.tex}
+
+%%% 結果 %%%
+\input{chapter-old/result.tex}
+
+%%% 考察 %%%
+\input{chapter-old/discussion.tex}
+
+%%% 結論 %%%
+\input{chapter-old/conclusion.tex}
+
+%%% 謝辞 %%%
+\input{chapter-old/acknowledgement.tex}
+```
+
+のようにすることで章ごとの変更を正しく反映できます．
 
 ### `latexdiff-vc` を用いた差分管理
 
+`latexdiff` は `tex` ファイルの差分を PDF ファイルに書き起こせる便利なツールですが，ファイル名を変更するなどの作業はやはり面倒です．
 `latexdiff-vc` を使えば Git で管理している任意のコミットとの差分を取ることができ大変便利です．
 Git ユーザーは `latexdiff-vc` を使いましょう．
 例えば現在の `main.tex` と一つ前のコミットとの差分を見たいときは，
 
 ```bash
-latexdiff-vc -e utf8 -t CFONT --flatten --git --force -r HEAD^ main.tex
+latexdiff-vc -e utf8 -t CFONT --flatten --git --force -r HEAD~ main.tex
 ```
 
 とすることで差分ファイルを生成できます．
-指定するコミットを変える際は `HEAD^` を置き換えてください．
+指定するコミットを変える際は `HEAD~` を置き換えてください．
 任意のコミットのハッシュ値を指定することもできます．
 生成される差分 `tex` ファイルの名前は指定したコミットによって異なります．
 
