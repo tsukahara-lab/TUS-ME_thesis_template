@@ -133,6 +133,28 @@ $sin x$ などと書くことのないように気をつけましょう．
 \end{align}
 \verb|align| 環境では \verb|&| の位置で揃えるように制御しています．
 式~\eqref{eq:cosA}--\eqref{eq:cosC} は $=$ の前に \verb|&| を置いているので，3 式の位置は $=$ の直前で揃っていることになります．
+\verb|align| 環境を使えば
+\begin{align}
+    \sin 2\alpha &= \sin(\alpha + \alpha) \notag \\
+    &= \sin\alpha\cos\alpha + \cos\alpha\sin\alpha \notag \\
+    &= 2\sin\alpha\cos\alpha
+    \label{eq:double-sin}
+\end{align}
+のように途中式も入れられます．
+式番号を振らなくていい行は \verb|\notag| コマンドを使用します．
+\begin{align}
+    \varepsilon\left.\ab(\pdv[order=2]{\tilde{\phi}_1}{t} + g\pdv{\tilde{\phi}_1}{z})\right|_{z=0} &+ \varepsilon^2\left[\pdv[order=2]{\tilde{\phi}_2}{t} + g\pdv{\tilde{\phi}_2}{z} + \tilde{\eta}_1\pdv{}{z}\ab(\pdv[order=2]{\tilde{\phi}_1}{t} + g\pdv{\tilde{\phi}_1}{z})\right. \notag \\
+    &\left.\left.+ \pdv{}{t}\ab\{\ab(\pdv{\tilde{\phi}_1}{x}) + \ab(\pdv{\tilde{\phi}_1}{z})^2\}\right]\right|_{z=0} = 0
+    \label{eq:multiple-lines}
+\end{align}
+式~\eqref{eq:multiple-lines} は式の途中で改行を挟む場合の処理方法を示しています．
+ただしソースコードは一部，第~\ref{ssec:physics2}~節で紹介する \verb|physics2| パッケージを使用しているので注意してください．
+式~\eqref{eq:multiple-lines} で注目すべき箇所は大括弧 $[\quad]$ の途中で改行を挟んでいる点，代入記法として $|_{z=0}$ を使用している点の二箇所です．
+一つの行内で \verb|\left| コマンドに対応する \verb|\right| コマンドが無いとエラーとなります．
+大括弧 $[\quad]$ 内で改行する際は一行目で \verb|\left[| に対して \verb|\right.| を使用し，二行目で \verb|\right]| に対して \verb|\left.| を使用することで対処しています．
+\verb|\left.| と \verb|\right.| は何も出力されません．
+\verb|\left| または \verb|\right| に対応するものを用意するために使用します．
+同様に，代入記法としての $|_{z=0}$ は \verb"\right|_{z=0}" に対して \verb|\left.| を使用しています．
 
 場合分けのある数式は \verb|cases| 環境が便利です．
 式~\eqref{eq:Kronecker} は Kronecker のデルタです．
