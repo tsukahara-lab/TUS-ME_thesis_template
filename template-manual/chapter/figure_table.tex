@@ -98,9 +98,6 @@
 括弧をデフォルトで出力するような設定もできますが，図~\ref{fig:two_figures}(\subref{subfig:two_figures_a}, \subref{subfig:two_figures_b}) や図~\ref{fig:four_figures}(\subref{subfig:four_figures_a}--\subref{subfig:four_figures_c}) のように複数のサブ図を指定するときに不便なので括弧を外してあります．
 もしデフォルトで括弧を出力する設定に変更したい場合は \verb|settings.sty| 内でコメントアウトしている \verb|\renewcommand{\thesubfigure}{(\alph{subfigure})}| を有効化してください．
 
-
-
-
 %%% 図を 2 枚横並びで配置するときはこれをコピーアンドペーストすればよい．
 \begin{figure}[tp]
     \centering
@@ -296,6 +293,20 @@ EPS ファイルを PDF ファイルに変換する Perl スクリプト \verb|e
 パネル~(\subref{subfig:figcomp2_png}) は全てラスターの画像（PNG）なので文字を抽出することはできません．
 ただ，図~\ref{fig:figure_comparison2}(\subref{subfig:figcomp2_pdf}) のような図を作るのは少し技術を要するので，重い画像ファイルの場合は (\subref{subfig:figcomp2_png}) のようなラスター画像でもいいでしょう．
 
+\subsection{画像の省略によるタイプセットの高速化}
+\label{ssec:draft}
+
+挿入する画像の枚数が増えると，その分タイプセットにかかる時間も増えていきます．
+学位論文くらいの長さになるとタイプセットに 1, 2 分程度かかるのは覚悟しておきましょう．
+先生や先輩に添削をお願いする際や提出時はもちろん全ての図が PDF ファイルに貼り付けてある状態でないといけませんが，自分で文章を書き進めている段階では図の配置さえわかっていれば問題ないことも多いです．
+メイン文書である \verb|main.tex| の冒頭の \verb|\documentclass| は文書の主要な構造とレイアウトを決定する命令です．
+このテンプレートを使用している皆さんが \verb|\documentclass| を書き換える場面は基本的にありませんが，オプションの最終行にある \verb|draft| に注目してください．
+この \verb|draft| オプションを有効化する（コメントアウトを外す）と，出力する PDF ファイル中の画像が全て省略され，枠のみの表示となります．
+このように画像を省略することでタイプセットを高速化できます．
+画像の挿入は省略しても，画像の配置やサイズ自体は表現できるのでレイアウトが崩れるといった心配もありません．
+他人に見せる用ではなく，ただ文章を書き進めているだけの段階では \verb|draft| を有効化することをおすすめします．
+ただし，添削時や提出時に \verb|draft| をコメントアウトすることを忘れないようにしてください．
+
 
 \section{表の配置}
 \label{sec:table}
@@ -305,7 +316,7 @@ EPS ファイルを PDF ファイルに変換する Perl スクリプト \verb|e
 特に表のセルの数が多くなると行をいくつも増やさなければいけないのでかなりの労力がかかります．
 簡単に \LaTeX の表を作ってくれるツールとして，Tables Generator\footnote{Tables Generator, \textless\url{https://www.tablesgenerator.com/}\textgreater} があります．
 また，\href{https://www.overleaf.com/blog/major-feature-news-add-and-edit-tables-without-writing-code}{2023 年 9 月 27 日に Overleaf に入ったアップデート}で直感的な表の作成が可能になりました．
-Overleaf の表作成機能はかなり便利だと思うので，ローカルで \LaTeX 文書を書いているときに表作成時だけでも Overleaf を立ち上げるとストレス無く表を作れると思います．
+Overleaf の表作成機能はかなり便利なので，ローカルで \LaTeX 文書を書いているときに表作成時だけでも Overleaf を立ち上げるとストレス無く表を作れます．
 
 ここでは \verb|tabular| 環境を用いた表作成の方法と \verb|tblr| 環境を用いた表作成の方法の両方を記載します．
 \verb|tabular| 環境は古くから存在している表作成の方法ですが，カスタマイズ性が低く，非常に使いにくいです．
@@ -336,11 +347,11 @@ Overleaf の表作成機能はかなり便利だと思うので，ローカル�
 %%%
 
 日本機械学会が推奨する表形式を満たしたサンプルを表~\ref{table:tabular} に示します．
-コードは表~\ref{table:tabular} の該当箇所を確認してください．
+具体的なコードは \verb|figure_table.tex| 内の表~\ref{table:tabular} の該当箇所を確認してください．
 表を作成するときは \verb|table| 環境の中に \verb|tabular| 環境を作ります．
 \verb|table| 環境は，表やキャプション，ラベルを全て含めた表全体の制御を行い，\verb|tabular| 環境は表の各セルの制御を行います．
-\verb|table| 環境は \verb|figure| 環境と同様，\verb|h|, \verb|t|, \verb|b|, \verb|p|, \verb|H| による位置制御を行います．
-表の場合は図と異なり，キャプションは上に付けます．
+\verb|table| 環境では \verb|figure| 環境と同様，\verb|h|, \verb|t|, \verb|b|, \verb|p|, \verb|H| による位置制御を行います．
+図の場合はキャプションを下に付けますが，表の場合はキャプションを上に付けます．
 \verb|tabular| 環境内でセルの文字揃え位置制御は \verb|lcr| で行います．
 
 \begin{itemize}

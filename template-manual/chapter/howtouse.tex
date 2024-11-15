@@ -1,8 +1,8 @@
 \chapter{環境構築・操作方法}
 \label{ch:howtouse}
 
-第~\ref{ch:howtouse}~章では \TeX/\LaTeX 環境構築の方法と \verb|pdf| ファイルの生成までのプロセスを説明します．
-第~\ref{sec:environment}~節では TeX Live のインストール方法について，第~\ref{sec:editor}~節では \TeX/\LaTeX 対応のテキストエディター，特に VS Code の場合について述べ，第~\ref{sec:makepdf}~節では \verb|pdf| ファイル生成までに必要なコマンドや \verb|latexmk| の使い方，クラウド上での \LaTeX の使用について述べます．
+第~\ref{ch:howtouse}~章では \TeX/\LaTeX 環境構築の方法と PDF ファイルの生成までのプロセスを説明します．
+第~\ref{sec:environment}~節では TeX Live のインストール方法について，第~\ref{sec:editor}~節では \TeX/\LaTeX 対応のテキストエディター，特に VS Code の場合について述べ，第~\ref{sec:makepdf}~節では PDF ファイル生成までに必要なコマンドや \verb|latexmk| の使い方，クラウド上での \LaTeX の使用について述べます．
 
 \section{環境構築}
 \label{sec:environment}
@@ -86,10 +86,10 @@ VS Code の詳細な使用方法はここでは割愛しますが，最低限の
 取り扱う画像ファイルが多くなってきた場合は \href{https://marketplace.visualstudio.com/items?itemName=kisstkondoros.vscode-gutter-preview}{Image preview} があると便利です．
 また，VS Code の設定ファイル \verb|settings.json|\footnote{\texttt{settings.json} の一例 \textless\url{https://gist.github.com/Yuki-MATSUKAWA/465ecd0ebcbd157e48ac1e3619c9a08c}\textgreater を紹介しておきます．\LaTeX 以外の設定も含まれているので設定の取捨選択は読者の皆さんにお任せします．} でさまざまな設定を書き加えることができます．
 
-\section{\texttt{pdf}ファイルの生成}
+\section{PDF ファイルの生成}
 \label{sec:makepdf}
 
-ここでは実際に \verb|pdf| ファイル（このテンプレートでは \verb|main.pdf|）を生成する過程を説明します．
+ここでは実際に PDF ファイル（このテンプレートでは \verb|main.pdf|）を生成する過程を説明します\footnote{この過程を「タイプセット」と言います．コンパイルのことだと思ってください．}．
 これまでにある程度 \LaTeX を使った経験のある方は必要な箇所だけ読めばいい（全部わかっていれば読む必要は無い）と思います．
 と言っても，\LaTeX 初心者も全部を読む必要は無く，\textcolor{red}{「一旦このテンプレートで学位論文を書き上げたい」ということを考えている人は第~\ref{ssec:terminal}~節の「\LuaLaTeX の場合（このテンプレートはこちら）」と第~\ref{ssec:latexmk}~節を読めば大丈夫}です．
 また，操作の途中でエラーが発生した場合は \verb|log| ファイルのメッセージを確認するようにしましょう．
@@ -100,7 +100,7 @@ VS Code の詳細な使用方法はここでは割愛しますが，最低限の
 \label{ssec:terminal}
 
 第~\ref{ssec:latexmk}~節の \verb|latexmk| を使用すればターミナル上での操作は非常に簡単になりますが，何か問題が発生した際にデバッグをすることを考えるとターミナル上での操作も覚えておく必要があります．
-実際に \verb|pdf| ファイルを生成するときは \verb|latexmk| を使用すればいいのですが，まずはどのようなプロセスで実行されているのかを把握しておきましょう．
+実際に PDF ファイルを生成するときは \verb|latexmk| を使用すればいいのですが，まずはどのようなプロセスで実行されているのかを把握しておきましょう．
 
 \subsubsection*{\LuaLaTeX の場合（このテンプレートはこちら）}
 
@@ -122,17 +122,17 @@ $ lualatex main （複数回）
 次に，参考文献を読み込むために \verb|upbibtex main| とターミナルに入力します．
 \BibTeX を使わない処理をしているときはこの操作は不要です．
 これだけだとまだ \LaTeX を使う大きなメリットである相互参照の機能を使えていません．
-\LaTeX で相互参照を有効にするには複数回のコンパイルが必要です．
-相互参照に失敗した場合やコンパイル回数が足りていない場合は参照箇所が ? や ?? のように表示されるはずです．
-そのため，\upBibTeX を読み込んだ後に ? や ?? が消えるまで複数回コンパイルしましょう．
+\LaTeX で相互参照を有効にするには複数回の \verb|lualatex| の実行が必要です．
+相互参照に失敗した場合や実行回数が足りていない場合は参照箇所が ? や ?? のように表示されるはずです．
+そのため，\upBibTeX を読み込んだ後に ? や ?? が消えるまで複数回 \verb|lualatex| を実行しましょう．
 これで \verb|main.pdf| を作成できました．
 
 \subsubsection*{レガシー \LaTeX の場合}
 
-モダン \LaTeX とレガシー \LaTeX の最大の違いは，\verb|pdf| ファイルを直接生成できるか否かです．
+モダン \LaTeX とレガシー \LaTeX の最大の違いは，PDF ファイルを直接生成できるか否かです．
 \pLaTeX や \upLaTeX のようなレガシー \LaTeX は一度 \verb|dvi| ファイルという中間ファイルを生成し，その後 \verb|dvi| ファイルを \verb|pdf| 等の適切なファイル形式に変換する作業が必要です（\verb|dvipdfmx|）．
 これからの時代はどんどんモダン \LaTeX に置き換えられていくと思いますが，まだ対応していない学会・論文テンプレートも多く存在しているのでここで紹介しておきます．
-また，\pdfLaTeX は本来レガシー \LaTeX ですが，例外的に直接 \verb|pdf| ファイルを生成でき，国際雑誌論文テンプレートではよく使用されています．
+また，\pdfLaTeX は本来レガシー \LaTeX ですが，例外的に直接 PDF ファイルを生成でき，国際雑誌論文テンプレートではよく使用されています．
 ただし，\pdfLaTeX は日本語に対応していないため，日本語を使用したい人は \LuaLaTeX を使うようにしましょう．
 どうしても \pdfLaTeX で日本語を使用したい（国際雑誌論文執筆の下書き等）場合は第~\ref{ssec:pdflatex_jp}~節を参照してください．
 
@@ -178,7 +178,7 @@ $ ptex2pdf -l -u main （複数回）
 \end{verbatim}
 \end{tcolorbox}
 
-\pLaTeX はレガシー \LaTeX ですが例外的に直接 \verb|pdf| を出力できます（\verb|dvipdfmx| が不要）．
+\pLaTeX はレガシー \LaTeX ですが例外的に直接 PDF を出力できます（\verb|dvipdfmx| が不要）．
 日本語には対応していませんが，国際雑誌論文では広く使用されています．
 どうしても \pdfLaTeX で日本語を使用したい場合は次の第~\ref{ssec:pdflatex_jp}~節を参照．
 使い方は下記の通り．
@@ -195,8 +195,8 @@ $ pdflatex main （複数回）
 \subsection{\pdfLaTeX で日本語を使用する場合}
 \label{ssec:pdflatex_jp}
 
-国際雑誌論文等のコンパイルは \pdfLaTeX が想定されていることがあります．
-\pdfLaTeX はレガシー \LaTeX でありながらも直接 \verb|pdf| ファイルを生成できることから海外では広く使用されていますが，残念ながら日本語に対応していません．
+国際雑誌論文等のタイプセットは \pdfLaTeX が想定されていることがあります．
+\pdfLaTeX はレガシー \LaTeX でありながらも直接 PDF ファイルを生成できることから海外では広く使用されていますが，残念ながら日本語に対応していません．
 しかし，英語論文の下書きとして日本語を使いたい場合があると思います．
 その際に，見た目が少し悪くなるものの \pdfLaTeX で日本語を使用する方法が一応あるのでここで紹介しておきます．
 
@@ -247,9 +247,9 @@ $ latexmk main
 
 これで随分楽になったと思いますが，VS Code を使っている皆さんはもっと楽にできます．
 私が使っている \verb|settings.json| の中で \LaTeX のビルド時に \verb|latexmk| で実行するように設定してあるので，Windows の場合は \verb|Ctrl|+\verb|Alt|+\verb|B| で同様の操作を行ってくれます．
-\verb|settings.json| の設定を変更して自動コンパイルにすることもできます．
-また，Windows で \verb|pdf| ファイルのプレビューを見たい場合は \verb|Ctrl|+\verb|Alt|+\verb|V| の操作で表示できます．
-作成した \verb|pdf| ファイルは，自動生成される \verb|latex.out/| ディレクトリの下に入ります．
+\verb|settings.json| の設定を変更して自動タイプセットにすることもできます．
+また，Windows で PDF ファイルのプレビューを見たい場合は \verb|Ctrl|+\verb|Alt|+\verb|V| の操作で表示できます．
+作成した PDF ファイルは，自動生成される \verb|latex.out/| ディレクトリの下に入ります．
 \verb|Ctrl| キーを押しながらマウスでプレビューをクリックすると該当箇所のソースコードに飛べるのも便利な機能です．
 
 % \subsection{クラウド上で使う方法}
