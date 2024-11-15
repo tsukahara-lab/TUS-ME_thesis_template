@@ -22,7 +22,7 @@
 さらに詳しい情報が欲しい人は書籍やインターネット上の情報を参考にしてください（第~\ref{ch:information}~章を参照）．
 また，この \verb|main.pdf| はモダンな \LaTeX である \LuaLaTeX で作成しているほか，\verb|jlreq| というドキュメントクラスや \verb|unicode-math| など最新の機能をふんだんに使用しています．
 これからこのテンプレートを使い始めるという方はモダン \LaTeX を使えるようになっておきましょう．
-しかし，学会の講演論文執筆の際はこれらの機能に対応していない場合もあるため，念のためレガシーな \LaTeX のコンパイル方法等についても説明をしています．
+しかし，学会の講演論文執筆の際はこれらの機能に対応していない場合もあるため，念のためレガシーな \LaTeX のタイプセット方法等についても説明をしています．
 さらに，このテンプレートでは \LaTeX に関する説明はもちろんのこと，学生が論文を書くうえで躓きやすい箇所をまとめています．
 特に表記に関して細かく記載しているので参考になる箇所は多いかと思います．
 
@@ -51,7 +51,7 @@
         \verb|README.md|    & GitHub リポジトリの説明書 \\
         \verb|jsme.bst|     & 日本機械学会対応の \BibTeX スタイルファイル \\
         \verb|latexmkrc|    & 詳細は第~\ref{ssec:latexmk}~節を参照 \\
-        \verb|main.pdf|     & \verb|main.tex| をコンパイルした \verb|pdf| ファイル \\
+        \verb|main.pdf|     & \verb|main.tex| をタイプセットした \verb|pdf| ファイル \\
         \verb|main.tex|     & メインの文書ファイル（これを編集すればよい） \\
         \verb|mybib_en.bib| & 英語の参考文献リストファイル \\
         \verb|mybib_jp.bib| & 日本語の参考文献リストファイル \\
@@ -71,9 +71,9 @@
 \verb|main.tex| を適切なテキストエディター（第~\ref{sec:editor}~節を参照）で開いてもらうと，\verb|\input{chapter/xxx.tex}| と書かれた文字列が複数目に入ってくると思います．
 学位論文のような長い文書を一つの \verb|tex| ファイルに書き込むとわかりにくくなるので，\verb|chapter/| 以下のディレクトリに章（chapter）ごとに分割した \verb|tex| ファイルを置いておき，それを \verb|\input{}| コマンドで読み込むようにしています．
 皆さんが学位論文を執筆する際にもこのように \verb|tex| ファイルを分割しておきましょう．
-また，コンパイルの際には \verb|latexmk| という機能を使用し，その際 \verb|latexmkrc| が必要になります．
-\verb|latexmk| でコンパイルした際のファイル出力先を \verb|latex.out/| に設定してあります．
-\verb|latexmk| の使用方法も含め，具体的なコンパイルの方法等については第~\ref{ch:howtouse}~章を参照してください．
+また，タイプセットの際には \verb|latexmk| という機能を使用し，その際 \verb|latexmkrc| が必要になります．
+\verb|latexmk| でタイプセットした際のファイル出力先を \verb|latex.out/| に設定してあります．
+\verb|latexmk| の使用方法も含め，具体的なタイプセットの方法等については第~\ref{ch:howtouse}~章を参照してください．
 
 \verb|jsme.bst|, \verb|mybib_en.bib|, \verb|mybib_jp.bib| は参考文献の出力に使用するファイル群です．
 具体的な使用方法は第~\ref{ch:bibtex}~章を参照してください．
