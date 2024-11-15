@@ -24,7 +24,7 @@ ISO イメージからインストールの方が問題は発生しにくいか�
 \subsubsection*{ISO イメージからインストール}
 
 \begin{enumerate}
-    \item \href{http://mirror.ctan.org/systems/texlive/Images/}{ミラーサイト}から \verb|texlive.iso| をダウンロード．
+    \item \href{http://mirror.ctan.org/systems/texlive/Images/}{ミラーサイト} から \verb|texlive.iso| をダウンロード．
     \item ダブルクリックすると BD-ROM/DVD-ROM ドライブとしてマウントされる（「セキュリティの警告」が出た場合は「開く」を選択$\to$エクスプローラーで開く）．
     \item 共通事項~\ref{enum:bat}へ．
 \end{enumerate}
@@ -33,7 +33,7 @@ ISO イメージからインストールの方が問題は発生しにくいか�
 \subsubsection*{ネットワークインストーラーからのインストール}
 
 \begin{enumerate}
-    \item \href{http://mirror.ctan.org/systems/texlive/tlnet/}{ミラーサイト}から \verb|install-tl.zip| をダウンロード．
+    \item \href{http://mirror.ctan.org/systems/texlive/tlnet/}{ミラーサイト} から \verb|install-tl.zip| をダウンロード．
     \item \verb|install-tl.zip| を展開．
     \item 共通事項~\ref{enum:bat}へ．
 \end{enumerate}
@@ -69,9 +69,20 @@ ISO イメージからインストールの方が問題は発生しにくいか�
 \subsection{macOSの場合}
 \label{ssec:mac}
 
-macOS の場合は Homebrew でのインストールが簡単です．
+macOS の場合は MacTeX という，TeX Live をベースとした macOS 用のディストリビューションを使用します．
+Homebrew が入っている人は Homebrew を使用すると楽です．
 \begin{verbatim}
     $ brew install --cask mactex-no-gui
+    $ sudo tlmgr update --self --all
+    $ sudo tlmgr paper a4
+\end{verbatim}
+Homebrew が入っていない人は以下の通り．
+\begin{enumerate}
+    \item \href{https://mirror.ctan.org/systems/mac/mactex/}{ミラーサイト} から \verb|MacTeX.pkg| をダウンロードする．
+    \item ダウンロードした \verb|MacTeX.pkg| をダブルクリックしてインストールする．
+    \item ターミナルを起動して下記コマンドを実行．
+\end{enumerate}
+\begin{verbatim}
     $ sudo tlmgr update --self --all
     $ sudo tlmgr paper a4
 \end{verbatim}
@@ -270,6 +281,8 @@ $ latexmk main
 \begin{tcolorbox}[title={第~\ref{ch:howtouse}~章の参考文献}, colback=yellow!5!white, colframe=yellow!75!black, coltitle=black]
     \begin{itemize}
         \item 奥村晴彦, 黒木裕介,［改訂第 9 版］\LaTeX 美文書作成入門, 技術評論社 (2023), pp.~6--18, 173--176, 331--347, 360, 361.
+        \item \href{https://texwiki.texjp.org/?TeX%20Live%2FWindows}{\TeX{} Wiki: TeX Live/Windows}
+        \item \href{https://texwiki.texjp.org/?MacTeX}{\TeX{} Wiki: MacTeX}
         \item \href{https://texwiki.texjp.org/?Latexmk}{\TeX{} Wiki: Latexmk}.
         \item \href{https://www2.yukawa.kyoto-u.ac.jp/~koudai.sugimoto/dokuwiki/doku.php?id=latex:latexmk%E3%81%AE%E8%A8%AD%E5%AE%9A}{雑多な記録：\texttt{latexmk} の設定}．
         \item \href{https://qiita.com/zr_tex8r/items/cdaac1500718eb9fa330}{Qiita: pdfLaTeX + CJK パッケージで日本語する方法}
