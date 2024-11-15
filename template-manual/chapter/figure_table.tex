@@ -316,7 +316,7 @@ EPS ファイルを PDF ファイルに変換する Perl スクリプト \verb|e
 特に表のセルの数が多くなると行をいくつも増やさなければいけないのでかなりの労力がかかります．
 簡単に \LaTeX の表を作ってくれるツールとして，Tables Generator\footnote{Tables Generator, \textless\url{https://www.tablesgenerator.com/}\textgreater} があります．
 また，\href{https://www.overleaf.com/blog/major-feature-news-add-and-edit-tables-without-writing-code}{2023 年 9 月 27 日に Overleaf に入ったアップデート}で直感的な表の作成が可能になりました．
-Overleaf の表作成機能はかなり便利だと思うので，ローカルで \LaTeX 文書を書いているときに表作成時だけでも Overleaf を立ち上げるとストレス無く表を作れると思います．
+Overleaf の表作成機能はかなり便利なので，ローカルで \LaTeX 文書を書いているときに表作成時だけでも Overleaf を立ち上げるとストレス無く表を作れます．
 
 ここでは \verb|tabular| 環境を用いた表作成の方法と \verb|tblr| 環境を用いた表作成の方法の両方を記載します．
 \verb|tabular| 環境は古くから存在している表作成の方法ですが，カスタマイズ性が低く，非常に使いにくいです．
@@ -347,11 +347,11 @@ Overleaf の表作成機能はかなり便利だと思うので，ローカル�
 %%%
 
 日本機械学会が推奨する表形式を満たしたサンプルを表~\ref{table:tabular} に示します．
-コードは表~\ref{table:tabular} の該当箇所を確認してください．
+具体的なコードは \verb|figure_table.tex| 内の表~\ref{table:tabular} の該当箇所を確認してください．
 表を作成するときは \verb|table| 環境の中に \verb|tabular| 環境を作ります．
 \verb|table| 環境は，表やキャプション，ラベルを全て含めた表全体の制御を行い，\verb|tabular| 環境は表の各セルの制御を行います．
-\verb|table| 環境は \verb|figure| 環境と同様，\verb|h|, \verb|t|, \verb|b|, \verb|p|, \verb|H| による位置制御を行います．
-表の場合は図と異なり，キャプションは上に付けます．
+\verb|table| 環境では \verb|figure| 環境と同様，\verb|h|, \verb|t|, \verb|b|, \verb|p|, \verb|H| による位置制御を行います．
+図の場合はキャプションを下に付けますが，表の場合はキャプションを上に付けます．
 \verb|tabular| 環境内でセルの文字揃え位置制御は \verb|lcr| で行います．
 
 \begin{itemize}
