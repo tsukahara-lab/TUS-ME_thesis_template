@@ -6,7 +6,7 @@
 %%%               v1.0.0 Yuki MATSUKAWA 15 Dec. 2021
 %%%               v2.0.0 Yuki MATSUKAWA 14 Dec. 2023
 %%%               v3.0.0 Yuki MATSUKAWA 07 Nov. 2024
-%%%               v3.0.1 Yuki MATSUKAWA 29 Nov. 2024
+%%%               v3.0.2 Yuki MATSUKAWA 03 Feb. 2024
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -47,6 +47,9 @@
 %%% 関連する図を並べる際に使用
 % Fig. xxx の後ろをコロンではなくスペースに設定
 \usepackage[labelsep=quad]{caption}
+% キャプションの文字サイズを 9.5 pt に変更（日本機械学会の規定）
+\DeclareCaptionFormat{custom}{\fontsize{9.5pt}{11pt}\selectfont#1#2#3}
+\captionsetup{format=custom}
 % サブ図のキャプションの出力を (a) xxx に設定
 \usepackage[labelsep=space]{subcaption}
 % サブ図参照時の出力を括弧ありをデフォルトにしたい場合は下記コマンドを使用
@@ -107,7 +110,7 @@
 %%% 文字数・行数設定 %%%
 % 1 行あたり文字数の指定
 \makeatletter
-\def\mojiparline#1{
+\def\mojiperline#1{
     \newcounter{mpl}
     \setcounter{mpl}{#1}
     \@tempdima=\linewidth
@@ -119,7 +122,7 @@
 }
 % 1 ページあたり行数の指定
 \makeatother
-\def\linesparpage#1{
+\def\linesperpage#1{
     \baselineskip=\textheight
     \divide\baselineskip by #1
 }

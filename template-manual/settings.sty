@@ -56,6 +56,9 @@
 %%% 関連する図を並べる際に使用
 % Fig. xxx の後ろをコロンではなくスペースに設定
 \usepackage[labelsep=quad]{caption}
+% キャプションの文字サイズを 9.5 pt に変更（日本機械学会の規定）
+\DeclareCaptionFormat{custom}{\fontsize{9.5pt}{11pt}\selectfont#1#2#3}
+\captionsetup{format=custom}
 % サブ図のキャプションの出力を (a) xxx に設定
 \usepackage[labelsep=space]{subcaption}
 % サブ図参照時の出力を括弧ありをデフォルトにしたい場合は下記コマンドを使用
