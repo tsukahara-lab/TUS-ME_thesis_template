@@ -108,7 +108,7 @@ This is a pen.
 したがって，$u_\theta^2$ は \verb|u_\theta^2| と書きます．
 ここで注意点として，添え字が $u_\theta^2$ のように一文字であれば問題無いのですが，$R_{ij}$ のように二文字以上の場合は \verb|R_{ij}| のように括弧 \verb|{}| で囲んでください．
 分数は \verb|\frac{分子}{分母}| で書き，常微分・偏微分の場合も同様です．
-$\rho$ や $\theta$ のようなギリシャ文字も出力できるほか，$\nabla$ や $\sin$，$\log$ のような数学で使う関数の類もコマンドが存在しています．
+表~\ref{table:greek} のように $\rho$ や $\theta$ のといったギリシャ文字も出力できるほか，$\nabla$ や $\sin$，$\log$ のような数学で使う関数の類もコマンドが存在しています．
 $\sin$ や $\log$ は通常アップライト体（立体，Roman 体）で書きます．
 $sin x$ などと書くことのないように気をつけましょう．
 また，数式中で \LaTeX コマンドを使わずに変換で出した全角のθを入れている人をときどき見かけるので気をつけましょう．
@@ -164,6 +164,39 @@ $sin x$ などと書くことのないように気をつけましょう．
     \end{cases}
     \label{eq:Kronecker}
 \end{equation}
+
+\begin{table}[tp]
+    \centering
+    \caption{ギリシャ文字の出力方法．}
+    \label{table:greek}
+    \begin{tabular}{c|c|c|c|c} \hline\hline
+        英語名 & 大文字出力 & 大文字入力 & 小文字出力 & 小文字入力 \\ \hline
+        alpha & $A$ & \verb|A| & $\alpha$ & \verb|\alpha| \\ \hline
+        beta & $B$ & \verb|B| & $\beta$ & \verb|\beta| \\ \hline
+        gamma & $\Gamma$, $\varGamma$ & \verb|\Gamma|, \verb|\varGamma| & $\gamma$ & \verb|\gamma| \\ \hline
+        delta & $\Delta$, $\varDelta$ & \verb|\Delta|, \verb|\varDelta| & $\delta$ & \verb|\delta| \\ \hline
+        epsilon & $E$ & \verb|E| & $\epsilon$, $\varepsilon$ & \verb|\epsilon|, \verb|\varepsilon| \\ \hline
+        zeta & $Z$ & \verb|Z| & $\zeta$ & \verb|\zeta| \\ \hline
+        eta & $\Eta$ & \verb|\Eta| & $\eta$ & \verb|\eta| \\ \hline
+        theta & $\Theta$, $\varTheta$ & \verb|\Theta|, \verb|\varTheta| & $\theta$, $\vartheta$ & \verb|\theta|, \verb|\vartheta| \\ \hline
+        iota & $I$ & \verb|I| & $\iota$ & \verb|\iota| \\ \hline
+        kappa & $K$ & \verb|K| & $\kappa$, $\varkappa$ & \verb|\kappa|, \verb|\varkappa| \\ \hline
+        lambda & $\Lambda$, $\varLambda$ & \verb|\Lambda|, \verb|\varLambda| & $\lambda$ & \verb|\lambda| \\ \hline
+        mu & $M$ & \verb|M| & $\mu$ & \verb|\mu| \\ \hline
+        nu & $N$ & \verb|N| & $\nu$ & \verb|\nu| \\ \hline
+        xi & $\Xi$, $\varXi$ & \verb|\Xi|, \verb|\varXi| & $\xi$ & \verb|\xi| \\ \hline
+        omicron & $O$ & \verb|O| & $o$ & \verb|o| \\ \hline
+        pi & $\Pi$, $\varPi$ & \verb|\Pi|, \verb|\varPi| & $\pi$, $\varpi$ & \verb|\pi|, \verb|\varpi| \\ \hline
+        rho & $P$ & \verb|P| & $\rho$, $\varrho$ & \verb|\rho|, \verb|\varrho| \\ \hline
+        sigma & $\Sigma$, $\varSigma$ & \verb|\Sigma|, \verb|\varSigma| & $\sigma$, $\varsigma$ & \verb|\sigma|, \verb|\varsigma| \\ \hline
+        tau & $T$ & \verb|T| & $\tau$ & \verb|\tau| \\ \hline
+        upsilon & $\Upsilon$, $\varUpsilon$ & \verb|\Upsilon|, \verb|\varUpsilon| & $\upsilon$ & \verb|\upsilon| \\ \hline
+        phi & $\Phi$, $\varPhi$ & \verb|\Phi|, \verb|\varPhi| & $\phi$, $\varphi$ & \verb|\phi|, \verb|\varphi| \\ \hline
+        chi & $X$ & \verb|X| & $\chi$ & \verb|\chi| \\ \hline
+        psi & $\Psi$, $\varPsi$ & \verb|\Psi|, \verb|\varPsi| & $\psi$ & \verb|\psi| \\ \hline
+        omega & $\Omega$, $\varOmega$ & \verb|\Omega|, \verb|\varOmega| & $\omega$ & \verb|\omega| \\ \hline
+    \end{tabular}
+\end{table}
 
 \subsection{\texttt{physics2} パッケージ}
 \label{ssec:physics2}
