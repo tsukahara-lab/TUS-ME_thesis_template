@@ -12,9 +12,7 @@
 例えば今読んでいるこの文章は第~\ref{ch:basic}~章の第~\ref{ssec:ch_sec_ssec}~節に位置しています．
 それぞれの章や節のタイトルをつけるには \verb|\chapter{}|，\verb|\section{}|，\verb|\subsection{}| のコマンドを使います．
 \verb|{}| の中にタイトルの文字列を入れてタイプセットすると章題目などが出力されます．
-\textcolor{red}{一つの論文の中で同じ名前の章や節が存在することは望ましくありません．
-名前の重複は避けましょう．
-また，ある章の中に節が一つだけという状況も避けましょう（ある節の中に小節が一つだけという状況も同様です）．}
+\textcolor{red}{ある章の中に節が一つだけという状況は避けましょう（ある節の中に小節が一つだけという状況も同様です）．}
 節（小節）を設けるなら必ず複数設けて内容を分けましょう．
 分けるつもりがないのであれば節（小節）を作らないようにしましょう．
 また，この \verb|pdf| ファイルのソースコード中で \verb|\chapter{}| や \verb|\section{}| の次の行で \verb|\label{}| コマンドが使われているのがわかると思います．
@@ -110,7 +108,7 @@ This is a pen.
 したがって，$u_\theta^2$ は \verb|u_\theta^2| と書きます．
 ここで注意点として，添え字が $u_\theta^2$ のように一文字であれば問題無いのですが，$R_{ij}$ のように二文字以上の場合は \verb|R_{ij}| のように括弧 \verb|{}| で囲んでください．
 分数は \verb|\frac{分子}{分母}| で書き，常微分・偏微分の場合も同様です．
-$\rho$ や $\theta$ のようなギリシャ文字も出力できるほか，$\nabla$ や $\sin$，$\log$ のような数学で使う関数の類もコマンドが存在しています．
+表~\ref{table:greek} のように $\rho$ や $\theta$ のといったギリシャ文字も出力できるほか，$\nabla$ や $\sin$，$\log$ のような数学で使う関数の類もコマンドが存在しています（例：\verb|\nabla|, \verb|\sin|, \verb|\log|）．
 $\sin$ や $\log$ は通常アップライト体（立体，Roman 体）で書きます．
 $sin x$ などと書くことのないように気をつけましょう．
 また，数式中で \LaTeX コマンドを使わずに変換で出した全角のθを入れている人をときどき見かけるので気をつけましょう．
@@ -167,8 +165,73 @@ $sin x$ などと書くことのないように気をつけましょう．
     \label{eq:Kronecker}
 \end{equation}
 
+\begin{table}[tp]
+    \centering
+    \caption{ギリシャ文字の出力方法．}
+    \label{table:greek}
+    \begin{tabular}{c|c|c|c|c} \hline\hline
+        英語名 & 大文字出力 & 大文字入力 & 小文字出力 & 小文字入力 \\ \hline
+        alpha & $A$ & \verb|A| & $\alpha$ & \verb|\alpha| \\ \hline
+        beta & $B$ & \verb|B| & $\beta$ & \verb|\beta| \\ \hline
+        gamma & $\Gamma$, $\varGamma$ & \verb|\Gamma|, \verb|\varGamma| & $\gamma$ & \verb|\gamma| \\ \hline
+        delta & $\Delta$, $\varDelta$ & \verb|\Delta|, \verb|\varDelta| & $\delta$ & \verb|\delta| \\ \hline
+        epsilon & $E$ & \verb|E| & $\epsilon$, $\varepsilon$ & \verb|\epsilon|, \verb|\varepsilon| \\ \hline
+        zeta & $Z$ & \verb|Z| & $\zeta$ & \verb|\zeta| \\ \hline
+        eta & $H$ & \verb|H| & $\eta$ & \verb|\eta| \\ \hline
+        theta & $\Theta$, $\varTheta$ & \verb|\Theta|, \verb|\varTheta| & $\theta$, $\vartheta$ & \verb|\theta|, \verb|\vartheta| \\ \hline
+        iota & $I$ & \verb|I| & $\iota$ & \verb|\iota| \\ \hline
+        kappa & $K$ & \verb|K| & $\kappa$, $\varkappa$ & \verb|\kappa|, \verb|\varkappa| \\ \hline
+        lambda & $\Lambda$, $\varLambda$ & \verb|\Lambda|, \verb|\varLambda| & $\lambda$ & \verb|\lambda| \\ \hline
+        mu & $M$ & \verb|M| & $\mu$ & \verb|\mu| \\ \hline
+        nu & $N$ & \verb|N| & $\nu$ & \verb|\nu| \\ \hline
+        xi & $\Xi$, $\varXi$ & \verb|\Xi|, \verb|\varXi| & $\xi$ & \verb|\xi| \\ \hline
+        omicron & $O$ & \verb|O| & $o$ & \verb|o| \\ \hline
+        pi & $\Pi$, $\varPi$ & \verb|\Pi|, \verb|\varPi| & $\pi$, $\varpi$ & \verb|\pi|, \verb|\varpi| \\ \hline
+        rho & $P$ & \verb|P| & $\rho$, $\varrho$ & \verb|\rho|, \verb|\varrho| \\ \hline
+        sigma & $\Sigma$, $\varSigma$ & \verb|\Sigma|, \verb|\varSigma| & $\sigma$, $\varsigma$ & \verb|\sigma|, \verb|\varsigma| \\ \hline
+        tau & $T$ & \verb|T| & $\tau$ & \verb|\tau| \\ \hline
+        upsilon & $\Upsilon$, $\varUpsilon$ & \verb|\Upsilon|, \verb|\varUpsilon| & $\upsilon$ & \verb|\upsilon| \\ \hline
+        phi & $\Phi$, $\varPhi$ & \verb|\Phi|, \verb|\varPhi| & $\phi$, $\varphi$ & \verb|\phi|, \verb|\varphi| \\ \hline
+        chi & $X$ & \verb|X| & $\chi$ & \verb|\chi| \\ \hline
+        psi & $\Psi$, $\varPsi$ & \verb|\Psi|, \verb|\varPsi| & $\psi$ & \verb|\psi| \\ \hline
+        omega & $\Omega$, $\varOmega$ & \verb|\Omega|, \verb|\varOmega| & $\omega$ & \verb|\omega| \\ \hline
+    \end{tabular}
+\end{table}
+
 \subsection{\texttt{physics2} パッケージ}
 \label{ssec:physics2}
+
+\begin{tcolorbox}[title={数式入力を簡略化するコマンド例（\texttt{physics2}, \texttt{fixdif}, \texttt{derivative} パッケージ）}]
+    \begin{tabular}{lll}
+        【括弧関連（\verb|physics2| パッケージの \verb|ab| モジュール）】\\
+        \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \rule[10pt]{0pt}{10pt}\rule[-16pt]{0pt}{16pt}
+        \verb|\ab(\frac{1}{2})|, \verb|\pab{\frac{1}{2}}|   & $\displaystyle\ab(\frac{1}{2})$, $\displaystyle\pab{\frac{1}{2}}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\ab[\frac{1}{2}]|, \verb|\bab{\frac{1}{2}}|   & $\displaystyle\ab[\frac{1}{2}]$, $\displaystyle\bab{\frac{1}{2}}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\ab\{\frac{1}{2}\}|, \verb|\Bab{\frac{1}{2}}|   & $\displaystyle\ab\{\frac{1}{2}\}$, $\displaystyle\Bab{\frac{1}{2}}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\ab<\frac{1}{2}>|, \verb|\aab{\frac{1}{2}}|   & $\displaystyle\ab<\frac{1}{2}>$, $\displaystyle\aab{\frac{1}{2}}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb@\ab|\frac{1}{2}|@, \verb|\vab{\frac{1}{2}}|   & $\displaystyle\ab|\frac{1}{2}|$, $\displaystyle\vab{\frac{1}{2}}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb@\ab\|\frac{1}{2}\|@, \verb|\Vab{\frac{1}{2}}|   & $\displaystyle\ab\|\frac{1}{2}\|$, $\displaystyle\Vab{\frac{1}{2}}$ \\
+    \end{tabular}
+    \tcblower
+    \begin{tabular}{ll}
+        【微積分関係（\verb|fixdif|, \verb|derivative| パッケージ）】\\
+        \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \rule[-10pt]{0pt}{10pt}
+        \verb|\d x|, \verb|\odif{x}|, \verb|\odif{x,y,z}|   & $\d x$, $\odif{x}$, $\odif{x,y,z}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\odv{}{x}|, \verb|\odv{f}{x}|, \verb|\odv[order=n]{f}{x}|  & $\displaystyle\odv{}{x}$, $\displaystyle\odv{f}{x}$, $\displaystyle\odv[order=n]{f}{x}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\pdv{}{x}|, \verb|\pdv{f}{x}|, \verb|\pdv{f}{x,y}|, \verb|\odv[order=n]{f}{x}|  & $\displaystyle\pdv{}{x}$, $\displaystyle\pdv{f}{x}$, $\displaystyle\pdv{f}{x,y}$, $\displaystyle\pdv[order=n]{f}{x}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\mdv{}{x}|, \verb|\mdv{f}{x}|, \verb|\mdv[order=n]{f}{x}|  & $\displaystyle\mdv{}{x}$, $\displaystyle\mdv{f}{x}$, $\displaystyle\mdv[order=n]{f}{x}$ \\
+    \end{tabular}
+\end{tcolorbox}
 
 式~\eqref{eq:NSr} は基本的なコマンドを紹介するためにわざと面倒な書き方をしました．
 しかし，複雑な数式は書くのも大変ですしミスの元になります．

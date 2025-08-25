@@ -2,24 +2,15 @@
 %%%%%%%%%%%%%%%%%%%
 %%%%% 英語文献 %%%%%
 %%%%%%%%%%%%%%%%%%%
+学位論文執筆時，例として載せている文献は消して構いません．
 }
 
 @comment{
 %%%%%%%%%%%%%%%%%%%
 %%%%% article %%%%%
 %%%%%%%%%%%%%%%%%%%
-}
-
-@article{Reynolds:PhilTransRoySoc1883,
-    author  = {Reynolds, Osborne},
-    title   = {An experimental investigation of the circumstances which determine whether the motion of water shall be direct or sinuous, and of the law of resistance in parallel channels},
-    journal = {Philosophical Transactions of the Royal Society of London},
-    volume  = {174},
-    number  = {},
-    pages   = {935--982},
-    year    = {1883},
-    doi     = {10.1098/rstl.1883.0029},
-    url     = {https://royalsocietypublishing.org/doi/abs/10.1098/rstl.1883.0029}
+必須項目：author, title, journal, year
+オプション項目：volume, number, pages, month, note, key, doi, url
 }
 
 @article{Matsukawa:PoF2022,
@@ -34,29 +25,12 @@
     note    = {074109}
 }
 
-@article{Berghout:JFM2020, 
-    author      = {Berghout, Pieter and Dingemans, Rick J. and Zhu, Xiaojue and Verzicco, Roberto and Stevens, Richard J. A. M. and van Saarloos, Wim and Lohse, Detlef},
-    title       = {Direct numerical simulations of spiral {Taylor--Couette} turbulence},
-    journal     = {Journal of Fluid Mechanics},
-    publisher   = {Cambridge University Press},
-    volume      = {887},
-    year        = {2020},
-    doi         = {10.1017/jfm.2020.33},
-    note        = {A18}
-}
-
 @comment{
 %%%%%%%%%%%%%%%%%%%
 %%%%%  book   %%%%%
 %%%%%%%%%%%%%%%%%%%
-}
-
-@book{Strogatz:CRC2015,
-    author      = {Steven H. Strogatz},
-    title       = {Nonlinear Dynamics and Chaos With Applications to Physics, Biology, Chemistry, and Engineering},
-    publisher   = {CRC Press},
-    year        = {2015},
-    doi         = {10.1201/9780429492563}
+必須項目：author/editor, title, publisher, year
+オプション項目：volume, number, series, address, edition, month, note, key, doi, url
 }
 
 @book{Schmid:Springer2001,
@@ -67,18 +41,12 @@
     doi         = {10.1007/978-1-4613-0185-1}
 }
 
-@book{Hirsch:AP2013,
-    author      = {Morris W. Hirsch and Stephen Smale and Robert L. Devaney},
-    title       = {Differential Equations, Dynamical Systems \& An Introduction to Chaos},
-    publisher   = {Academic Press},
-    year        = {2013},
-    doi         = {10.1016/C2009-0-61160-0}
-}
-
 @comment{
 %%%%%%%%%%%%%%%%%%%
 %%%%% booklet %%%%%
 %%%%%%%%%%%%%%%%%%%
+必須項目：title
+オプション項目：author, howpublished, address, month, year, note, key, doi, url
 }
 
 @booklet{Wang:MEnews2014,
@@ -93,24 +61,9 @@
 %%%%%%%%%%%%%%%%%%%
 %%% conference %%%%
 %%%%%%%%%%%%%%%%%%%
+必須項目：author, title, booktitle, year
+オプション項目：editor, pages, organization, publisher, address, month, note, key, doi, url
 }
-
-@conference{Matsumoto:ICFD2022,
-    author      = {Matsumoto, Takeshi},
-    title       = {Physical Insights on Turbulence from Numerical Simulation of Dissipative Weak Solution to the {Euler} Equations},
-    booktitle   = {Proceedings of 19th International Conference on Flow Dynamics},
-    year        = {2022},
-    note        = {OS15-8}
-}
-
-@conference{Tashiro:AJWTF2022,
-    author      = {Tashiro, Masaya and Tsukahara, Takahiro},
-    title       = {Prediction of Constitutive Stress for Viscoelastic Fluid Turbulence with {LSTM}},
-    booktitle   = {Proceedings of 9th Asian Joint Workshop on Thermophysics and Fluid Science},
-    year        = {2022},
-    note        = {4023}
-}
-
 
 @inproceedings{Kato:JSFM2022,
     author      = {Kato, Kentaro and Alfredsson, P. Henrik and Schlatter, Philipp and Lingwood, Rebecca J.},
@@ -124,23 +77,8 @@
 %%%%%%%%%%%%%%%%%%%
 %%%%% inbook %%%%%%
 %%%%%%%%%%%%%%%%%%%
-}
-
-@inbook{Davidson:Oxford2015,
-    author      = {Peter A. Davidson},
-    title       = {Turbulence: An Introduction for Scientists and Engineers, Second Edition},
-    publisher   = {Oxford University Press},
-    year        = {2015},
-    pages       = {61--104}
-}
-
-@inbook{Hale:Springer1991,
-    author      = {Jack K. Hale and H\"{u}seyin Ko\c{c}ak},
-    title       = {Dynamics and Bifurcations},
-    publisher   = {Springer-Verlag New York},
-    pages       = {217--264},
-    year        = {1991},
-    doi         = {10.1007/978-1-4612-4426-4}
+必須項目：author/editor, title, chapter/ pages, publisher, year
+オプション項目：volume, series, address, edition, month, note, key, doi, url
 }
 
 @inbook{Alligood:Springer1996,
@@ -156,16 +94,8 @@
 %%%%%%%%%%%%%%%%%%%
 %% incollection %%%
 %%%%%%%%%%%%%%%%%%%
-}
-
-@incollection{Lueptow:Springer2000,
-    author      = {Lueptow, Richard M.},
-    title       = {Stability and experimental velocity field in {Taylor--Couette} flow with axial and radial flow},
-    booktitle   = {Physics of Rotating Fluids},
-    publisher   = {Springer-Verlag Berlin Heidelberg New York},
-    pages       = {137--155},
-    year        = {2000},
-    doi         = {10.1007/3-540-45549-3}
+必須項目：author, title, booktitle, year
+オプション項目：editor, pages, organization, publisher, address, month, note, key, doi, url
 }
 
 @incollection{Ohkitani:RIMS2005,
@@ -178,35 +108,12 @@
     url         = {https://repository.kulib.kyoto-u.ac.jp/dspace/handle/2433/47122}
 }
 
-@incollection{Meyer-Spasche:Springer2000,
-    author      = {Meyer-Spasche, Rita and Bolstad, John H. and Pohl, Frank},
-    title       = {Secondary bifurcations of stationary flows},
-    booktitle   = {Physics of Rotating Fluids},
-    publisher   = {Springer-Verlag Berlin Heidelberg New York},
-    pages       = {171--193},
-    year        = {2000},
-    doi         = {10.1007/3-540-45549-3}
-}
-
 @comment{
 %%%%%%%%%%%%%%%%%%%
 %% inproceedings %%
 %%%%%%%%%%%%%%%%%%%
-}
-
-@inproceedings{Hattori:THMT2023,
-    author      = {Hattori, Hirofimi},
-    title       = {{DNS} study on Heat Transfer Phenomena with Transition to Turbulent Boundary Layers in a Pipe},
-    booktitle   = {Proceedings of 10th International Symposium on Turbulence, Heat and Mass Transfer},
-    year        = {2023}
-}
-
-@inproceedings{Matsukawa:ICFD2022,
-    author      = {Matsukawa, Yuki and Tsukahara, Takahiro},
-    title       = {Laminarization in Subcritical {Taylor--Couette--Poiseuille} Flow with Increasing Pressure Gradient},
-    booktitle   = {Proceedings of 19th International Conference on Flow Dynamics},
-    year        = {2022},
-    note        = {OS15-10}
+必須項目：author, title, booktitle, year
+オプション項目：editor, pages, organization, publisher, address, month, note, key, doi, url
 }
 
 @inproceedings{Tsukahara:TSFP2005,
@@ -222,6 +129,8 @@
 %%%%%%%%%%%%%%%%%%%
 %%%%% manual %%%%%%
 %%%%%%%%%%%%%%%%%%%
+必須項目：title
+オプション項目：author, organization, address, edition, month, year, note, key, doi, url
 }
 
 @manual{Tecplot2023,
@@ -235,6 +144,8 @@
 %%%%%%%%%%%%%%%%%%%
 %% mastersthesis %%
 %%%%%%%%%%%%%%%%%%%
+必須項目：author, title, school, year
+オプション項目：address, month, note, key, doi, url
 }
 
 @mastersthesis{Ng:Master2013,
@@ -249,24 +160,8 @@
 %%%%%%%%%%%%%%%%%%%
 %%%%%% misc %%%%%%%
 %%%%%%%%%%%%%%%%%%%
-}
-
-@misc{Yoneda:arXiv2016,
-    author          = {Tsuyoshi Yoneda},
-    title           = {A mathematical consideration of vortex thinning in {2D} turbulence}, 
-    year            = {2016},
-    eprint          = {1609.00107},
-    archivePrefix   = {arXiv},
-    primaryClass    = {math.AP}
-}
-
-@misc{Tanogami:arXiv2023,
-    author          = {Tanogami, Tomohiro and Araki, Ryo},
-    title           = {Information-Thermodynamic Bound on Information Flow in Turbulent Cascade}, 
-    year            = {2023},
-    eprint          = {2206.11163},
-    archivePrefix   = {arXiv},
-    primaryClass    = {cond-mat.stat-mech}
+必須項目：無し
+オプション項目：author, title, howpublished, archivePrefix, eprint, month, year, note, key, doi, url
 }
 
 @misc{Araki:arXiv2023,
@@ -282,6 +177,7 @@
 %%%%%%%%%%%%%%%%%%%
 %%%%% online %%%%%%
 %%%%%%%%%%%%%%%%%%%
+使用可能項目：author, title, howpublished, month, year, url, doi, access, note
 }
 
 @online{Kawamura_Ret64,
@@ -296,6 +192,8 @@
 %%%%%%%%%%%%%%%%%%%
 %%%% phdthesis %%%%
 %%%%%%%%%%%%%%%%%%%
+必須項目：author, title, school, year
+オプション項目：address, month, note, key, doi, url
 }
 
 @phdthesis{Ishida:PhD2017,
@@ -310,6 +208,8 @@
 %%%%%%%%%%%%%%%%%%%
 %%% proceedings %%%
 %%%%%%%%%%%%%%%%%%%
+必須項目：title, year
+オプション項目：editor, organization, publisher, address, month, note, key, doi, url
 }
 
 @proceedings{THMT2023,
@@ -323,16 +223,8 @@
 %%%%%%%%%%%%%%%%%%%
 %%% techreport %%%%
 %%%%%%%%%%%%%%%%%%%
-}
-
-@techreport{Lindsay:JAMSTECreport2003,
-    author      = {Lindsay, Dhugal J.},
-    title       = {Carbon and nitrogen contents of mesopelagic organisms: Results from {Sagami Bay}, {Japan}},
-    institution = {JAMSTEC Journal of Deep Sea Research},
-    volume      = {22},
-    pages       = {1--14},
-    year        = {2003},
-    url         = {https://jir.repo.nii.ac.jp/records/1603}
+必須項目：author, title, institution, year
+オプション項目：type, number, address, month, note, key, doi, url
 }
 
 @techreport{Neuhart:NASAreport2004,
@@ -344,20 +236,12 @@
     note        = {TP-2004-213247}
 }
 
-@techreport{Tajitsu:NAOJreport2010,
-    author      = {Tajitsu, Akito and Aoki, Wako and Kawanomoto, Satoshi and Narita, Norio},
-    title       = {Nonlinearity in the Detector used in the {Subaru} Telescope High Dispersion Spectrograph},
-    institution = {Publications of the National Astronomical Observatory of Japan},
-    volume      = {13},
-    pages       = {1--8},
-    year        = {2010},
-    url         = {https://www.nao.ac.jp/contents/about-naoj/reports/publications-naoj/13-12-1b.pdf}
-}
-
 @comment{
 %%%%%%%%%%%%%%%%%%%
 %%% unpublished %%%
 %%%%%%%%%%%%%%%%%%%
+必須項目：author, title, note
+オプション項目：month, year, key, doi, url
 }
 
 @unpublished{Dunkel:MITOCW2015,
