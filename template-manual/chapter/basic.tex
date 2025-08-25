@@ -177,7 +177,7 @@ $sin x$ などと書くことのないように気をつけましょう．
         delta & $\Delta$, $\varDelta$ & \verb|\Delta|, \verb|\varDelta| & $\delta$ & \verb|\delta| \\ \hline
         epsilon & $E$ & \verb|E| & $\epsilon$, $\varepsilon$ & \verb|\epsilon|, \verb|\varepsilon| \\ \hline
         zeta & $Z$ & \verb|Z| & $\zeta$ & \verb|\zeta| \\ \hline
-        eta & $\Eta$ & \verb|\Eta| & $\eta$ & \verb|\eta| \\ \hline
+        eta & $H$ & \verb|H| & $\eta$ & \verb|\eta| \\ \hline
         theta & $\Theta$, $\varTheta$ & \verb|\Theta|, \verb|\varTheta| & $\theta$, $\vartheta$ & \verb|\theta|, \verb|\vartheta| \\ \hline
         iota & $I$ & \verb|I| & $\iota$ & \verb|\iota| \\ \hline
         kappa & $K$ & \verb|K| & $\kappa$, $\varkappa$ & \verb|\kappa|, \verb|\varkappa| \\ \hline
@@ -200,6 +200,38 @@ $sin x$ などと書くことのないように気をつけましょう．
 
 \subsection{\texttt{physics2} パッケージ}
 \label{ssec:physics2}
+
+\begin{tcolorbox}[title={数式入力を簡略化するコマンド例（\texttt{physics2}, \texttt{fixdif}, \texttt{derivative} パッケージ）}]
+    \begin{tabular}{lll}
+        【括弧関連（\verb|physics2| パッケージの \verb|ab| モジュール）】\\
+        \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \rule[10pt]{0pt}{10pt}\rule[-16pt]{0pt}{16pt}
+        \verb|\ab(\frac{1}{2})|, \verb|\pab{\frac{1}{2}}|   & $\displaystyle\ab(\frac{1}{2})$, $\displaystyle\pab{\frac{1}{2}}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\ab[\frac{1}{2}]|, \verb|\bab{\frac{1}{2}}|   & $\displaystyle\ab[\frac{1}{2}]$, $\displaystyle\bab{\frac{1}{2}}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\ab\{\frac{1}{2}\}|, \verb|\Bab{\frac{1}{2}}|   & $\displaystyle\ab\{\frac{1}{2}\}$, $\displaystyle\Bab{\frac{1}{2}}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\ab<\frac{1}{2}>|, \verb|\aab{\frac{1}{2}}|   & $\displaystyle\ab<\frac{1}{2}>$, $\displaystyle\aab{\frac{1}{2}}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb@\ab|\frac{1}{2}|@, \verb|\vab{\frac{1}{2}}|   & $\displaystyle\ab|\frac{1}{2}|$, $\displaystyle\vab{\frac{1}{2}}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb@\ab\|\frac{1}{2}\|@, \verb|\Vab{\frac{1}{2}}|   & $\displaystyle\ab\|\frac{1}{2}\|$, $\displaystyle\Vab{\frac{1}{2}}$ \\
+    \end{tabular}
+    \tcblower
+    \begin{tabular}{ll}
+        【微積分関係（\verb|fixdif|, \verb|derivative| パッケージ）】\\
+        \textgt{コマンド}  & \textgt{出力} \\ \hline
+        \rule[-10pt]{0pt}{10pt}
+        \verb|\d x|, \verb|\odif{x}|, \verb|\odif{x,y,z}|   & $\d x$, $\odif{x}$, $\odif{x,y,z}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\odv{}{x}|, \verb|\odv{f}{x}|, \verb|\odv[order=n]{f}{x}|  & $\displaystyle\odv{}{x}$, $\displaystyle\odv{f}{x}$, $\displaystyle\odv[order=n]{f}{x}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\pdv{}{x}|, \verb|\pdv{f}{x}|, \verb|\pdv{f}{x,y}|, \verb|\odv[order=n]{f}{x}|  & $\displaystyle\pdv{}{x}$, $\displaystyle\pdv{f}{x}$, $\displaystyle\pdv{f}{x,y}$, $\displaystyle\pdv[order=n]{f}{x}$ \\
+        \rule[-16pt]{0pt}{16pt}
+        \verb|\mdv{}{x}|, \verb|\mdv{f}{x}|, \verb|\mdv[order=n]{f}{x}|  & $\displaystyle\mdv{}{x}$, $\displaystyle\mdv{f}{x}$, $\displaystyle\mdv[order=n]{f}{x}$ \\
+    \end{tabular}
+\end{tcolorbox}
 
 式~\eqref{eq:NSr} は基本的なコマンドを紹介するためにわざと面倒な書き方をしました．
 しかし，複雑な数式は書くのも大変ですしミスの元になります．
