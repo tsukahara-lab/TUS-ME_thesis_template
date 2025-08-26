@@ -37,7 +37,8 @@
 
 次に数式環境中で書体を変える方法の一部を下に示します．
 普通に学位論文を書いている場合であっても数式環境中で書体を変える場面はそれなりにあるはずです．
-カリグラフィーは Hamiltonian $\mathcal{H}$ や Lagrangian $\mathcal{L}$ で使います．
+カリグラフィーは Hamiltonian $\mathcal{H}$（\verb|\mathcal{H}|）や Lagrangian $\mathcal{L}$（\verb|\mathcal{L}|）で使います．
+黒板太文字は実数全体の集合 $\mathbb{R}$（\verb|\mathbb{R}|）や整数全体の集合 $\mathbb{Z}$（\verb|\mathbb{Z}|）を表す際に使用します．
 また，ベクトルをボールドイタリック体で表記することがありますが，\LaTeX 標準ではボールドイタリック体がサポートされていません．
 そのため，レガシー \LaTeX では \verb|bm| パッケージという外部のパッケージをわざわざ読み込んで \verb|\bm{abcABC123}| とする必要がありました．
 この学位論文テンプレートではモダン \LaTeX で使われる \verb|unicode-math| を使用しており，\verb|unicode-math| では従来の \verb|\math..| というコマンド以外に \verb|\sym..| というコマンドが用意されています．
@@ -48,9 +49,15 @@
     \begin{tabular}{lll}
         \textgt{書体クラス}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
         直立（roman, upright）  & \verb|\mathrm{abcABC123}|   & $\mathrm{abcABC123}$ \\
+        & \verb|\symup{abcABC123}|  & $\symup{abcABC123}$ \\
         ボールド（boldface）    & \verb|\mathbf{abcABC123}|  & $\mathbf{abcABC123}$ \\
+        & \verb|\symbfup{abcABC123}|    & $\symbfup{abcABC123}$ \\
         イタリック（italic）    & \verb|\mathit{abcABC123}|  & $\mathit{abcABC123}$ \\
+        & \verb|\symit{abcABC123}|  & $\symit{abcABC123}$ \\
         カリグラフィー（calligraphy）   & \verb|\mathcal{ABCDEFG}|    & $\mathcal{ABCDEFG}$ \\
+        & \verb|\symcal{abcABC123}|  & $\symcal{ABCDEFG}$ \\
+        黒板太文字（blackboard bold）  & \verb|\mathbb{abcABC123}| & $\mathbb{abcABC123}$ \\
+        & \verb|\symbb{abcABC123}|  & $\symbb{abcABC123}$ \\
         ボールドイタリック（bold italic）   & \verb|\symbfit{abcABC123}| & $\symbfit{abcABC123}$
     \end{tabular}
 \end{tcolorbox}
@@ -60,12 +67,12 @@
 ただし，添え字などで直立体にすることは考えられます．
 飽和温度を $T_\mathrm{sat}$ と表記する場合には \verb|$T_\mathrm{sat}$| と入力します．
 
-数式中のアルファベットは \textit{Italic} 体なのになぜ \verb|\mathit{}| コマンドが用意されているのでしょうか．
+それでは，数式中のアルファベットは \textit{Italic} 体なのになぜ \verb|\mathit{}| コマンドが用意されているのでしょうか．
 
 \begin{tcolorbox}
     \begin{tabular}{llll}
         \textgt{コマンド}  & \textgt{出力}  & \textgt{コマンド}  & \textgt{出力} \\ \hline
-        \verb|$diff$|   & $diff$    & \verb|$\mathit{diff}$| & $\mathit{diff}$ \\
+        \verb|$diff$|   & $diff$\rule[0pt]{32pt}{0pt} & \verb|$\mathit{diff}$| & $\mathit{diff}$ \\
         \verb|$II$|   & $II$    & \verb|$\mathit{II}$| & $\mathit{II}$
     \end{tabular}
 \end{tcolorbox}
@@ -74,6 +81,21 @@
 \verb|$II$| の場合も同様です．
 そのため，複数文字から成る変数は \verb|\mathit{}| で全て指定してあげるのが理想です．
 新しいコマンドとして \verb|sty| ファイル内に \verb|\newcommand{\diff}{\mathit{diff}}| のように定義してあげると \verb|\diff| と打てばいいだけなので楽です．
+
+また，数式中で
+\begin{equation}
+    \odv{x}{t} < 0 \quad \text{for all} \quad t > 0
+\end{equation}
+のように，数式中に単語を挿入したい場合は \verb|\text{}| コマンドを使用して
+\begin{verbatim}
+    \odv{x}{t} < 0 \quad \text{for all} \quad t > 0
+\end{verbatim}
+とすることで表現できます．
+ここで \verb|\mathrm{for all}| のようにすると
+\begin{equation}
+    \odv{x}{t} < 0 \quad \mathrm{for all} \quad t > 0
+\end{equation}
+となり，for と all の間にスペースが入りません．
 
 \section{記号の用法}
 \label{sec:mark}
