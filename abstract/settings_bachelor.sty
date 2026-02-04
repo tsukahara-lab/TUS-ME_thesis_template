@@ -6,7 +6,7 @@
 %%%               v1.0.0 Yuki MATSUKAWA 15 Dec. 2021
 %%%               v2.0.0 Yuki MATSUKAWA 26 Dec. 2023
 %%%               v3.0.0 Yuki MATSUKAWA 07 Nov. 2024
-%%%               v3.0.3 Yuki MATSUKAWA 28 Aug. 2025
+%%%               v3.1.0 Yuki MATSUKAWA 04 Feb. 2026
 %%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -45,12 +45,12 @@
 %%% 図関連 %%%
 % 図の読み込みに必要
 \usepackage{graphicx}
-%%% 関連する図を並べる際に使用
 % Fig. xxx の後ろをコロンではなくスペースに設定
-\usepackage[labelsep=quad]{caption}
+% 二行目以降はキャプション内容の位置で揃える
+\usepackage[labelsep=quad,format=hang]{caption}
 % キャプションの文字サイズを 9.5 pt に変更（日本機械学会の規定）
-\DeclareCaptionFormat{custom}{\fontsize{9.5pt}{11pt}\selectfont#1#2#3}
-\captionsetup{format=custom}
+\DeclareCaptionFont{jsme}{\fontsize{9.5pt}{11pt}\selectfont}
+\captionsetup{font=jsme}
 % サブ図のキャプションの出力を (a) xxx に設定
 \usepackage[labelsep=space]{subcaption}
 % サブ図参照時の出力を括弧ありをデフォルトにしたい場合は下記コマンドを使用

@@ -5,7 +5,7 @@
 
 % 英語のアルファベット順で並べる
 \noindent
-Alphabet\\
+{\sffamily\bfseries Alphabet}\\
 \begin{tblr}{
     colspec = {ll},         % 文字を左揃え
     colspec = {X[1]X[4]}    % 各列の幅が 1:4 になるように調整
@@ -21,7 +21,7 @@ Alphabet\\
 
 % ギリシャ語のアルファベット順で並べる
 \noindent
-Greek\\
+{\sffamily\bfseries Greek}\\
 \begin{tblr}{
     colspec = {ll},
     colspec = {X[1]X[4]}
@@ -35,7 +35,7 @@ Greek\\
 
 % 上付き添え字
 \noindent
-Superscripts\\
+{\sffamily\bfseries Superscripts}\\
 \begin{tblr}{
     colspec = {ll},
     colspec = {X[1]X[4]}
@@ -50,7 +50,7 @@ Superscripts\\
 
 % 下付き添え字
 \noindent
-Subscripts\\
+{\sffamily\bfseries Subscripts}\\
 \begin{tblr}{
     colspec = {ll},
     colspec = {X[1]X[4]}
@@ -58,6 +58,20 @@ Subscripts\\
     $(\quad)_\rms$          & Root mean square \\
     $(\quad)_\mathrm{w}$    & Wall \\
     $(\quad)_\tau$          & Wall unit
+\end{tblr}
+
+\vspace{8mm}
+
+% 略語
+\noindent
+{\sffamily\bfseries Abbreviations}\\
+\begin{tblr}{
+    colspec = {ll},
+    colspec = {X[1]X[4]}
+}
+    CFD             & Computational fluid dynamics \\
+    DNS				& Direct numerical simulation \\
+    LES             & Large eddy simulation \\
 \end{tblr}
 
 
