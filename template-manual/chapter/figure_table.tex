@@ -22,7 +22,7 @@
     \item \verb|H|\quad 必ずその位置（\textbf{H}ere）に図を出力（\verb|float| パッケージを必要とする）
 \end{itemize}
 学位論文中の図は原則ページ上部に配置するのでこの \verb|tex| ファイル中では \verb|[tp]| に設定してあります．
-皆さんはこのままコピーしてください．
+皆さんはこのままコピーしてください\footnote{ただし，章の始まりのページ（たとえば今見ているこのページ）に図を配置する際は「第 n 章」の文字列の上に図があると不自然です．この場合に限り，図をページの下部または章題目の下に配置するのがよいでしょう．文章の間に図が入ることのないように注意．}．
 \verb|\columnwidth| は現在のコラムのテキスト幅を指しており，\verb|[width=0.5\columnwidth]| と設定することで，テキスト幅の半分の横幅で図を挿入できます．
 図の大きさの指定に関してよく使うコマンドをテキストボックスにまとめてあります．
 \verb|\textwidth|，\verb|\columnwidth|，\verb|\linewidth| はよく似たコマンドですが，二段組の論文の場合はそれぞれの段の列幅が \verb|\columnwidth| になり，\verb|\linewidth| はリストなどの環境下での行の長さで臨機応変に対応します．
@@ -91,7 +91,7 @@
 \end{tcolorbox}
 
 また，\verb|subfigure| 環境を使うことでそれぞれのサブ図にラベルを付けることができます．
-参照時には \verb|\ref{fig:two_figures}| と入力すると \ref{fig:two_figures} のように図全体の番号のみ，\verb|\subref{subfig:four_figures_a}| と入力すると \subref{subfig:two_figures_a} のようにサブ図の番号のみ出力されます．
+参照時には \verb|\ref{fig:two_figures}| と入力すると \ref{fig:two_figures} のように図全体の番号のみ，\verb|\subref{subfig:four_figures_a}| と入力すると \subref{subfig:two_figures_a} のようにサブ図の番号のみが出力されます．
 図~\ref{fig:two_figures} のように出力したい場合は \verb|図~\ref{fig:two_figures}| とすればよいですが，仮に図~\ref{fig:two_figures}(\subref{subfig:two_figures_a}) のように出力したい場合は \verb|図~\ref{fig:two_figures}(\subref{subfig:two_figures_a})| とします．
 このとき，\verb|\subref{}| 前後の括弧 \verb|()| を忘れないでください．
 仮に \verb|\ref{subfig:two_figures_a}| のようにサブ図を \verb|\ref{}| コマンドで直接指定してあげると \ref{subfig:two_figures_a} のように図番号とサブ図番号が括弧無しで出力されます．
