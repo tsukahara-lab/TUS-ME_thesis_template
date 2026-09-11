@@ -293,7 +293,7 @@
 %%% 章の見出しを改行，空行後に表示 %%%
 \ModifyHeading{chapter}{%
   label_format={\chpre\thechapter\chpost},
-  font={\huge\sffamily\bfseries},
+  font={\fontsize{16pt}{19pt}\selectfont\sffamily\bfseries},
   format={%
     \ifx\empty#1\empty%
       \noindent#2%
@@ -306,5 +306,8 @@
   },
   pagestyle={chapterfirstpage}
 }
-
+%%% 節の見出しのフォントサイズを指定
+\ModifyHeading{section}{%
+  font={\fontsize{16pt}{19pt}\selectfont\sffamily\bfseries},
+}
 %%%%%% End of This File %%%%%%
